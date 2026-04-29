@@ -1,78 +1,192 @@
-% This chapter introduces the motivation and project description for this master's thesis. 
-% It provides an overview of the problem statement, research questions, and the objectives of the study. 
-% The chapter also outlines the structure of the thesis and the methodology used to address the research questions.
 
+This chapter introduces the purpose and structure 
+of the thesis. It presents the motivation, 
+problem description, and research questions. 
+The chapter also provides an overview 
+of the thesis structure.
 
 \section{Motivation}
 
-\begin{itemize}
-    \item Increasing use of machine learning in product development and production
-    \item Difficulty in selecting suitable ML methods for specific problems
-    \item Gap between research literature and practical implementation
-    \item Need for structured decision support
-    \item Potential value of combining ontology and literature-based retrieval
-    \item Relevance for engineers and practitioners with limited ML expertise
-\end{itemize}
+Machine learning has seen strong growth in recent years 
+and is now widely applied in product development 
+and production. It is used for tasks such as optimization, 
+control, prediction, and decision support 
+\parencite{wuest2016ml_manufacturing}. 
 
-\section{Pre-master Project Work}
+Advances in data availability and computing power 
+have further increased the use of machine learning 
+in industrial settings \parencite{rai2021ml_manufacturing_industry4}. 
+As a result, machine learning is now an important part 
+of modern engineering and manufacturing systems.
 
-\begin{itemize}
-    \item Prior work:
-    \begin{itemize}
-        \item semi-structured analysis of a large set of articles
-        \item development of an article-based roadmap
-    \end{itemize}
-    \item Transition:
-    \begin{itemize}
-        \item need to formalize and structure knowledge
-    \end{itemize}
-    \item Current thesis:
-    \begin{itemize}
-        \item extends previous work
-        \item introduces ontology, embeddings, and system implementation
-        \item aims to automate and generalize the workflow
-    \end{itemize}
-\end{itemize}
+At the same time, the field of machine learning 
+is large and diverse. Many different algorithms, 
+methods, and approaches are available, 
+each with its own strengths and weaknesses 
+\parencite{wuest2016ml_manufacturing}. 
 
+There are no clear rules for which method is best 
+in general, and performance depends on the specific 
+application and data \parencite{adekoya2022applications_ai_em}. 
+This creates a challenge for engineers and practitioners, 
+who must select suitable methods for their problems. 
+
+The large number of available options can act as a barrier 
+and limit the use of machine learning in practice 
+\parencite{adekoya2022applications_ai_em}.
+
+This challenge is further increased by the gap between 
+research and practical implementation. Research results 
+are spread across many articles, journals, and domains, 
+which makes it difficult to gain an overview 
+\parencite{adekoya2022applications_ai_em}. 
+
+At the same time, companies often lack the knowledge 
+and experience needed to apply machine learning methods 
+effectively \parencite{sonntag2023pattern_ml_product_development}. 
+As a result, method selection is often based on trial 
+and error, which can be time-consuming and inefficient 
+\parencite{sonntag2023pattern_ml_product_development}.
+
+% \begin{itemize}
+%     \item Increasing use of machine learning in product development and production
+%     \item Difficulty in selecting suitable ML methods for specific problems
+%     \item Gap between research literature and practical implementation
+%     \item Need for structured decision support
+%     \item Potential value of combining ontology and literature-based retrieval
+%     \item Relevance for engineers and practitioners with limited ML expertise
+% \end{itemize}
 
 \section{Problem Description}
+
+Selecting appropriate machine learning methods 
+for real-world problems remains a difficult task. 
+Engineers and practitioners often struggle 
+to identify which methods are relevant 
+for their specific problem. 
+
+Existing approaches are either too general 
+or too focused on specific techniques, 
+and they do not provide clear guidance 
+for method selection.
+
+A key challenge is the lack of tools that connect 
+problem descriptions, machine learning methods, 
+and supporting research. While many studies focus 
+on developing new models, fewer address how to select 
+methods based on problem characteristics 
+\parencite{arena2024conceptual_framework_ml_algorithm_selection_predictive_maintenance}.
+
+There is also no standard process for developing 
+machine learning solutions from idea to implementation 
+\parencite{chen2023ml_manufacturing_industry4}. 
+This makes it difficult for non-experts to get started.
+
+The large amount of available literature adds 
+to this challenge. Relevant knowledge is distributed 
+across many sources, and it is difficult to identify 
+which articles are useful for a given problem 
+\parencite{adekoya2022applications_ai_em}. 
+
+In addition, there is often no clear connection 
+between the type of data, the problem context, 
+and the selected machine learning method 
+\parencite{weichert2019review_ml_optimization_production}. 
+
+This can lead to poor choices, such as using complex models 
+on limited data.
+
+There is therefore a need for tools that can:
+
 \begin{itemize}
-    \item Users struggle to identify relevant ML methods for their problem
-    \item Existing approaches are either too generic or too technical
-    \item Lack of tools linking:
-    \begin{itemize}
-        \item problem descriptions
-        \item ML methods
-        \item supporting research articles
-    \end{itemize}
-    \item Challenge of utilizing large volumes of literature effectively
-    \item Need for:
-    \begin{itemize}
-        \item interpretable recommendations
-        \item traceability to literature
-        \item support for early implementation steps
-    \end{itemize}
-    \item Context: system combining ontology + embeddings + article retrieval
+    \item support the selection of machine learning methods based on problem descriptions
+    \item provide interpretable recommendations
+    \item link methods to relevant research literature
+    \item support the first steps of implementation
 \end{itemize}
 
+Such a system can help reduce complexity 
+and make machine learning more accessible 
+for engineers and practitioners.
+
+% \begin{itemize}
+%     \item Users struggle to identify relevant ML methods for their problem
+%     \item Existing approaches are either too generic or too technical
+%     \item Lack of tools linking:
+%     \begin{itemize}
+%         \item problem descriptions
+%         \item ML methods
+%         \item supporting research articles
+%     \end{itemize}
+%     \item Challenge of utilizing large volumes of literature effectively
+%     \item Need for:
+%     \begin{itemize}
+%         \item interpretable recommendations
+%         \item traceability to literature
+%         \item support for early implementation steps
+%     \end{itemize}
+%     \item Context: system combining ontology + embeddings + article retrieval
+% \end{itemize}
 
 \section{Research Questions}
 
+Based on the challenges described above, 
+this thesis addresses the following research questions:
+
 \begin{itemize}
-    \item How can ontology-based knowledge improve ML method selection?
+    \item How can ontology-based knowledge improve machine learning method selection?
     \item How can semantic similarity between problem descriptions and literature support recommendations?
-    \item How can a tool combine structured knowledge and unstructured text effectively?
-    \item To what extent can such a system support early-stage ML implementation?
+    \item How can structured knowledge and unstructured text be combined in a single system?
+    \item To what extent can such a system support early-stage machine learning implementation?
 \end{itemize}
 
 \section{Thesis Structure}
 
+The remainder of this thesis is structured as follows:
+
 \begin{itemize}
-    \item Chapter 1: Introduction
-    \item Chapter 2: Background and state of the art 
-    \item Chapter 3: Methodology 
-    \item Chapter 4: Implementation 
-    \item Chapter 5: Results 
-    \item Chapter 6: Discussion 
-    \item Chapter 7: Conclusion and future work
+    \item Chapter 1 introduces the motivation, problem description, and research questions
+    \item Chapter 2 presents background and related work
+    \item Chapter 3 describes the methodology
+    \item Chapter 4 presents the system implementation
+    \item Chapter 5 presents the results
+    \item Chapter 6 discusses the findings and limitations
+    \item Chapter 7 concludes the thesis and suggests future work
 \end{itemize}
+
+% \begin{itemize}
+%     \item Chapter 1: Introduction
+%     \item Chapter 2: Background and state of the art 
+%     \item Chapter 3: Methodology 
+%     \item Chapter 4: Implementation 
+%     \item Chapter 5: Results 
+%     \item Chapter 6: Discussion 
+%     \item Chapter 7: Conclusion and future work
+% \end{itemize}
+
+
+
+
+% About Pre-Master's thesis work:
+% \begin{itemize}
+%     \item Prior work:
+%     \begin{itemize}
+%         \item semi-structured analysis of a large set of articles
+%         \item development of an article-based roadmap
+%     \end{itemize}
+%     \item Transition:
+%     \begin{itemize}
+%         \item need to formalize and structure knowledge
+%     \end{itemize}
+%     \item Current thesis:
+%     \begin{itemize}
+%         \item extends previous work
+%         \item introduces ontology, embeddings, and system implementation
+%         \item aims to automate and generalize the workflow
+%     \end{itemize}
+% \end{itemize}
+
+
+
+
+
