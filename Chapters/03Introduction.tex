@@ -85,72 +85,23 @@ and make machine learning more accessible.
 
 \section{Problem Description}
 
-Selecting appropriate machine learning methods 
-for real-world problems is a complex task 
-that depends on several interacting factors. 
-These include the characteristics of the data, 
-the problem context, and the requirements 
-for performance and interpretability.
 
-In practice, there is no single algorithm 
-that performs well for all problems, 
-and the performance of a method may vary 
-across different applications and datasets 
-\parencite{adekoya2022applications_ai_em,lee2020machine_learning_enterprises}. 
-This means that method selection cannot be based 
-on fixed rules, but must consider the specific 
-conditions of each problem.
+Despite the increasing use of machine learning in manufacturing and engineering, the selection of appropriate methods for specific problems remains insufficiently supported in practice. 
+Existing approaches provide limited guidance on how to match problem characteristics, data properties, and practical requirements with suitable machine learning techniques \parencite{chen2023ml_manufacturing_industry4, sala2018selecting_ml_algorithm}.
 
-A key difficulty is that there is often no clear 
-relationship between the available data, 
-the problem setting, and the choice of method. 
-Studies show that there is limited correlation 
-between data characteristics, selected algorithms, 
-and the problems they are applied to 
-\parencite{weichert2019review_ml_optimization_production}. 
-In addition, the success of a method depends strongly 
-on the structure and quality of the data, 
-which is not always known in advance 
-\parencite{dogan2021machine_learning_data_mining_manufacturing}.
+A key limitation is the lack of structured decision-support methods for algorithm selection. 
+Current practices often rely on general guidelines or empirical testing, requiring practitioners to evaluate multiple candidate models without clear criteria for narrowing the search space \parencite{wuest2016ml_manufacturing, ali2017accurate_multi_criteria_decision_making_methodology_recommending_machine_learning_algorithm}. 
+This makes the process time-consuming and dependent on prior experience, which many users do not have \parencite{sonntag2023pattern_ml_product_development}.
 
-As a result, method selection is frequently based 
-on testing multiple algorithms in practice 
-\parencite{wuest2016ml_manufacturing}. 
-This process is time-consuming and does not guarantee 
-that the most suitable method is identified. 
-It also requires experience, which many practitioners 
-do not have \parencite{sonntag2023pattern_ml_product_development}.
+In addition, existing research primarily focuses on the development and evaluation of machine learning models, while less attention is given to how these methods should be selected and applied in specific industrial contexts \parencite{arena2024conceptual_framework_ml_algorithm_selection_predictive_maintenance}. 
+As a result, practitioners lack practical support for early-stage decision-making when defining and approaching machine learning problems.
 
-Another challenge is that method selection often involves 
-balancing several criteria. These include accuracy, 
-interpretability, computational cost, and data requirements. 
-Focusing on a single metric, such as accuracy, 
-can lead to suboptimal choices 
-\parencite{ali2017accurate_multi_criteria_decision_making_methodology_recommending_machine_learning_algorithm,sala2018selecting_ml_algorithm}. 
-In real-world applications, simpler and more interpretable 
-models are often preferred, even if they are less accurate 
-\parencite{paleyes2022challenges_deploying_ml_survey_case_studies}. 
-This reflects the importance of considering trade-offs 
-in practical settings.
+Another challenge is that relevant knowledge is distributed across a large and fragmented body of literature. 
+Although extensive information exists on machine learning methods and applications, it is difficult to access and use this knowledge in a systematic way during the method selection process \parencite{adekoya2022applications_ai_em}. 
+This limits the ability to make informed decisions based on prior research.
 
-Interpretability itself is a critical factor. 
-Many machine learning models act as black boxes, 
-which makes it difficult to understand 
-how results are produced 
-\parencite{presciuttini2024ml_iot_manufacturing_operations}. 
-This can reduce trust and limit adoption, 
-especially in industrial environments 
-where explanations are required.
-
-Another limitation is the lack of structured support 
-for method selection. Existing approaches 
-often rely on general guidelines or simplified criteria, 
-which may not capture the complexity of real problems 
-\parencite{sala2018selecting_ml_algorithm}. 
-In addition, most research focuses on developing models, 
-while less attention is given to how they should be selected 
-and applied in specific contexts 
-\parencite{arena2024conceptual_framework_ml_algorithm_selection_predictive_maintenance}.
+Furthermore, there is a lack of tools that connect problem descriptions with machine learning methods in a transparent and interpretable manner. 
+Many existing approaches require detailed technical knowledge of algorithms or rely on simplified selection criteria, which reduces their usefulness for non-experts \parencite{sala2018selecting_ml_algorithm, sonntag2023pattern_ml_product_development}.
 
 These challenges highlight the need for more systematic 
 approaches to method selection. In particular, there is a need 
@@ -170,6 +121,8 @@ There is therefore a need for tools that can:
     \item link methods to relevant research literature
     \item support early-stage implementation
 \end{itemize}
+
+
 % \begin{itemize}
 %     \item Users struggle to identify relevant ML methods for their problem
 %     \item Existing approaches are either too generic or too technical
@@ -200,6 +153,10 @@ this thesis addresses the following research questions:
     \item How can structured knowledge and unstructured text be combined in a single system?
     \item To what extent can such a system support early-stage machine learning implementation?
 \end{itemize}
+
+To investigate these questions, a web-based decision-support 
+system is developed that combines structured knowledge 
+with information from scientific literature.
 
 \section{Thesis Structure}
 
