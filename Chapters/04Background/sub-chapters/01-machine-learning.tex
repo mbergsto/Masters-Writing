@@ -1,0 +1,38 @@
+\section{Machine Learning Method Selection}
+\begin{itemize}
+    \item Overview of ML paradigms (supervised, unsupervised, etc.)
+    \item Typical ML tasks (classification, regression, time series, etc.)
+    \item Challenges in selecting appropriate methods
+    \item Existing guidelines or frameworks for method selection
+\end{itemize}
+
+Machine learning algorithms can be broadly categorized according to the type 
+of supervision they receive during training. 
+\textcite{mitchell1997machine_learning} defines a learning algorithm as a 
+computer program that improves its performance at some task through experience. 
+Three main learning paradigms are commonly distinguished: supervised learning, 
+unsupervised learning, and reinforcement learning 
+\parencite{bishop2006pattern_recognition_machine_learning}\parencite{Goodfellow-et-al-2016}\parencite{sarker2021machine_learning_algorithms_real_world_applications_research_directions}.
+
+In supervised learning, the training data consists of input vectors paired 
+with corresponding target values. The two most common supervised tasks are 
+classification, where the goal is to assign an input to one of a finite number 
+of discrete categories, and regression, where the goal is to predict a continuous 
+numerical value 
+\parencite{bishop2006pattern_recognition_machine_learning}\parencite{Goodfellow-et-al-2016}.
+
+In unsupervised learning, no target values are provided. The algorithm must 
+instead identify structure in the data directly. Common tasks include clustering, 
+density estimation, and dimensionality reduction 
+\parencite{bishop2006pattern_recognition_machine_learning}. 
+Semi-supervised learning occupies a middle ground, operating on both labeled 
+and unlabeled data, which is useful in contexts where labeled examples are scarce 
+\parencite{sarker2021machine_learning_algorithms_real_world_applications_research_directions}.
+
+Reinforcement learning differs fundamentally from the other paradigms. Rather 
+than learning from a fixed dataset, an agent interacts with an environment and 
+learns through trial and error, receiving rewards or penalties based on its actions 
+\parencite{bishop2006pattern_recognition_machine_learning}\parencite{sarker2021machine_learning_algorithms_real_world_applications_research_directions}. 
+As \textcite{Goodfellow-et-al-2016} note, the boundary between supervised 
+and unsupervised learning is not always well-defined, and many methods can be 
+applied to both types of problems.
