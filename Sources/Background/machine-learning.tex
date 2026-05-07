@@ -8,6 +8,10 @@ From \parencite{sarker2021machine_learning_algorithms_real_world_applications_re
 
 "Reinforcement learning is a type of machine learning algorithm that enables software agents and machines to automatically evaluate the optimal behavior in a particular context or environment to improve its efficiency, i.e., an environment-driven approach. This type of learning is based on reward or penalty, and its ultimate goal is to use insights obtained from environmental activists to take action to increase the reward or minimize the risk."
 
+"Cluster analysis, also known as clustering, is an unsupervised machine learning technique for identifying and grouping related data points in large datasets without concern for the specific outcome. It does grouping a collection of objects in such a way that objects in the same category, called a cluster, are in some sense more similar to each other than objects in other groups."
+
+"Dimensionality reduction which is an unsupervised learning technique, is important because it leads to better human interpretations, lower computational costs, and avoids overfitting and redundancy by simplifying models."
+
 From \parencite[p.~3]{bishop2006pattern_recognition_machine_learning} :
 
 "Applications in which the training data comprises examples of the input vectors along with their corresponding target vectors are known as supervised learning problems. Cases such as the digit recognition example, in which the aim is to assign each input vector to one of a finite number of discrete categories, are called classification problems. If the desired output consists of one or more continuous variables, then the task is called regression."
@@ -28,7 +32,23 @@ From \parencite{Goodfellow-et-al-2016} :
 
 "Unsupervised learning and supervised learning are not formally defined terms. The lines between them are often blurred."
 
+Anomaly detection: 
+
+"In this type of task, the computer program sifts through a set of events or objects, and flags some of them as being unusual or atypical. An example of an anomaly detection task is credit card fraud detection. By modeling your purchasing habits, a credit card company can detect misuse of your cards."
+
 From \parencite{mitchell1997machine_learning} :
 
 "A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E."
 
+From \parencite{sutton2018reinforcement_learning} :
+Value-based metoder (action-value methods):
+
+"All of the methods we have considered so far in this book have learned the values of states or state–action pairs. To use them for control, we learned the values of state–action pairs, and then used those action values directly to implement the policy [...] All methods of this form can be called action-value methods."
+
+"In this chapter we explore methods that are not action-value methods. They may still compute action (or state) values, but they do not use them directly to select actions. Instead, the policy is represented directly, with its own weights independent of any value function."
+
+"Actor–critic methods are TD methods that have a separate memory structure to explicitly represent the policy independent of the value function. The policy structure is known as the actor, because it is used to select actions, and the estimated value function is known as the critic, because it criticizes the actions made by the actor."
+
+From \parencite{sewak2019policy_based_reinforcement_learning_approaches} :
+
+"The basic difference between the value-based and the policy-based approaches is that in the value-based approaches we learn a 'value function' from which the 'policy' is derived either explicitly or implicitly. Whereas in the policy-based approaches there is no need to learn or derive the value function, and we learn the 'policy' directly."
