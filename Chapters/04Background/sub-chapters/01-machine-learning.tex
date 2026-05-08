@@ -38,8 +38,7 @@ Clustering groups data points such that objects within the same group are more
 similar to each other than to those in other groups 
 \parencite{sarker2021machine_learning_algorithms_real_world_applications_research_directions}. 
 Dimensionality reduction simplifies data by reducing the number of features, 
-which leads to better interpretability, lower computational costs, and reduced 
-risk of overfitting 
+which leads to better human interpretations and lower computational costs
 \parencite{sarker2021machine_learning_algorithms_real_world_applications_research_directions}. 
 Anomaly detection identifies observations that deviate significantly from the 
 expected distribution, and is used in applications such as fraud detection and 
@@ -74,41 +73,72 @@ a separate policy structure and value function simultaneously
     \label{fig:ml_paradigms}
 \end{figure}
 
-\subsection{Selecting Machine Learning Methods}
+\subsection{Approaches to Method Selection}
 
-Selecting an appropriate machine learning method is a non-trivial task. 
-As discussed in Chapter~\ref{introduction:motivation}, the diversity of available 
-algorithms, each with distinct strengths and limitations, creates a significant 
-challenge for practitioners. This challenge is formally captured by the 
-Algorithm Selection Problem \parencite{smith_miles2009algorithm_selection}, 
+Selecting an appropriate machine learning method is not straightforward. 
+As discussed in Chapter~\ref{introduction:motivation}, the large number of 
+available algorithms, each with distinct strengths and limitations, creates 
+a real challenge for practitioners. This challenge is formally described by 
+the Algorithm Selection Problem \parencite{smith_miles2009algorithm_selection}, 
 which asks which algorithm is likely to perform best for a given problem. 
-The No Free Lunch theorems provide a theoretical foundation for this difficulty, 
-establishing that no single algorithm performs best across all problems and that 
-effective selection requires knowledge of the problem's characteristics 
-\parencite{wolpert1997no_free_lunch}.
+The No Free Lunch theorems provide a theoretical basis for this difficulty, 
+showing that no single algorithm performs best across all problems and that 
+good selection requires understanding the characteristics of the problem at 
+hand \parencite{wolpert1997no_free_lunch}.
 
-Several practical tools have been developed to support method selection. 
-Scikit-learn provides a publicly available decision flowchart that guides users 
-through a series of questions about data size and task type to suggest candidate 
-algorithms \parencite{sklearn_algorithm_cheatsheet}. Microsoft Azure offers a 
-similar cheat sheet for its machine learning platform 
-\parencite{azure_algorithm_cheatsheet}. While these tools are accessible and 
-widely used, they have notable limitations. They rely primarily on accuracy and 
-prediction speed as selection criteria, which may lead to poor results in 
-practice \parencite{sala2018selecting_ml_algorithm}. They do not account for 
-factors such as interpretability, data characteristics, or domain context, and 
-provide no guidance on how to formulate the problem itself 
-\parencite{chen2023ml_manufacturing_industry4}.
+Several practical tools have been developed to help with method selection. 
+Scikit-learn provides a publicly available decision flowchart that guides 
+users through questions about data size and task type to suggest candidate 
+algorithms \parencite{sklearn_algorithm_cheatsheet}, and Microsoft Azure 
+offers a similar cheat sheet for its machine learning platform 
+\parencite{azure_algorithm_cheatsheet}. While these tools are accessible 
+and widely used, they have clear limitations. 
+The selection criteria used in both tools are mainly accuracy and prediction 
+speed, something that can in practice lead to poor results. \parencite{sala2018selecting_ml_algorithm}. 
+Factors such as interpretability, data characteristics, and domain context 
+are not considered, and neither do they offer any guidance on how the problem 
+itself should be formulated. \parencite{chen2023ml_manufacturing_industry4}.
 
 More structured frameworks have been proposed in the academic literature. 
 \textcite{sala2018selecting_ml_algorithm} present a two-layer selection 
-framework that incorporates algorithm characteristics such as scalability and 
-robustness to outliers in addition to learning type and response type. 
-\textcite{arena2024conceptual_framework_ml_algorithm_selection_predictive_maintenance} 
-extend this idea to the predictive maintenance domain, identifying decision 
-variables across dataset characteristics, algorithm properties, and maintenance 
-objectives. However, as the authors note, no existing tool relates algorithmic 
-approaches to the broader context of the maintenance process, and most 
-frameworks focus narrowly on accuracy and computational requirements rather 
-than on the full range of factors relevant to real-world applications.
+framework that incorporates algorithm characteristics such as scalability 
+and robustness to outliers, in addition to learning type and response type. 
+Domain-specific frameworks have also been proposed, such as that of 
+\textcite{arena2024conceptual_framework_ml_algorithm_selection_predictive_maintenance}, 
+who develop a structured set of decision variables for algorithm selection 
+in predictive maintenance. However, as the authors note, most existing 
+approaches focus narrowly on accuracy and computational requirements, 
+and none provides a tool that connects algorithmic choices to the broader 
+context of the application domain.
 
+A related class of approaches is automated machine learning (AutoML), 
+which seeks to automatically select, compose, and parametrize machine 
+learning models to achieve optimal performance on a given task or dataset 
+\parencite{waring2020automated_machine_learning_review_state_of_the_art_opportunities_healthcare}. 
+AutoML systems automate parts of the machine learning pipeline, including 
+data preparation, feature engineering, hyperparameter optimization, and 
+model generation, with the goal of reducing the demand for expert knowledge 
+and making machine learning more accessible to domain experts 
+\parencite{he2021automl_survey_state_of_the_art}. 
+Within AutoML, the algorithm selection problem is typically treated as an 
+optimization task, where dataset characteristics are used to predict which 
+algorithm is likely to perform best 
+\parencite{barbudo2023eight_years_automl_categorisation_review_trends}.
+
+However, AutoML approaches have notable limitations in the context of 
+decision support for non-experts. Most systems treat the selection and 
+configuration process as a black box, providing little explanation of why 
+a particular configuration was chosen 
+\parencite{barbudo2023eight_years_automl_categorisation_review_trends}. 
+This lack of transparency is a significant barrier to adoption, as users 
+who do not understand or trust the output of a system are unlikely to apply 
+it in practice 
+\parencite{waring2020automated_machine_learning_review_state_of_the_art_opportunities_healthcare}. 
+Furthermore, AutoML primarily addresses the later stages of the machine 
+learning pipeline, and the phases considered inherently human, such as 
+problem formulation and interpretation of results, have received little 
+attention \parencite{barbudo2023eight_years_automl_categorisation_review_trends}. 
+This means that AutoML does not address the earlier challenge of helping 
+practitioners understand which type of problem they have and which general 
+approach is appropriate. This gap motivates the 
+work in this thesis.
