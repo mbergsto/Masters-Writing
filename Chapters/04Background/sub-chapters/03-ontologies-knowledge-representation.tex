@@ -8,6 +8,8 @@
     \item Limitations: manual effort, iterative maintenance, scope constraints
 \end{itemize}
 
+\subsection{Ontology Description}
+
 An ontology is an explicit specification of a conceptualization,
 where a conceptualization is an abstract model of a domain that
 identifies its relevant concepts and the relationships between them
@@ -65,3 +67,44 @@ anticipate extension and allow the vocabulary to be specialized
 without requiring changes to existing definitions
 \parencite{gruber1995toward_principles_design_ontologies_used_knowledge_sharing,
 noy2001ontology_development_101_guide_creating_first_ontology}.
+
+\subsection{Why ML and Ontology}
+
+The machine learning domain has several properties that make 
+ontological representation a natural fit.
+
+ML methods are not a flat collection of independent techniques.
+They form hierarchical structures where more specific methods are 
+specializations of more general ones.
+\textcite{humm2026industry_ready_machine_learning_ontology} 
+illustrates this directly: a multilayer perceptron is a 
+specialization of an artificial neural network, and if the latter 
+can be used for classification and regression, the former inherits 
+that applicability without needing it to be stated separately.
+This kind of reasoning over hierarchical structure is something an 
+ontology supports naturally through inheritance, but is difficult 
+to achieve in a flat list or a conventional database schema.
+
+Beyond hierarchical structure, ML concepts are connected through 
+typed semantic relations.
+Methods are suited to certain tasks and datatypes, belong to certain learning 
+paradigms, and have different performance characteristics.
+These associations are not incidental but reflect the structure of 
+the domain itself, and making them explicit is a prerequisite for 
+structured method selection.
+\textcite{keet2015data_mining_optimization_ontology} motivate their 
+ontology for data mining precisely on these grounds: traditional 
+approaches treated learning algorithms as black boxes, correlating 
+observed performance with data characteristics alone, while an 
+ontology allows the internal characteristics of algorithms, their 
+assumptions, optimization strategies, and decision mechanisms, to 
+be represented explicitly and reasoned over.
+
+\subsection{Existing Machine Learning Ontologies}
+\begin{itemize}
+    \item Overview of existing ML ontologies: scope, structure, and focus
+    \item Comparison of ontologies: coverage of methods, tasks, and data types. 
+    \item Different application domains.
+    \item Present ML Ontology as the most comprehensive and suitable for method selection
+    \item Show structure through diagram (Protege?) and examples of key concepts and relations
+\end{itemize}
