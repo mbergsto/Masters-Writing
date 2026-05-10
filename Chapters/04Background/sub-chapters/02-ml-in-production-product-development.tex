@@ -1,4 +1,4 @@
-\section{ML in Product Development and Production}
+\section{Machine Learning in Product Development and Production}
 \begin{itemize}
     \item Go through findings from the literature review in pre-master project
     \item ML is used for tasks such as Quality prediction and defect detection, Process optimization, Predictive maintenance, Time series forecasting
@@ -6,3 +6,58 @@
     \item Production systems may have structured and continuous data
     \item Selecting suitable ML methods is challenging in these contexts
 \end{itemize}
+
+\subsection{Applications of Machine Learning}
+
+Machine learning is widely applied in industrial product development and production, 
+where it supports tasks such as process optimization, quality prediction, fault diagnosis, 
+predictive maintenance, and anomaly detection 
+\parencite{wuest2016ml_manufacturing, plathottam2023review_ai_applications_manufacturing_operations}. 
+The application of ML in these domains continues to grow, 
+driven by the increasing availability of production data and the improved usability of ML tools 
+\parencite{wuest2016ml_manufacturing}. 
+Unlike traditional rule-based approaches, ML methods can learn directly from data 
+and adapt to changing conditions, making them well suited to the complex and dynamic 
+nature of manufacturing environments \parencite{wuest2016ml_manufacturing}. 
+In practice, ML is used both to improve product quality and to optimize production processes, 
+for example through early prediction of manufacturing outcomes, root cause analysis, 
+and condition monitoring of equipment \parencite{weichert2019review_ml_optimization_production}. 
+As well as individual processes, ML also supports broader operational tasks such as 
+production planning, scheduling, and supply chain management 
+\parencite{plathottam2023review_ai_applications_manufacturing_operations, presciuttini2024ml_iot_manufacturing_operations}.
+
+\subsection{Learning Paradigms in Industrial Applications}
+
+Across reported applications in manufacturing and production, supervised learning 
+is the dominant paradigm, accounting for the large majority of studies in most 
+application areas \parencite{wuest2016ml_manufacturing, nti2022applications_ai_engineering_manufacturing_systematic_review}. 
+This reflects the nature of many industrial problems, where labeled data are available 
+through quality inspections, sensor logs, and operator feedback, and where the goal 
+is typically to predict a known outcome such as product quality or equipment failure 
+\parencite{wuest2016ml_manufacturing, presciuttini2024ml_iot_manufacturing_operations}. 
+Unsupervised learning plays a smaller but important role, particularly in anomaly 
+detection and condition monitoring, where labeled examples of faults are scarce or 
+costly to obtain \parencite{presciuttini2024ml_iot_manufacturing_operations}. 
+Reinforcement learning is less commonly reported in industrial settings, though it 
+has shown strong results in process control and scheduling problems, where decisions 
+must be made sequentially over time \parencite{panzer2022deep_reinforcement_learning_production_systems}. 
+In practice, the choice of learning paradigm is often shaped by what data is available 
+rather than by the structure of the problem itself 
+\parencite{wuest2016ml_manufacturing}.
+
+\subsection{Pre-Master Findings}
+
+In a preceding specialization project, a large-scale analysis of machine learning 
+research in product development and production was conducted, classifying over 33,000 
+article abstracts across product lifecycle phase, application area, learning paradigm, 
+and reported ML methods. 
+The results show that the literature is strongly concentrated in the optimization 
+phase of the product lifecycle, while early phases such as planning and concept 
+development contain comparatively few studies. 
+Supervised learning dominates across all phases and application areas, accounting 
+for approximately 73--80\% of the articles in each lifecycle phase, 
+with neural networks, random forests, and support vector machines as the most 
+frequently reported methods. 
+Based on these findings, a roadmap was proposed that structures the literature 
+across lifecycle phase, application area, and learning paradigm to support 
+early-stage method selection \parencite{bergsto2026mlselection}.
