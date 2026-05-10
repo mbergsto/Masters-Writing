@@ -1,0 +1,128 @@
+\textbf{Definisjon av Ontologi}
+
+From \parencite{gruber1995toward_principles_design_ontologies_used_knowledge_sharing} :
+Definisjon av ontologi:Definisjon av ontologi:
+
+"A body of formally represented knowledge is based on a conceptualization: the objects, concepts, and other entities that are assumed to exist in some area of interest and the relationships that hold among them."
+
+"An ontology is an explicit specification of a conceptualization."
+
+"Pragmatically, a common ontology defines the vocabulary with which queries and assertions are exchanged among agents."
+
+"A commitment to a common ontology is a guarantee of consistency, but not completeness, with respect to queries and assertions using the vocabulary defined in the ontology."
+
+"An ontology should be designed to anticipate the uses of the shared vocabulary. It should offer a conceptual foundation for a range of anticipated tasks, and the representation should be crafted so that one can extend and specialize the ontology monotonically."
+
+"An ontology should require the minimal ontological commitment sufficient to support the intended knowledge sharing activities. An ontology should make as few claims as possible about the world being modeled."
+
+From \parencite{noy2001ontology_development_101_guide_creating_first_ontology} :
+Definisjon og formål:
+"An ontology defines a common vocabulary for researchers who need to share information in a domain. It includes machine-interpretable definitions of basic concepts in the domain and relations among them."
+"An ontology is a formal explicit description of concepts in a domain of discourse (classes (sometimes called concepts)), properties of each concept describing various features and attributes of the concept (slots (sometimes called roles or properties)), and restrictions on slots (facets (sometimes called role restrictions))."
+
+Bruksområder:
+"To share common understanding of the structure of information among people or software agents"
+
+"Making explicit domain assumptions underlying an implementation makes it possible to change these assumptions easily if our knowledge about the domain changes."
+
+Design og begrensninger:
+"There is no one correct way to model a domain — there are always viable alternatives. The best solution almost always depends on the application that you have in mind and the extensions that you anticipate."
+
+"Ontology development is necessarily an iterative process."
+
+"The ontology should not contain all the possible information about the domain: you do not need to specialize (or generalize) more than you need for your application."
+
+From \parencite{studer1998knowledge_engineering_principles_methods} :
+
+Definisjon:
+
+"An ontology is a formal, explicit specification of a shared conceptualisation. A 'conceptualisation' refers to an abstract model of some phenomenon in the world by having identified the relevant concepts of that phenomenon. 'Explicit' means that the type of concepts used, and the constraints on their use are explicitly defined. 'Formal' refers to the fact that the ontology should be machine readable, which excludes natural language. 'Shared' reflects the notion that an ontology captures consensual knowledge, that is, it is not private to some individual, but accepted by a group."
+
+Motivasjon:
+"The main motivation behind ontologies is that they allow for sharing and reuse of knowledge bodies in computational form."
+
+"The reason for ontologies being so popular is in large part due to what they promise: a shared and common understanding of some domain that can be communicated across people and computers."
+
+Rolle i kunnskapsrepresentasjon:
+
+"Basically, the role of ontologies in the knowledge-engineering process is to facilitate the construction of a domain model. An ontology provides a vocabulary of terms and relations with which to model the domain."
+
+Typer ontologier (relevant for ML-ontologi-delen):
+
+"Domain ontologies capture the knowledge valid for a particular type of domain."
+
+Begrensninger:
+
+"Minimal ontological commitment assures maximum reusability, but there is a well known trade-off between reusability and usability (the more reusable, the less usable, and vice versa)."
+
+
+\textbf{Hvorfor ML og Ontologi}
+
+From \parencite{humm2026industry_ready_machine_learning_ontology} :
+
+Eksplisitt spesifikasjon som motiv:
+
+"Why still work on ontologies while generative artificial intelligence (AI), in particular large language models (LLM) today allow solving problems for which ontologies have been used traditionally? The reason is that there are still numerous use cases, also in industry, in which the explicit specification of concepts and their relationships are most useful."
+
+Terminologiproblemet i ML-domenet:
+
+"The configuration interfaces and terminologies used across different AutoML solutions vary significantly, posing challenges for interoperability and consistent user experience."
+
+"ML Ontology harmonizes terminology for ML tasks, approaches, metrics, libraries, AutoML solutions, and configuration items, enabling cross-library alignment and user-facing assistance."
+
+Ontologi som løsning på terminologiproblemet:
+
+"One of the primary applications of ontologies is the alignment of heterogeneous vocabularies within a given application domain."
+
+"An ontology is perfect for aligning the differently used terminologies."
+
+Mangler ved eksisterende ikke-semantiske tilnærminger:
+
+"Their metadata models are largely non-semantic: the meaning of fields is implicit in tool-specific identifiers and JSON/protobuf schemas, and interoperability is commonly achieved via bespoke adapters or import/export conventions. They typically do not provide a formally shared, machine-interpretable domain vocabulary for ML concepts that can be reused across heterogeneous libraries and AutoML solutions."
+
+Hierarki og inferens som nødvendig for ML-domenet:
+
+"Logically speaking, one can state that if an ML task belongs to some ML area then all specific variants of this ML task belong to the same ML area, e.g., text classification belongs to supervised learning since classification belongs to supervised learning."
+
+"Take the example of the ML approach multilayer perceptron (MLP) which is a specialisation of artificial neural network (ANN). ANN can be used for classification and regression. Therefore, by applying the above inference rule, MLP can also be used for classification and regression even if this has not been modelled explicitly."
+
+From \parencite{keet2015data_mining_optimization_ontology} :
+
+Mest relevant for "hvorfor ML + ontologi":
+
+"The primary goal of the Data Mining OPtimization Ontology (DMOP) is to support all decision-making steps that determine the outcome of the data mining process."
+
+Dette viser direkte at ontologisk representasjon er motivert av beslutningsstøtte i ML-kontekst, noe som er parallelt med din oppgave.
+
+"Traditional meta-learning regarded learning algorithms as black boxes, correlating the observed performance of their output (learned model) with characteristics of their input (data). However, the algorithms that have the same types of input/output may differ in internal characteristics."
+
+"DMOP fills this gap. It conceptualizes the internals of the DM algorithms: their multiple characteristics and building blocks, such as algorithm assumptions, optimization problems they solve, decision strategies, and others."
+
+Dette er et sterkt argument: ontologi gjør det mulig å representere egenskaper ved ML-algoritmer eksplisitt og strukturert, noe som ikke er mulig i en flat liste eller regelbasert tilnærming.
+
+"None of the related ontologies was developed with the goal of the optimization of the performance of DM processes. They do not provide sufficient level of details needed to support semantic meta-mining."
+
+From \parencite{publio2018ml_schema_exposing_semantics_machine_learning_schemas_ontologies} :
+
+Interoperabilitet som hovedmotivasjon:
+
+"We argue that exposing semantics of machine learning algorithms, models, and experiments through a canonical format may pave the way to better interpretability and to realistically achieve the full interoperability of experiments regardless of platform or adopted workflow solution."
+
+Terminologiproblemet på tvers av plattformer:
+
+"We still run into problems created due to the existence of different ML platforms: each of those has a specific conceptualization or schema for representing data and metadata."
+
+Forklarbarhet som motivasjon:
+
+"The vocabulary and axiomatization included in those resources may be used to make explicit the semantics of ML models, making them better interpretable for human users."
+
+From \parencite{blagec2022curated_ontology_based_large_scale_knowledge_graph_ai_tasks_benchmarks} :
+
+Den gir et godt sitat som motiverer ontologisk representasjon for AI-domenet generelt:
+
+"This ever-growing amount of research on AI methods, models, datasets and benchmarks makes it difficult to keep track of where novel AI methods are successfully (or still unsuccessfully) applied, how quickly progress happens, and how different AI capabilities interrelate and synergize."
+
+\textbf{Eksisterende ML-ontologier}
+
+
+\textbf{Utfordringer / begrensninger med Ontologier}

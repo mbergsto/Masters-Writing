@@ -1,7 +1,67 @@
 \section{Ontologies and Knowledge Representation}
 \begin{itemize}
-    \item What an ontology is (concepts, relations, structure)
-    \item Use of ontologies in engineering and ML domains
-    \item Benefits: structure, explainability, reasoning
-    \item Limitations: manual effort, rigidity
+    \item Definition of an ontology: concepts, relations, and formal structure
+    \item Motivations for using ontologies: shared vocabulary, explicit assumptions, reusability
+    \item Relevance for ML method selection: structuring hierarchical relationships between 
+    methods, tasks, and problem types to support interpretable recommendations
+    \item Ontologies in the ML domain: existing ML ontologies and their properties
+    \item Limitations: manual effort, iterative maintenance, scope constraints
 \end{itemize}
+
+An ontology is an explicit specification of a conceptualization,
+where a conceptualization is an abstract model of a domain that
+identifies its relevant concepts and the relationships between them
+\parencite{gruber1995toward_principles_design_ontologies_used_knowledge_sharing}.
+\textcite{studer1998knowledge_engineering_principles_methods} refine
+this by describing an ontology as a
+\textit{formal, explicit specification of a shared conceptualization}.
+Each term in this definition carries a distinct meaning.
+\textit{Formal} means the ontology is machine-readable and expressed
+in a language with precise semantics.
+\textit{Explicit} means that all concepts and the constraints on
+their use are clearly defined, rather than left implicit in code or
+documentation.
+\textit{Shared} means the ontology captures knowledge that is
+accepted by a group, rather than reflecting the perspective of
+a single individual
+\parencite{studer1998knowledge_engineering_principles_methods}.
+In practical terms, an ontology defines a common vocabulary for a
+domain, including machine-interpretable definitions of its basic
+concepts and the relations among them
+\parencite{noy2001ontology_development_101_guide_creating_first_ontology}.
+
+An ontology consists of classes, which represent concepts in the
+domain, properties that describe features of those concepts, and
+relations that link concepts to one another
+\parencite{noy2001ontology_development_101_guide_creating_first_ontology}.
+Classes are typically organized in a hierarchy where subclasses
+inherit the properties of their parent classes.
+Taken together, these elements allow a domain to be described in a
+way that both humans and software can interpret and reason over
+\parencite{gruber1995toward_principles_design_ontologies_used_knowledge_sharing}.
+
+The design of an ontology involves several practical constraints.
+\textcite{gruber1995toward_principles_design_ontologies_used_knowledge_sharing}
+argues that an ontology should require only the minimal ontological
+commitment needed for its intended purpose, meaning it should make
+as few claims about the world as necessary.
+This principle reflects a trade-off identified by
+\textcite{studer1998knowledge_engineering_principles_methods}:
+the more reusable an ontology is, the less directly applicable it
+tends to be in practice, since a more general representation
+provides less operational guidance for a specific task.
+\textcite{noy2001ontology_development_101_guide_creating_first_ontology}
+point to a related constraint on scope.
+An ontology should not attempt to capture everything that could be
+said about a domain, but only what is needed for the application at
+hand.
+Expanding scope beyond what the application requires adds complexity
+without benefit, and may introduce inconsistencies that are difficult
+to resolve.
+Ontology development is also not a one-time activity.
+As domain knowledge evolves and new requirements emerge, the
+ontology must be revised, which means the initial design should
+anticipate extension and allow the vocabulary to be specialized
+without requiring changes to existing definitions
+\parencite{gruber1995toward_principles_design_ontologies_used_knowledge_sharing,
+noy2001ontology_development_101_guide_creating_first_ontology}.
