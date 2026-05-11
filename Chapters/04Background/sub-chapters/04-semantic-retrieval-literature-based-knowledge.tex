@@ -64,9 +64,6 @@ where lower values indicate greater similarity.
     \item Sentence-level embeddings suited for comparing full problem descriptions against article abstracts
 \end{itemize}
 
-\subsection{Transformer-Based Sentence Embedding Models}
-\label{subsec:sentence-embeddings}
-
 Transformer-based language models represent text by processing 
 input tokens through multiple layers of self-attention, producing 
 contextual representations that capture relationships between 
@@ -140,11 +137,11 @@ dense retrieval more flexible than keyword-based approaches for
 tasks where the user's information need is expressed in natural 
 language rather than precise search terms.
 
-Figure~\ref{fig:keyword-vs-dense} illustrates the distinction. 
-The same query returns only one document under keyword-based 
-retrieval, while dense retrieval ranks all three documents by 
-semantic similarity, including those that share no exact terms 
-with the query.
+Figure~\ref{fig:keyword-vs-dense} illustrates the distinction with a constructed example. 
+The same query returns only Document~A under keyword-based retrieval, 
+as it is the only document sharing exact terms with the query. 
+Dense retrieval ranks all three documents by semantic similarity, 
+including Documents~B and~C despite the absence of exact term overlap in these documents.
 
 \begin{figure}[H]
     \centering
@@ -161,6 +158,54 @@ with the query.
     \item Trade-off: cross-encoders are more accurate but too slow for large-scale initial retrieval
 \end{itemize}
 
+The sentence embedding approach described in 
+Section~\ref{subsec:sentence-embeddings} is an example of a 
+bi-encoder, where query and document are encoded independently 
+into fixed-size vectors and similarity is measured using cosine 
+similarity \parencite{reimers2019sentence_bert_sentence_embeddings_using_siamese_bert_networks}. 
+Because the representations are computed independently, document 
+embeddings can be precomputed and stored, making bi-encoders 
+efficient for large-scale retrieval \parencite{thakur2021augmented_sbert_data_augmentation_method_improving_bi_encoders_pairwise_sentence_scoring_tasks}.
+
+A cross-encoder takes a different approach, concatenating query 
+and document into a single input and processing both jointly, 
+which allows the model to apply attention across both texts 
+simultaneously 
+\parencite{reimers2019sentence_bert_sentence_embeddings_using_siamese_bert_networks}. 
+This produces a direct relevance score rather than a similarity 
+between independent vectors. Cross-encoders are generally more 
+accurate than bi-encoders, but since no independent representations 
+are computed, every query-document pair must be processed from 
+scratch at query time, making cross-encoders impractical for 
+retrieval over large document collections 
+\parencite{thakur2021augmented_sbert_data_augmentation_method_improving_bi_encoders_pairwise_sentence_scoring_tasks}.
+
+Figure~\ref{fig:bi-vs-cross-encoder} illustrates the architectural 
+difference between the two approaches.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{Figures/bi-vs-cross-encoder.png}
+    \caption{Bi-encoder and cross-encoder architectures. The 
+    bi-encoder encodes query and document independently, producing 
+    vectors that are compared using cosine similarity. The 
+    cross-encoder concatenates both inputs and processes them 
+    jointly, enabling full attention between query and document 
+    inputs and producing a direct relevance score.}
+    \label{fig:bi-vs-cross-encoder}
+\end{figure}
+
+A common approach to combining the strengths of both architectures 
+is a two-stage retrieval pipeline 
+\parencite{nogueira2019passage_re_ranking_with_bert}. In the first 
+stage, a bi-encoder retrieves a set of candidate documents from 
+the full corpus based on embedding similarity. In the second stage, 
+a cross-encoder reranks these candidates by scoring each document 
+against the query directly, producing a more precise relevance 
+ranking \parencite{nogueira2019passage_re_ranking_with_bert}. This 
+approach preserves the scalability of bi-encoder retrieval while 
+benefiting from the higher accuracy of cross-encoder scoring.
+
 \subsection{Scientific Literature as a Knowledge Source}
 \begin{itemize}
     \item Scientific articles as a source of evidence for machine learning method recommendations
@@ -168,4 +213,35 @@ with the query.
     \item Semantic retrieval enables systematic matching between problem descriptions and relevant articles
 \end{itemize}
 
+Scientific articles document how machine learning methods have 
+been applied across a wide range of problems and contexts. In 
+the domain of machine learning for engineering and manufacturing, 
+a large number of such articles exist, covering diverse algorithms 
+and applications \parencite{sala2018selecting_ml_algorithm}. 
+This breadth of literature is itself a challenge. Relevant 
+knowledge is spread across journals, conference proceedings, and 
+research communities \parencite{adekoya2022applications_ai_em}, 
+and the volume of available work makes it difficult for any 
+individual to draw connections across topics and domains 
+\parencite{olivetti2020data_driven_materials_research_enabled_natural_language_processing_information_extraction}. 
+The result is that the literature creates extensive knowledge on 
+the topic, while at the same time making
+the selection of the right approach difficult
+\parencite{sala2018selecting_ml_algorithm}.
+
+Semantic retrieval offers a way to address this challenge by 
+enabling systematic matching between a problem description and relevant articles. 
+Article abstracts are a practical textual basis for this purpose. 
+Text mining of scientific literature has mostly been carried out 
+on abstracts due to their availability, and the fact that abstracts 
+consists of shorter sentences presenting only the most 
+important findings of a study 
+\parencite{westergaard2018comprehensive_quantitative_comparison_text_mining_15_million_full_text_articles_versus_corresponding_abstracts}. 
+While full-text articles contain richer information, they also 
+include complex tables, references, and speculative discussion 
+sections, making them less consistent as a basis for comparison 
+across a large corpus 
+\parencite{westergaard2018comprehensive_quantitative_comparison_text_mining_15_million_full_text_articles_versus_corresponding_abstracts}. 
+Abstracts thus represent a structured and consistently available 
+representation of each article's core content.
 
