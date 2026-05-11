@@ -37,3 +37,30 @@ From \parencite{reimers2019sentence_bert_sentence_embeddings_using_siamese_bert_
 "With semantically meaningful we mean that semantically similar sentences are close in vector space."
 "A common method to address clustering and semantic search is to map each sentence to a vector space such that semantically similar sentences are close."
 
+"BERT uses a cross-encoder: Two sentences are passed to the transformer network and the target value is predicted."
+
+"The input for BERT for sentence-pair regression consists of the two sentences, separated by a special [SEP] token. Multi-head attention over 12 (base-model) or 24 layers (large-model) is applied and the output is passed to a simple regression function to derive the final label."
+
+"A large disadvantage of the BERT network structure is that no independent sentence embeddings are computed, which makes it difficult to derive sentence embeddings from BERT."
+
+"it requires that both sentences are fed into the network, which causes a massive computational overhead: Finding the most similar pair in a collection of 10,000 sentences requires about 50 million inference computations (~65 hours) with BERT."
+
+From \parencite{thakur2021augmented_sbert_data_augmentation_method_improving_bi_encoders_pairwise_sentence_scoring_tasks}:
+
+"Cross-encoders, which perform full-attention over the input pair, and Bi-encoders, which map each input independently to a dense vector space. While cross-encoders often achieve higher performance, they are too slow for many practical use cases."
+
+"End-to-end information retrieval is also not possible with cross-encoders, as they do not yield independent representations for the inputs that could be indexed."
+
+"bi-encoders such as Sentence BERT (SBERT) encode each sentence independently and map them to a dense vector space. This allows efficient indexing and comparison."
+
+"The BERT cross-encoder can compare both inputs simultaneously, while the SBERT bi-encoder has to solve the much more challenging task of mapping inputs independently to a meaningful vector space."
+
+From \parencite{nogueira2019passage_re_ranking_with_bert}:
+
+"A simple question-answering pipeline consists of three main stages. First, a large number (for example, a thousand) of possibly relevant documents to a given question are retrieved from a corpus by a standard mechanism, such as BM25. In the second stage, passage re-ranking, each of these documents is scored and re-ranked by a more computationally-intensive method."
+"The job of the re-ranker is to estimate a score si of how relevant a candidate passage di is to a query q."
+"we feed the query as sentence A and the passage text as sentence B... we use the [CLS] vector as input to a single layer neural network to obtain the probability of the passage being relevant."
+"each of these documents is scored and re-ranked by a more computationally-intensive method. Finally, the top ten or fifty of these documents will be the source for the candidate answers."
+"neural models pretrained on a language modeling task... have achieved impressive results on various natural language processing tasks such as question-answering and natural language inference."
+"the proposed BERT-based models surpass the previous state-of-the-art models by a large margin on both of the tasks."
+"a BERTLARGE trained on 100k question-passage pairs (less than 0.3% of the MS MARCO training data) is already 1.4 MRR@10 points better than the previous state-of-the-art."
