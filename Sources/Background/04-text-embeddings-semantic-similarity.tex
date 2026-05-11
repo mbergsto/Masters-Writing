@@ -1,0 +1,39 @@
+From \parencite{jurafsky_martin2026speech_language_processing} :
+
+Page 116: 
+"In vector semantics, a word is modeled as a vector—a point in high-dimensional space, also called an embedding."
+
+Page 117:
+"Whether using sparse or dense vectors, word and document similarities are computed by some function of the dot product between vectors. The cosine of two vectors—a normalized dot product—is the most popular such metric."
+
+Fra chapter 5.4
+
+"By far the most common similarity metric is the cosine of the angle between the vectors."
+
+"The dot product acts as a similarity metric because it will tend to be high just when the two vectors have large values in the same dimensions."
+
+"We modify the dot product to normalize for the vector length by dividing the dot product by the lengths of each of the two vectors. This normalized dot product turns out to be the same as the cosine of the angle between the two vectors."
+
+"The cosine value ranges from 1 for vectors pointing in the same direction, through 0 for orthogonal vectors, to -1 for vectors pointing in opposite directions."
+
+"Cosine similarity can be used to estimate word similarity, for tasks like finding word paraphrases, tracking changes in word meaning, or automatically discovering meanings of words in different corpora."
+
+Fra 11.1:
+
+"Information retrieval or IR is the name of the field encompassing the retrieval of all manner of media based on user information needs."
+
+"a user poses a query to a retrieval system, which then returns an ordered set of documents from some collection."
+
+Sparse vs. dense retrieval
+Fra 11.1:
+"In sparse retrieval, we represent documents and queries with count vectors, weighted by tf-idf or BM25. In dense retrieval, we represent documents and queries with embeddings, computed from language models."
+
+Bag-of-words og begrensningen ved keyword-søk
+Fra 11.1.1:
+"we are representing a text document as if it were a bag of words, that is, an unordered set of words with their position ignored, keeping only their frequency in the document."
+
+From \parencite{reimers2019sentence_bert_sentence_embeddings_using_siamese_bert_networks} :
+
+"With semantically meaningful we mean that semantically similar sentences are close in vector space."
+"A common method to address clustering and semantic search is to map each sentence to a vector space such that semantically similar sentences are close."
+

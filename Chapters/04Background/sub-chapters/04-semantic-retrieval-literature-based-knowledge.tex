@@ -1,72 +1,171 @@
 \section{Semantic Retrieval and Text Similarity}
+
+Ontologies provide structured, explicit representations of domain knowledge, 
+but they depend on manually defined concepts and relations. 
+This makes them well-suited for reasoning over known entities, 
+yet limited in their ability to handle descriptions expressed in natural language 
+or to retrieve knowledge that was not explicitly encoded. 
+Semantic retrieval addresses this gap by operating on the meaning of text rather than on predefined structure. 
+This section introduces the core concepts underlying this approach: how text can be represented as numerical vectors,
+how similarity between texts can be measured in that representation, 
+and how these techniques support ranking and matching against a corpus of scientific literature.
+
+\subsection{Text Embeddings and Semantic Similarity}
 \begin{itemize}
-    \item Text can be represented as embeddings (vectors)
-    \item Similarity measures can compare meaning between texts
-    \item Used to match problem descriptions with relevant content
-    \item More flexible than keyword-based search
+    \item Text represented as numerical vectors (embeddings) in a high-dimensional space
+    \item Semantically similar texts receive similar vector representations and are close in embedding space
+    \item Cosine similarity as the primary measure for comparing embeddings
 \end{itemize}
 
-\textbf{Literature-Based Discovery / Retrieval}
+In vector semantics, text is represented as a numerical vector, 
+a point in a high-dimensional space referred to as the embedding 
+space \parencite{jurafsky_martin2026speech_language_processing}. 
+The position of a vector in this space reflects the semantic 
+content of the text it represents. A central property of this 
+representation is that semantically similar texts are mapped to 
+nearby points in the embedding space, while unrelated texts are 
+placed further apart. Figure~\ref{fig:embedding-space-example} illustrates 
+this principle for a small set of example words.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/embedding-space-example.png}
+    \caption{A two-dimensional projection of example word embeddings. 
+    Semantically similar words cluster together in the embedding space, 
+    while unrelated words are positioned further apart.}
+    \label{fig:embedding-space-example}
+\end{figure}
+
+To compare two vectors $\mathbf{u}$ and $\mathbf{v}$, cosine 
+similarity is the most common metric used in natural language 
+processing \parencite{jurafsky_martin2026speech_language_processing}. 
+Rather than measuring absolute distance between two points, it 
+measures the angle between two vectors, normalized for their length:
+
+\begin{equation}
+    \cos(\mathbf{u}, \mathbf{v}) = 
+    \frac{\mathbf{u} \cdot \mathbf{v}}{\|\mathbf{u}\| \|\mathbf{v}\|}
+    \label{eq:cosine-similarity}
+\end{equation}
+
+The result ranges from 1, indicating identical direction and 
+maximum similarity, to 0 for orthogonal vectors with no similarity 
+\parencite{jurafsky_martin2026speech_language_processing}. 
+Normalizing for vector length ensures that the similarity score 
+reflects semantic content rather than vector magnitude. In 
+practice, cosine distance, defined as $1 - \cos(\mathbf{u}, 
+\mathbf{v})$, is often used when a distance metric is required, 
+where lower values indicate greater similarity.
+
+\subsection{Transformer-Based Sentence Embedding Models}
 \begin{itemize}
-    \item Scientific articles are a rich but unstructured knowledge source
-    \item Challenges include large volume, noise, and unclear relevance
-    \item Methods can be linked to articles through extraction and metadata
-    \item Semantic retrieval can improve matching between problems and literature
+    \item Transformer-based language models as the foundation for contextual text representations
+    \item SBERT (Sentence-BERT): fine-tuned to produce fixed-size sentence embeddings suitable for cosine similarity comparison
+    \item Sentence-level embeddings suited for comparing full problem descriptions against article abstracts
+\end{itemize}
+
+\subsection{Transformer-Based Sentence Embedding Models}
+\label{subsec:sentence-embeddings}
+
+Transformer-based language models represent text by processing 
+input tokens through multiple layers of self-attention, producing 
+contextual representations that capture relationships between 
+words across the full input sequence 
+\parencite{vaswani2023attentionneed}. Unlike earlier embedding 
+approaches that assigned a fixed vector to each word regardless 
+of context, transformer models produce representations that 
+reflect the meaning of a word given its surrounding text.
+
+However, standard transformer models such as BERT are not 
+directly suited for computing sentence-level similarity. As 
+noted by \textcite{reimers2019sentence_bert_sentence_embeddings_using_siamese_bert_networks}, 
+comparing two sentences with BERT requires feeding both into 
+the network simultaneously, which becomes computationally 
+infeasible at scale. Finding the most similar pair in a 
+collection of 10,000 sentences would require approximately 50 
+million inference computations.
+
+Sentence-BERT (SBERT) addresses this by fine-tuning BERT 
+using a siamese network structure, producing fixed-size sentence 
+embeddings that can be compared efficiently using cosine 
+similarity \parencite{reimers2019sentence_bert_sentence_embeddings_using_siamese_bert_networks}. 
+The key property is that semantically similar sentences are 
+placed close together in the resulting embedding space, making 
+SBERT suitable for tasks where embeddings for a large corpus 
+can be precomputed and a new query compared against all of 
+them in milliseconds.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Figures/sbert-architecture.png}
+    \caption{SBERT architecture at inference time. Each sentence 
+    is encoded independently through a shared BERT network, 
+    producing vectors \textbf{u} and \textbf{v} that are compared 
+    using cosine similarity. Adapted from 
+    \textcite{reimers2019sentence_bert_sentence_embeddings_using_siamese_bert_networks} 
+    under CC BY-SA 4.0.}
+    \label{fig:sbert-architecture}
+\end{figure}
+
+The sentence-transformers library provides pretrained models 
+based on this approach for encoding text into fixed-size 
+vectors \parencite{sbert_docs}.
+
+\subsection{Semantic Retrieval}
+\begin{itemize}
+    \item Retrieval based on semantic meaning rather than exact keyword matching
+    \item A query is embedded and compared against a corpus of pre-embedded documents
+    \item More flexible than keyword search: captures related concepts even when exact terms differ
+\end{itemize}
+
+Information retrieval (IR) is the task of identifying and ranking 
+documents from a collection according to their relevance to a 
+user query \parencite{jurafsky_martin2026speech_language_processing}. 
+Traditional approaches represent both documents and queries as 
+sparse vectors of word counts, weighted by schemes such as tf-idf 
+or BM25, and compute similarity based on shared terms 
+\parencite{jurafsky_martin2026speech_language_processing}. While 
+effective for many tasks, this approach treats documents as bags 
+of words, meaning that word order and meaning are ignored, and 
+only exact term matches contribute to the relevance score.
+
+Dense retrieval addresses this limitation by representing 
+documents and queries as embeddings computed from language 
+models, rather than as word count vectors 
+\parencite{jurafsky_martin2026speech_language_processing}. Because 
+semantically similar texts are mapped to nearby points in the 
+embedding space, a query can retrieve relevant documents even 
+when they do not share exact terms with the query. This makes 
+dense retrieval more flexible than keyword-based approaches for 
+tasks where the user's information need is expressed in natural 
+language rather than precise search terms.
+
+Figure~\ref{fig:keyword-vs-dense} illustrates the distinction. 
+The same query returns only one document under keyword-based 
+retrieval, while dense retrieval ranks all three documents by 
+semantic similarity, including those that share no exact terms 
+with the query.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/keyword-vs-dense.png}
+    \caption{Keyword-based versus dense retrieval for the same query.}
+    \label{fig:keyword-vs-dense}
+\end{figure}
+
+\subsection{Cross-Encoder Reranking}
+\begin{itemize}
+    \item Bi-encoders embed query and document independently, enabling efficient large-scale comparison
+    \item Cross-encoders process query and document jointly, producing more precise relevance scores
+    \item Two-stage pipeline: bi-encoder retrieval for speed, cross-encoder reranking for precision
+    \item Trade-off: cross-encoders are more accurate but too slow for large-scale initial retrieval
+\end{itemize}
+
+\subsection{Scientific Literature as a Knowledge Source}
+\begin{itemize}
+    \item Scientific articles as a source of evidence for machine learning method recommendations
+    \item Large volumes of unstructured literature make manual navigation impractical
+    \item Semantic retrieval enables systematic matching between problem descriptions and relevant articles
 \end{itemize}
 
 
-\textbf{Forslag til temaer}:
-
-\begin{itemize}
-
-    \item \textbf{Semantic embeddings}
-    \begin{itemize}
-        \item Text represented as numerical vectors
-        \item Semantically similar texts receive similar representations
-        \item Sentence embeddings for complete sentences and abstracts
-    \end{itemize}
-
-    \item \textbf{Semantic similarity}
-    \begin{itemize}
-        \item Cosine similarity and cosine distance
-        \item Comparing problem descriptions with article abstracts
-        \item Semantic search compared to keyword-based search
-    \end{itemize}
-
-    \item \textbf{Transformer-based sentence embedding models}
-    \begin{itemize}
-        \item Brief introduction to transformer-based language models
-        \item Sentence-transformers and the SBERT approach
-        \item High-level explanation without attention or mathematical details
-    \end{itemize}
-
-    \item \textbf{Semantic retrieval}
-    \begin{itemize}
-        \item Retrieval based on semantic meaning rather than exact keywords
-        \item Ranking articles according to semantic relevance
-        \item Relevance for scientific literature retrieval
-    \end{itemize}
-
-    \item \textbf{Vector databases}
-    \begin{itemize}
-        \item Why embeddings are stored in vector databases
-        \item Efficient similarity search
-        \item Brief explanation of pgvector
-    \end{itemize}
-
-    \item \textbf{Cross-encoder reranking}
-    \begin{itemize}
-        \item Difference between bi-encoder embeddings and cross-encoders
-        \item Embeddings used for efficient retrieval
-        \item Cross-encoders used for more precise reranking
-        \item Trade-off between speed and accuracy
-    \end{itemize}
-
-    \item \textbf{Literature-based retrieval}
-    \begin{itemize}
-        \item Scientific articles as a knowledge source
-        \item Challenges related to large volumes of unstructured literature
-        \item Retrieval as support for machine learning method recommendations
-    \end{itemize}
-
-\end{itemize}
