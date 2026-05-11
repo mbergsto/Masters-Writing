@@ -35,4 +35,4 @@
 *.code-workspace
 
 ## Optional: exclude final output
-# *.pdf
+*.pdf
