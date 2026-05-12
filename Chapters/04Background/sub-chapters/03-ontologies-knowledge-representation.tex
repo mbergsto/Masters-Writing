@@ -100,6 +100,47 @@ ontology allows the internal characteristics of algorithms, their
 assumptions, optimization strategies, and decision mechanisms, to 
 be represented explicitly and reasoned over.
 
+\subsection{Semantic Web Standards}
+
+Ontologies both in the ML domain and in general, are commonly implemented using
+standardised languages from the Semantic Web, a set of
+specifications developed by the World Wide Web Consortium
+(W3C) to make information machine-readable and interoperable
+across systems \parencite{w3c}.
+
+The foundation is the Resource Description Framework (RDF),
+the standard knowledge representation language for the Semantic
+Web \parencite{gibbins2009resource_description_framework_rdf}.
+RDF represents knowledge as triples, each consisting of a
+subject, a predicate, and an object, forming a directed graph
+of binary relationships
+\parencite{gibbins2009resource_description_framework_rdf}.
+RDF Schema (RDFS) extends RDF with basic constructs for
+defining classes, properties, and constraints
+\parencite{gibbins2009resource_description_framework_rdf}.
+Building on RDF, SKOS (Simple Knowledge Organization System)
+provides a lightweight standard for representing taxonomies
+and controlled vocabularies, without the formal reasoning
+capabilities of a full ontology language
+\parencite{humm2026industry_ready_machine_learning_ontology}.
+
+The Web Ontology Language (OWL) builds on RDF and RDFS and
+adds richer modelling constructs, including logical operators,
+quantifiers, and property characteristics such as transitivity
+\parencite{bechhofer2009owl_web_ontology_language}.
+This gives OWL well-defined semantics that support automated
+reasoning, making it suitable for ontologies where logical
+consistency and entailment are required
+\parencite{bechhofer2009owl_web_ontology_language}.
+
+SPARQL (SPARQL Protocol and RDF Query Language) is used to
+query RDF data. It has syntax similar to SQL and retrieves
+data by matching triple patterns against stored graphs
+\parencite{grobe2009rdf_jena_sparql_semantic_web}.
+RDF data is typically stored in triplestores, database systems
+designed specifically for handling RDF triples
+\parencite{grobe2009rdf_jena_sparql_semantic_web}.
+
 \subsection{Existing Machine Learning Ontologies}
 \begin{itemize}
     \item Overview of existing ML ontologies: scope, structure, and focus
@@ -108,3 +149,164 @@ be represented explicitly and reasoned over.
     \item Present ML Ontology as the most comprehensive and suitable for method selection
     \item Show structure through diagram (Protege?) and examples of key concepts and relations
 \end{itemize}
+
+Several ontologies have been developed to represent knowledge
+in the ML and data mining domain, each with a different scope
+and purpose. The following is a selection of openly available
+ontologies identified within the ML domain.
+
+
+ML-Schema \parencite{publio2018ml_schema_exposing_semantics_machine_learning_schemas_ontologies},
+developed by the W3C Machine Learning Schema Community Group,
+is a top-level schema for representing and exchanging metadata
+about ML algorithms, datasets, models, and experiments.
+Its primary goal is interoperability. It provides a shared
+reference vocabulary that other ML ontologies can be mapped to,
+reducing fragmentation across platforms.
+ML-Schema defines around 25 abstract classes but contains no
+populated instances, meaning it describes structure rather than
+ML content.
+It is intended as a foundation for more specific ontologies,
+not as a standalone knowledge base.
+
+OntoDM-core \parencite{panov2014ontology_core_data_mining_entities}
+is a formal ontology for core data mining entities such as
+datasets, tasks, algorithms, and their executions.
+It is structured across three layers. A specification layer
+covers abstract definitions, an implementation layer covers
+algorithm implementations and parameters, and an application
+layer covers executions and workflows.
+OntoDM-core is aligned with established upper-level ontologies,
+which enables its use across different application domains
+\parencite{panov2014ontology_core_data_mining_entities}.
+It has been applied in areas such as bioinformatics and drug
+discovery, and serves as a mid-level ontology for Exposé
+\parencite{vanschoren2012experiment_databases}, an ontology
+for ML experiments used in OpenML.
+With 760 classes and detailed taxonomies of tasks and
+algorithms, it provides high structural granularity, but
+contains few populated instances and does not cover named ML
+methods, metrics, or libraries.
+
+The MEX Vocabulary \parencite{esteves2015mexvoc} is a
+lightweight format for exchanging provenance metadata about
+ML experiments.
+It is organised in three layers. MEX-Core handles experiment
+configuration and execution, MEX-Algorithm covers algorithm
+class and learning method, and MEX-Performance covers
+evaluation measures.
+MEX is designed for basic ML iterations only and does not aim
+to cover the full data mining domain.
+Preprocessing semantics, model internals, and named ML methods
+are outside its scope.
+
+ML Ontology \parencite{humm2026industry_ready_machine_learning_ontology}
+is the most comprehensive of the four in terms of ML content.
+It covers ML areas, tasks, approaches, preprocessing methods,
+metrics, libraries, AutoML solutions, and configuration
+parameters, with around 700 individuals and 5000 RDF triples.
+Unlike the other ontologies, it is not designed for experiment
+annotation but for integrating different ML tools and frameworks
+through a shared vocabulary.
+It supports forward-chaining inference via SPARQL and includes
+built-in quality assurance checks.
+Reinforcement learning is listed as a class but contains no
+instances, and coverage of generative AI methods is limited.
+
+\begin{landscape}
+\begin{table}[ht]
+\centering
+\caption{Comparison of existing ML ontologies}
+\begin{tabular}{lp{3cm}p{4.5cm}p{2.5cm}p{3cm}p{2cm}}
+\toprule
+\textbf{Ontology} & \textbf{Purpose} & \textbf{ML Coverage} & \textbf{Size} & \textbf{Representation} & \textbf{Year} \\
+\midrule
+ML Ontology & Shared ML vocabulary for tool integration & Tasks, approaches, metrics, libraries, AutoML solutions, config. items & $\sim$10 classes, $\sim$700 individuals, $\sim$5000 triples & RDF/RDFS, SKOS, SPARQL, SHACL & 2026 \\
+\addlinespace
+ML-Schema & Schema for ML experiment metadata and interoperability & Algorithms, tasks, datasets, models, evaluations. & $\sim$25 classes, no instances & OWL/RDF & 2016 \\
+\addlinespace
+OntoDM-core & Semantic annotation of DM algorithms and processes & DM tasks, algorithms, datasets, generalizations, workflows & 760 classes, 221 individuals, 1419 axioms & OWL-DL & 2014 \\
+\addlinespace
+MEX Vocabulary & Lightweight format for ML experiment metadata & Algorithm class, learning method, hyperparameters, performance measures & $\sim$402 classes & RDF, PROV-O & 2015 \\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{landscape}
+
+Across these ontologies, a distinction emerges between
+those more focused on experiment metadata and process structure
+(ML-Schema, OntoDM-core, MEX) and those focused on ML content
+and ML method knowledge (ML Ontology).
+The former are well suited for annotating and reproducing
+experiments, but provide little support for reasoning about
+which methods are applicable to a given problem.
+ML Ontology addresses this gap by representing the
+relationships between tasks, methods, and metrics in a form
+that can be queried and reasoned over.
+
+\subsection{ML Ontology Structure and Content}
+
+Among the ontologies reviewed, ML Ontology is examined in
+more detail here because it provides the broadest coverage
+of ML concepts and methods, making it the most promising
+foundation for the system developed in this thesis.
+
+ML Ontology is organised into five modules: classes,
+instances, inference rules, quality assurance checks, and
+predefined queries
+\parencite{humm2026industry_ready_machine_learning_ontology}.
+Figure~\ref{fig:ml-ontology-schema} shows this overall
+structure.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figures/ml-ontology-schema.png}
+    \caption{ML Ontology schema. Source: \textcite{humm2026industry_ready_machine_learning_ontology}}
+    \label{fig:ml-ontology-schema}
+\end{figure}
+
+The classes are divided into two groups: ML concepts, which
+cover the domain vocabulary, and ML implementations, which
+cover libraries, AutoML solutions, and their configuration
+options \parencite{humm2026industry_ready_machine_learning_ontology}.
+Figure~\ref{fig:ml-ontology-classes} shows the main classes
+and the relations between them.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/ml-ontology-classes.png}
+    \caption{ML Ontology classes. Source: \textcite{humm2026industry_ready_machine_learning_ontology}}
+    \label{fig:ml-ontology-classes}
+\end{figure}
+
+The key relations are \texttt{used\_for}, which links
+approaches and metrics to the tasks they apply to,
+\texttt{belongs\_to}, which links tasks to learning areas,
+and \texttt{can\_perform}, which links libraries and AutoML
+solutions to tasks
+\parencite{humm2026industry_ready_machine_learning_ontology}.
+
+ML tasks are organised in hierarchies using
+\texttt{skos:broader}, a SKOS relation that links a concept
+to a more general one, for example \texttt{tabular\_regression}
+to \texttt{regression}. A key feature of the ontology is
+that properties such as \texttt{used\_for} and
+\texttt{belongs\_to} are inherited along these hierarchies
+through a forward-chaining inference rule
+\parencite{humm2026industry_ready_machine_learning_ontology}.
+This means that if a general method is applicable to a task,
+all its specialisations inherit that applicability without
+needing it to be stated explicitly.
+Figure~\ref{fig:ml-ontology-task-hierarchy} illustrates
+the task hierarchy for supervised and unsupervised learning.
+Reinforcement learning is defined as an ML area in the
+ontology but does not appear in the hierarchy since no tasks and no methods
+have been assigned to it
+\parencite{humm2026industry_ready_machine_learning_ontology}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/ml-ontology-task-hierachy.png}
+    \caption{ML task hierarchy in ML Ontology. Source: \textcite{humm2026industry_ready_machine_learning_ontology}}
+    \label{fig:ml-ontology-task-hierarchy}
+\end{figure}
