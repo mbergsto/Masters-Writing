@@ -68,12 +68,139 @@ a separate policy structure and value function simultaneously
     \label{fig:ml_paradigms}
 \end{figure}
 
-\textbf{Sett inn et delkapittel om ML metoder? F.eks:
-Formidle at antallet konkrete metoder er stort.
-Vise at metodene varierer langs noen få meningsfulle dimensjoner som faktisk har praktisk betydning: tolkbarhet, datakrav, robusthet, og ytelse
-Det vil gjøre begrunnelsen av Ontologi mer meningsfull, siden det er nettopp disse egenskapene som kan representeres eksplisitt i en ontologi og brukes for inferens.}
+\subsection{Machine Learning Methods}
 
-\subsection{Machine Learning Methods: Categories and Attributes}
+The following sections introduce a selection of common and most established machine learning 
+methods and places them within the paradigms and tasks described above. 
+The aim is not to provide a comprehensive description of each method or 
+to cover underlying mathematical details, but to give an overview of 
+common method types and what fundamentally distinguishes them. The section then gives a brief 
+overview of attributes that are normal to consider when selecting 
+a method for a given problem.
+
+\subsubsection*{Supervised methods}
+
+Tree-based methods learn by recursively partitioning the input space 
+according to feature values. A decision tree splits data into regions 
+by asking a sequence of questions about the input features, assigning 
+each region a predicted output. They can be used for both 
+classification and regression tasks and require little data 
+preparation, such as feature scaling 
+\parencite[Chapter~6]{geron2019hands_on_machine_learning,
+sarker2021machine_learning_algorithms_real_world_applications_research_directions}. 
+Their decisions are intuitive and easy to interpret, as the 
+classification rules they produce can even be applied manually 
+\parencite[Chapter~6]{geron2019hands_on_machine_learning}.
+Random forests extend this by training many trees on different 
+subsets of the data and aggregating their predictions, which makes 
+them more robust and generally improves predictive accuracy 
+\parencite{breiman2001random_forests}. 
+However, combining many trees makes the model harder to interpret 
+than a single decision tree 
+\parencite[Chapter~6]{geron2019hands_on_machine_learning}. 
+Gradient boosting methods such as XGBoost build trees sequentially 
+to improve on the predictions of previous trees, and are known for 
+strong generalization performance on large datasets
+\parencite{chen2016xgboost,
+sarker2021machine_learning_algorithms_real_world_applications_research_directions}.
+
+Linear and polynomial regression predict a continuous output and 
+are among the most widely used methods for regression tasks 
+\parencite{sarker2021machine_learning_algorithms_real_world_applications_research_directions}. 
+Regularised variants constrain the model weights to improve 
+generalisation. Ridge regression keeps weights small but never 
+eliminates them entirely, while LASSO regression tends to set some 
+weights exactly to zero, which effectively performs feature 
+selection and produces a sparse model 
+\parencite{tibshirani1996regression_lasso_ridge, 
+geron2019hands_on_machine_learning}. 
+Logistic regression estimates the probability of class membership 
+using a linear combination of input features, and is commonly used 
+for classification tasks, particularly when a simple and 
+interpretable model is preferred 
+\parencite[Chapter~4]{geron2019hands_on_machine_learning,
+sarker2021machine_learning_algorithms_real_world_applications_research_directions}.
+
+Support vector machines find a decision boundary that maximises 
+the margin between classes 
+\parencite{cortes1995support_vector_networks}. 
+By applying kernel functions, SVMs can model non-linear decision 
+boundaries and are effective in high-dimensional spaces. They can 
+be used for both classification and regression tasks 
+\parencite[Chapter~5]{geron2019hands_on_machine_learning,
+sarker2021machine_learning_algorithms_real_world_applications_research_directions}.
+
+K-nearest neighbours classifies a new data point based on the 
+majority class among its closest neighbours in the training data, 
+using a distance measure such as Euclidean distance. The method 
+requires no explicit training step but can be computationally 
+expensive at prediction time for large datasets 
+\parencite{cunningham2021k_nearest_neighbour_classifiers_tutorial,
+sarker2021machine_learning_algorithms_real_world_applications_research_directions}.
+
+\subsubsection*{Unsupervised methods}
+
+Clustering algorithms group data points based on similarity without 
+the use of labels. K-means partitions data into a fixed number of 
+clusters by assigning each instance to the nearest centroid and 
+updating the centroids iteratively until convergence 
+\parencite[Chapter~9]{geron2019hands_on_machine_learning}. 
+The number of clusters must be specified in advance, and the 
+algorithm is sensitive to the initial centroid placement 
+\parencite[Chapter~9]{geron2019hands_on_machine_learning}. 
+DBSCAN takes a different approach by defining clusters as dense 
+regions in the data space, which allows it to find clusters of 
+arbitrary shape and identify outliers as noise without requiring 
+the number of clusters to be specified in advance 
+\parencite{ester1996dbscan,
+sarker2021machine_learning_algorithms_real_world_applications_research_directions}.
+
+For dimensionality reduction, principal component analysis (PCA) 
+identifies the axes of greatest variance in the data and projects 
+it onto a lower-dimensional space defined by these axes, called 
+principal components 
+\parencite{hotelling1932pca,
+geron2019hands_on_machine_learning}. 
+This reduces computational cost and can aid visualisation while 
+preserving as much of the original variance as possible 
+\parencite[Chapter~8]{geron2019hands_on_machine_learning,
+sarker2021machine_learning_algorithms_real_world_applications_research_directions}.
+
+Anomaly detection methods identify observations that deviate 
+significantly from the expected distribution. Isolation Forest 
+isolates anomalies by randomly partitioning the data, exploiting 
+the fact that anomalies are few and structurally different from 
+normal observations 
+\parencite{liu2008isolation_forest}. 
+One-class SVM, a variant of the support vector machine, learns a 
+boundary around normal data and flags observations outside this 
+boundary as anomalies 
+\parencite[Chapter~9]{geron2019hands_on_machine_learning}.
+
+\subsubsection*{Reinforcement learning methods}
+
+Within reinforcement learning, methods differ primarily in what 
+they learn. Value-based methods such as Q-learning estimate the 
+expected return for each action in a given state and derive a 
+policy from these estimates 
+\parencite{watkins1992q_learning}. 
+Policy-based methods such as policy gradient algorithms optimise 
+the policy directly, which makes them better suited for problems 
+with continuous or high-dimensional action spaces 
+\parencite{sutton1999policy_gradient_methods_reinforcement_learning}. 
+Actor-critic methods combine both approaches by maintaining 
+a separate policy and value function simultaneously 
+\parencite{zhang2020taxonomy_reinforcement_learning_algorithms}.
+
+Figure~\ref{fig:ml_paradigms_methods} (on the following page) provides a structured overview 
+of common machine learning methods organized by paradigm and task. 
+It includes the methods described in the sections above, as well as 
+additional commonly used methods not covered in detail here. 
+The overview is based on a combination of taxonomies and categorizations described in the literature, 
+and specifically draws on the works of
+\textcite{sarker2021machine_learning_algorithms_real_world_applications_research_directions}, 
+\textcite{geron2019hands_on_machine_learning}, and 
+\textcite{zhang2020taxonomy_reinforcement_learning_algorithms}.
 
 \begin{landscape}
 \begin{figure}[H]
@@ -171,5 +298,3 @@ approach is appropriate. This gap motivates the
 work in this thesis.
 
 \textbf{Burde siste setning om "this gap" stå her? Eller ta med noe lignende i motivasjon? Eller ingen av delene?}
-
-\textbf{Nevne spesifikke AutoML verktøy som er relevante? Eller ta det i exisiting tools}
