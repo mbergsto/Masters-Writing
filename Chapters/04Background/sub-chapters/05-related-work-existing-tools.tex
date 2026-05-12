@@ -1,10 +1,62 @@
 \section{Related Work and Existing Tools}
-\begin{itemize}
-    \item AutoML: Auto-sklearn, TPOT, H2O AutoML, Google AutoML
-    \item Meta-learning: algorithm selection based on dataset 
-    characteristics and prior experience
-    \item OMA-ML ?
-    \item Traingenerator: template-based notebook generation
-    \item AI on Demand
-\end{itemize}
 
+Few existing tools directly address the combination of 
+method selection, knowledge representation, and 
+implementation support that this thesis investigates. 
+Most related tools either focus on automating a specific 
+part of the ML workflow or provide broad access to AI 
+resources without guiding users through choosing a 
+suitable method for their problem. The following sections 
+review the most relevant examples found.
+
+\subsection{Ontology-Based Meta AutoML}
+
+OMA-ML \parencite{zender2022ontology_based_meta_automl} 
+is a system that combines multiple AutoML solutions 
+through the ML Ontology, described in \ref{subsection:ml-ontology} 
+The ML Ontology is used to filter configuration 
+options and select appropriate AutoML strategies, 
+making the process more transparent than standard 
+AutoML systems. It also supports a wider range of 
+methods by integrating solutions across multiple 
+ML libraries rather than being tied to a single one.
+Like other AutoML tools, OMA-ML requires the user 
+to provide a labeled dataset and define the ML task 
+upfront. 
+
+\subsection{Template-Based Code Generation}
+
+Traingenerator \parencite{rieke2021traingenerator} 
+is a web-based tool that generates template Python 
+code and Jupyter notebooks for ML tasks. Users select 
+a task and framework from a menu and receive a working 
+code template covering common steps such as data 
+loading, model setup, training, and evaluation. 
+The generated code can be downloaded as a Python 
+script or notebook, and optionally opened directly 
+in Google Colab.
+
+The tool assumes the user has already decided on a 
+method and framework before use. At the time of 
+writing, the hosted version of Traingenerator 
+produces a runtime error and does not render output 
+correctly, likely due to an outdated Streamlit API 
+call. The tool appeared to function as intended 
+during the development period of this thesis.
+
+\subsection{AI-on-Demand Platform}
+The European AI-on-Demand Platform (AIoDP) and its 
+DeployAI implementation offer a broad marketplace of 
+pre-trained models, reusable AI modules, and 
+domain-specific applications supported by cloud 
+and HPC infrastructure 
+\parencite{troumpoukis2025deployai_ai_on_demand_platform}. 
+The platform targets SMEs, researchers, and public 
+sector organizations and provides tools for building, 
+training, and deploying AI solutions at scale. 
+Users can browse and filter available solutions 
+to narrow down options relevant to their domain 
+or use case. The primary focus is on access and 
+deployment of existing solutions rather than on 
+guiding users through method selection for a 
+new problem.

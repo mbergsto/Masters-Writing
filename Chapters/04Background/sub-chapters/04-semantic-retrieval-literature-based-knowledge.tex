@@ -11,11 +11,6 @@ how similarity between texts can be measured in that representation,
 and how these techniques support ranking and matching against a corpus of scientific literature.
 
 \subsection{Text Embeddings and Semantic Similarity}
-\begin{itemize}
-    \item Text represented as numerical vectors (embeddings) in a high-dimensional space
-    \item Semantically similar texts receive similar vector representations and are close in embedding space
-    \item Cosine similarity as the primary measure for comparing embeddings
-\end{itemize}
 
 In vector semantics, text is represented as a numerical vector, 
 a point in a high-dimensional space referred to as the embedding 
@@ -58,11 +53,6 @@ practice, cosine distance, defined as $1 - \cos(\mathbf{u},
 where lower values indicate greater similarity.
 
 \subsection{Transformer-Based Sentence Embedding Models}
-\begin{itemize}
-    \item Transformer-based language models as the foundation for contextual text representations
-    \item SBERT (Sentence-BERT): fine-tuned to produce fixed-size sentence embeddings suitable for cosine similarity comparison
-    \item Sentence-level embeddings suited for comparing full problem descriptions against article abstracts
-\end{itemize}
 
 Transformer-based language models represent text by processing 
 input tokens through multiple layers of self-attention, producing 
@@ -151,12 +141,6 @@ including Documents~B and~C despite the absence of exact term overlap in these d
 \end{figure}
 
 \subsection{Cross-Encoder Reranking}
-\begin{itemize}
-    \item Bi-encoders embed query and document independently, enabling efficient large-scale comparison
-    \item Cross-encoders process query and document jointly, producing more precise relevance scores
-    \item Two-stage pipeline: bi-encoder retrieval for speed, cross-encoder reranking for precision
-    \item Trade-off: cross-encoders are more accurate but too slow for large-scale initial retrieval
-\end{itemize}
 
 The sentence embedding approach described in 
 Section~\ref{subsec:sentence-embeddings} is an example of a 
@@ -207,11 +191,6 @@ approach preserves the scalability of bi-encoder retrieval while
 benefiting from the higher accuracy of cross-encoder scoring.
 
 \subsection{Scientific Literature as a Knowledge Source}
-\begin{itemize}
-    \item Scientific articles as a source of evidence for machine learning method recommendations
-    \item Large volumes of unstructured literature make manual navigation impractical
-    \item Semantic retrieval enables systematic matching between problem descriptions and relevant articles
-\end{itemize}
 
 Scientific articles document how machine learning methods have 
 been applied across a wide range of problems and contexts. In 
