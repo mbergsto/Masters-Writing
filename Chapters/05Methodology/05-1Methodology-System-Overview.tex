@@ -47,17 +47,22 @@ roadmap and literature analysis provided the starting point for building MLguide
 \section{System Overview}
 \label{sec:system-overview}
 
-\begin{itemize}
-    \item High-level description of MLguide as a decision-support system
-    \item Main components: ontology (GraphDB), article database (PostgreSQL/pgvector), backend (FastAPI), frontend (Streamlit)
-    \item Overall data flow: problem description in, method recommendations and articles out
-    \item Role of the system in answering the research questions
-    \item Why the methodology is structured in two parts: development and research approach
-\end{itemize}
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Figures/mlguide-system-overview.pdf}
     \caption{System Overview of MLguide}
-    \label{fig:mlguide-system-overview}
+    \label{fig:mlguide-overview}
 \end{figure}
+
+This section gives a brief overview of MLguide and its main components.
+MLguide is a web-based decision-support system designed to help users select 
+machine learning methods for a given problem. 
+Figure~\ref{fig:mlguide-overview} gives a high-level overview of the system.
+
+The user starts by describing their problem in a few sentences and can optionally 
+provide filters such as ML area, task type, or data type to narrow the scope. 
+The system draws on two knowledge sources: a structured ML knowledge base containing 
+methods and tasks, and a database of research articles from the literature. 
+Based on these inputs, the recommendation engine produces three outputs: 
+a ranked list of ML methods, a set of supporting articles from the literature, 
+and a starter notebook to support early implementation.
