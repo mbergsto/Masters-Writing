@@ -21,7 +21,6 @@
 \counterwithin{table}{section} %change counter for tables within sections
 \usepackage{color, xcolor} %edit e.g. text colors
 \usepackage{pdflscape} %to be able to make landscape pages, for example for wide tables
-
 \usepackage[backend = biber,
             style = authoryear,
             date = long,     % Long: 24th Mar. 1997 | Short: 24/03/1997
@@ -140,15 +139,24 @@ Department of Mechanical and Industrial Engineering \\
 %the cleardoublepage command ensures that the next text page is on the right-hand side (odd page) and produces a blank page if necessary to achieve that, as all chapters should begin on the right hand side
 
 
-\chapter{Background and State of the Art}
+\chapter{Background and Related Work}
 \input{Chapters/04Background/04Background.tex}
 \cleardoublepage
 
 
-\chapter{Methodology}
-\input{Chapters/05Methodology}
+\chapter{Research Methodology and System Overview}
+\input{Chapters/05Methodology/05-1Methodology-System-Overview.tex}
 \cleardoublepage
 
+
+\chapter{System Development}
+\input{Chapters/05Methodology/05-2System-Development.tex}
+\cleardoublepage
+
+
+\chapter{Research Approach}
+\input{Chapters/05Methodology/05-3Research-Approach.tex}
+\cleardoublepage
 
 \chapter{Implementation}
 \input{Chapters/06Implementation}

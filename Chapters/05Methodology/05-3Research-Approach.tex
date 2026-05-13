@@ -1,0 +1,55 @@
+\label{ch:research-approach}
+
+\section{Ontology-based method selection}
+
+\begin{itemize}
+    \item Addresses RQ1: how ontology-based knowledge improves ML method selection
+    \item Use of ML Ontology as knowledge base
+    \item SPARQL queries for candidate method retrieval
+    \item Inheritance and task hierarchy in the ontology
+    \item Limitations of current ontology coverage
+\end{itemize}
+
+\section{Semantic similarity and article retrieval}
+
+\begin{itemize}
+    \item Addresses RQ2: how semantic similarity supports recommendations
+    \item Embedding-based comparison of problem description against article abstracts and titles
+    \item pgvector cosine similarity search
+    \item Article retrieval pipeline: Scopus, preprocessing, embedding upload
+\end{itemize}
+
+\section{Literature-based justification}
+
+\begin{itemize}
+    \item Addresses RQ3: how articles support and justify recommendations
+    \item Article-based reranking of ML methods
+    \item Method frequency across top-ranked articles
+    \item Traceability from recommendation to supporting literature
+\end{itemize}
+
+\section{Implementation support}
+
+\begin{itemize}
+    \item Addresses RQ4: supporting early-stage ML implementation
+    \item Notebook template generation using Jinja2
+    \item Task family mapping to template selection
+    \item Optional GitHub upload and Google Colab integration
+\end{itemize}
+
+\section{Demonstration and evaluation}
+
+\begin{itemize}
+    \item Worked examples: own test runs across selected problem types
+    \begin{itemize}
+        \item Selection criteria for example cases
+        \item What is assessed: relevance of methods, article quality, ranking behaviour
+    \end{itemize}
+    \item User evaluation: student testing in ML for Engineers course (NTNU)
+    \begin{itemize}
+        \item Project 1: unsupervised learning, anomaly detection
+        \item Project 2: reinforcement learning, product lifecycle phases
+        \item Interface changes between rounds and rationale
+        \item Collection and use of student feedback
+    \end{itemize}
+\end{itemize}
