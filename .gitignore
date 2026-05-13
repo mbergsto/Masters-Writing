@@ -36,3 +36,6 @@
 
 ## Optional: exclude final output
 *.pdf
+
+## Optional: exclude pictures
+*.png
