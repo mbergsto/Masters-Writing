@@ -199,23 +199,12 @@ Reinforcement learning is listed as a class but contains no
 instances, and coverage of generative AI methods is limited.
 
 \begin{landscape}
-\begin{table}[ht]
-\centering
-\caption{Comparison of existing ML ontologies}
-\begin{tabular}{lp{3cm}p{4.5cm}p{2.5cm}p{3cm}p{2cm}}
-\toprule
-\textbf{Ontology} & \textbf{Purpose} & \textbf{ML Coverage} & \textbf{Size} & \textbf{Representation} & \textbf{Year} \\
-\midrule
-ML Ontology & Shared ML vocabulary for tool integration & Tasks, approaches, metrics, libraries, AutoML solutions, config. items & $\sim$10 classes, $\sim$700 individuals, $\sim$5000 triples & RDF/RDFS, SKOS, SPARQL, SHACL & 2026 \\
-\addlinespace
-ML-Schema & Schema for ML experiment metadata and interoperability & Algorithms, tasks, datasets, models, evaluations. & $\sim$25 classes, no instances & OWL/RDF & 2016 \\
-\addlinespace
-OntoDM-core & Semantic annotation of DM algorithms and processes & DM tasks, algorithms, datasets, generalizations, workflows & 760 classes, 221 individuals, 1419 axioms & OWL-DL & 2014 \\
-\addlinespace
-MEX Vocabulary & Lightweight format for ML experiment metadata & Algorithm class, learning method, hyperparameters, performance measures & $\sim$402 classes & RDF, PROV-O & 2015 \\
-\bottomrule
-\end{tabular}
-\end{table}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{Figures/ml-ontologies-table.png}
+    \caption{Comparison of existing ML ontologies.}
+    \label{fig:ml_ontologies_table}
+\end{figure}
 \end{landscape}
 
 Across these ontologies, a distinction emerges between

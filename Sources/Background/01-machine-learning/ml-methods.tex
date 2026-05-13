@@ -1,3 +1,5 @@
+\textbf{Deep Learning}
+
 From \parencite{lecun2015deep_learning}:
 
 Deep learning generelt:
@@ -51,3 +53,67 @@ Unsupervised DL:
 Interpretability:
 "Occasionally, DL techniques are analyzed to act as a black box."
 "The need for a method of interpreting DL, which is used to obtain the valuable motifs and patterns recognized by the network, is common in many fields."
+
+From \parencite{pouyanfar2018survey_deep_learning_algorithms}:
+
+Deep learning generelt:
+"Deep learning uses multiple layers to represent the abstractions of data to build computational models."
+"Deep learning algorithms perform feature extraction in an automated way, which allows researchers to extract discriminative features with minimal domain knowledge and human effort."
+
+RNN:
+"Unlike traditional neural networks, RNN utilizes the sequential information in the network. This property is essential in many applications where the embedded structure in the data sequence conveys useful knowledge."
+"One main issue of an RNN is its sensitivity to the vanishing and exploding gradients. In other words, the gradients might decay or explode exponentially due to the multiplications of lots of small or big derivatives during the training."
+
+LSTM:
+"Long Short-Term Memory (LSTM) is utilized to handle this issue by providing memory blocks in its recurrent connections. Each memory block includes memory cells that store the network temporal states. Moreover, it includes gated units to control the information flow."
+
+CNN:
+"CNN has three main advantages, namely, parameter sharing, sparse interactions, and equivalent representations."
+"To fully utilize the two-dimensional structure of an input data (e.g., image signal), local connections and shared weights in the network are utilized, instead of traditional fully connected networks. This process results in very fewer parameters, which makes the network faster and easier to train."
+
+From \parencite{shrestha2019review_deep_learning_algorithms_architectures}:
+
+Deep Reinforcement Learning:
+"The primary idea about reinforcement learning is about making an agent learn from the environment with the help of random experimentation (exploration) and defined reward (exploitation)."
+"Reinforcement learning is specifically suited for problems that consists of both short-term and long-term rewards, e.g., games like chess, go, etc."
+"When we combine deep network architecture with reinforcement learning, we get deep reinforcement learning (DRL), which can extend the use of reinforcement to even more complex games and areas such as robotics, smart grids, healthcare, finance etc."
+"With DRL, problems that were intractable with reinforcement learning can now be solved with higher number of hidden layers of deep networks and reinforcement learning based Q-learning algorithm that maximizes the reward for actions taken by the agent."
+
+Neural networks generelt:
+"Neural Network is a machine learning technique that is inspired by and resembles the human nervous system and the structure of the brain. It consists of processing units organized in input, hidden and output layers."
+"Neural Networks can be used in a variety of problems including pattern recognition, classification, clustering, dimensionality reduction, computer vision, natural language processing, regression, predictive analysis."
+
+Deep learning generelt:
+"DNN is a type of neural network modeled as a multilayer perceptron (MLP) that is trained with algorithms to learn representations from data sets without any manual design of feature extractors."
+"The shift from shallow to deep learning has allowed for more complex and non-linear functions to be mapped, as they cannot be efficiently mapped with shallow architectures."
+
+MLP / Feedforward:
+"In feedforward neural network, information flows in just one direction from input to output layer. They do not form any circles or loopbacks."
+
+CNN:
+"CNN is based on the human visual cortex and is the neural network of choice for computer vision (image recognition) and video recognition. It is also used in other areas such as NLP, drug discovery."
+"The deep nature of the CNN results in high quality representations while maintaining locality, reduced parameters and invariance to minor variations in the input image."
+
+Autoencoder:
+"Autoencoder is a neural network that uses unsupervised algorithm and learns the representation in the input data set for dimensionality reduction and to recreate the original data set."
+"Autoencoders use encoder and decoder blocks of non-linear hidden layers to generalize PCA to perform dimensionality reduction and eventual reconstruction of the original data."
+
+RNN:
+"Unlike feedforward neural networks, the processing units in RNN form a cycle... This allows the network to have memory about the previous states and use that to influence the current output."
+"RNN can take a sequence of inputs and generate a sequence of output values as well, rendering it very useful for applications that require processing sequence of time phased input data like speech recognition, frame-by-frame video classification."
+
+LSTM:
+"LSTM is an implementation of the Recurrent Neural Network... Unlike the earlier described feed forward network architectures, LSTM can retain knowledge of earlier states and can be trained for work that requires memory or state awareness."
+"LSTM partly addresses a major limitation of RNN, i.e., the problem of vanishing gradients by letting gradients to pass unaltered."
+"LSTM consists of blocks of memory cell state through which signal flows while being regulated by input, forget and output gates. These gates control what is stored, read and written on the cell."
+"LSTMs recurrent neural networks can keep track of long-term dependencies. Therefore, they are great for learning from sequence input data and building models that rely on context and earlier states."
+
+From \parencite{zhang2020taxonomy_reinforcement_learning_algorithms}
+
+Deep RL generelt:
+"DRL is to combine the advantages of DL and RL for building AI systems. The main reason to use DL in RL is to leverage the scalability of DNN in high-dimensional space, for example, the value function approximation utilizes the data representation of DNN to represent the highly compositional data distribution through end-to-end gradient-based optimization."
+"DRL is recognized as a subfield of ML that has the potential to achieve Artificial General Intelligence (AGI)."
+
+DQN:
+"One of the most significant breakthroughs in reinforcement learning was the development of an off-policy temporal difference control algorithm, known as Q-learning."
+"With the advances in training deep neural networks, deep Q-networks (DQN) addressed this issue and ignited the research of deep reinforcement learning."

@@ -215,17 +215,140 @@ paradigms and tasks, based on
 \end{figure}
 \end{landscape}
 
+\subsection{Neural Networks and Deep Learning}
+
+Neural networks and deep learning are often treated as a separate category 
+in the machine learning literature.
+The following sections give a brief introduction to some of the most 
+common neural network architectures and their typical use cases.
+
+Neural networks are machine learning models inspired by the structure of the 
+human brain, consisting of processing units organized in input, hidden, and 
+output layers 
+\parencite{shrestha2019review_deep_learning_algorithms_architectures}. 
+Deep learning refers to neural networks with many such layers. By stacking 
+multiple layers, the network learns increasingly abstract representations 
+of the input data, where lower layers detect simple patterns and higher 
+layers combine these into more complex concepts 
+\parencite{lecun2015deep_learning}. 
+This makes deep learning particularly well suited for complex, 
+high-dimensional data such as images, audio, and text.
+\parencite{lecun2015deep_learning, 
+alzubaidi2021review_deep_learning_concepts}. 
+A practical limitation is that deep learning models generally require 
+large amounts of training data to perform well 
+\parencite{alzubaidi2021review_deep_learning_concepts}.
+
+\subsubsection*{Feedforward networks and MLP}
+
+The simplest deep learning architecture is the multilayer perceptron (MLP), 
+also known as the feedforward neural network. In an MLP, information flows 
+in one direction from input to output through one or more hidden layers, 
+without any feedback connections 
+\parencite{shrestha2019review_deep_learning_algorithms_architectures, 
+sarker2021machine_learning_algorithms_real_world_applications_research_directions}. 
+Each node in one layer connects to each node in the following layer, and 
+the network is trained using backpropagation to adjust the weights 
+\parencite{lecun2015deep_learning}.
+
+\subsubsection*{Convolutional neural networks}
+
+Convolutional neural networks (CNNs) were originally developed 
+for image recognition, where the spatial structure of the input 
+is important \parencite{lecun2015deep_learning, lecun1998cnn}. 
+Rather than connecting every neuron to all neurons in the previous layer, 
+CNNs use local connections and shared weights, which reduces the number of 
+parameters and makes the network faster to train 
+\parencite{shrestha2019review_deep_learning_algorithms_architectures}. 
+A typical CNN consists of convolutional layers, pooling layers, and fully 
+connected layers. The convolutional layers progressively extract higher-level 
+features from the input, while the pooling layers reduce the spatial size of 
+the representations 
+\parencite{pouyanfar2018survey_deep_learning_algorithms, 
+sarker2021machine_learning_algorithms_real_world_applications_research_directions}. 
+CNNs have achieved strong results in image recognition and computer vision, 
+and are also applied to other data types such as audio and text 
+\parencite{lecun2015deep_learning, pouyanfar2018survey_deep_learning_algorithms}.
+
+\subsubsection*{Recurrent neural networks and LSTM}
+
+Recurrent neural networks (RNNs) differ from feedforward networks in that 
+the processing units form a cycle, allowing the network to maintain a state 
+based on previous inputs 
+\parencite{shrestha2019review_deep_learning_algorithms_architectures}. 
+This makes RNNs well suited for sequential data such as time series, speech, 
+and text 
+\parencite{lecun2015deep_learning, pouyanfar2018survey_deep_learning_algorithms}. 
+A known limitation of standard RNNs is the vanishing gradient problem, 
+where information about earlier inputs is lost during training as the network 
+processes longer sequences 
+\parencite{pouyanfar2018survey_deep_learning_algorithms, 
+shrestha2019review_deep_learning_algorithms_architectures}.
+
+Long short-term memory networks (LSTMs) address this by introducing memory 
+cells and gating mechanisms that control what information is stored, read, 
+and written 
+\parencite{hochreiter1997lstm, 
+shrestha2019review_deep_learning_algorithms_architectures}. 
+This allows LSTMs to learn from sequences with long-term dependencies, 
+which makes them commonly used for time series analysis, speech recognition, 
+and natural language processing 
+\parencite{lecun2015deep_learning, 
+sarker2021machine_learning_algorithms_real_world_applications_research_directions}.
+
+\subsubsection*{Autoencoders}
+
+Autoencoders are neural networks trained to compress input data into a 
+lower-dimensional representation and then reconstruct the original input 
+from this representation 
+\parencite{shrestha2019review_deep_learning_algorithms_architectures}. 
+Because they learn to reconstruct the input rather than predict a separate 
+target, autoencoders are considered unsupervised models 
+\parencite{shrestha2019review_deep_learning_algorithms_architectures}. 
+They are commonly used for dimensionality reduction and anomaly detection, 
+where observations that are difficult to reconstruct may indicate anomalies 
+\parencite{sarker2021machine_learning_algorithms_real_world_applications_research_directions, 
+shrestha2019review_deep_learning_algorithms_architectures}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/neural-networks-table.png}
+    \caption{Summary and comparison of common neural network architectures, based on 
+    \textcite{sarker2021machine_learning_algorithms_real_world_applications_research_directions}, 
+    \textcite{shrestha2019review_deep_learning_algorithms_architectures}, 
+    \textcite{pouyanfar2018survey_deep_learning_algorithms}, and
+    \textcite{lecun2015deep_learning}.}
+    \label{fig:neural_networks_table}
+\end{figure}
+
+\subsubsection*{Deep reinforcement learning}
+
+Deep reinforcement learning (DRL) combines deep learning with reinforcement 
+learning to build agents that can operate in high-dimensional environments. 
+The main motivation for using deep networks in RL is to handle complex, 
+high-dimensional state spaces that cannot be represented by simple tabular 
+or linear methods 
+\parencite{zhang2020taxonomy_reinforcement_learning_algorithms}. 
+A key development in DRL was the deep Q-network (DQN), which uses a neural 
+network to approximate the Q-value function and enabled agents to learn 
+directly from raw inputs such as image pixels 
+\parencite{zhang2020taxonomy_reinforcement_learning_algorithms}. 
+DRL has demonstrated strong performance in domains such as game playing, 
+robotics, and control, where the state and action spaces are too large 
+for traditional RL methods 
+\parencite{shrestha2019review_deep_learning_algorithms_architectures, 
+zhang2020taxonomy_reinforcement_learning_algorithms}.
+
+\subsection{Attributes Relevant for Method Selection (MISSING)}
+
+Attributes relevant for method selection include:
 \begin{itemize}
-    \item Explain shortly the main categories of methods (e.g., decision trees, SVMs, neural networks, etc.) and their typical use cases
-    \item Probably own section and figure for neural networks since they dont fit the other categories and are very important
-    \item Attributes relevant for method selection:
-    \begin{itemize}
-        \item Data type: tabular, time series, image, text
-        \item Data availability: large vs. limited data requirements
-        \item Interpretability: interpretable vs. black-box methods
-        \item Performance preferences: accuracy, training time, computational cost, prediction speed
-    \end{itemize}
+    \item Data type: tabular, time series, image, text
+    \item Data availability: large vs. limited data requirements
+    \item Interpretability: interpretable vs. black-box methods
+    \item Performance preferences: accuracy, training time, computational cost, prediction speed
 \end{itemize}
+
 
 \subsection{Approaches to Method Selection}
 
