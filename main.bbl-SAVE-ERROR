@@ -3914,6 +3914,148 @@
       \field{pages}{75}
       \range{pages}{1}
     \endentry
+    \entry{arnott2012design_science_decision_support_systems_research}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=4ee18fc58ae79ab29af326c8bba709da}{%
+           family={Arnott},
+           familyi={A\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d7755df707d9ac18ca9bfd2448f818d4}{%
+           family={Pervan},
+           familyi={P\bibinitperiod},
+           given={Graham},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{2ac8a52d390bb8a7a8a77932898666d9}
+      \strng{fullhash}{2ac8a52d390bb8a7a8a77932898666d9}
+      \strng{fullhashraw}{2ac8a52d390bb8a7a8a77932898666d9}
+      \strng{bibnamehash}{2ac8a52d390bb8a7a8a77932898666d9}
+      \strng{authorbibnamehash}{2ac8a52d390bb8a7a8a77932898666d9}
+      \strng{authornamehash}{2ac8a52d390bb8a7a8a77932898666d9}
+      \strng{authorfullhash}{2ac8a52d390bb8a7a8a77932898666d9}
+      \strng{authorfullhashraw}{2ac8a52d390bb8a7a8a77932898666d9}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the Association of Information Systems}
+      \field{title}{Design Science in Decision Support Systems Research: An Assessment using the Hevner, March, Park, and Ram Guidelines}
+      \field{type}{Journal Article}
+      \field{volume}{13}
+      \field{year}{2012}
+      \field{pages}{923\bibrangedash 949}
+      \range{pages}{27}
+      \verb{doi}
+      \verb 10.17705/1jais.00315
+      \endverb
+    \endentry
+    \entry{landwehr2022design_knowledge_deep_learning}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=26220166d26eedcad8bffcab5b133a38}{%
+           family={Landwehr},
+           familyi={L\bibinitperiod},
+           given={Julius},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=03b52cf351599ddbce95b65d9a6ec57a}{%
+           family={Kühl},
+           familyi={K\bibinitperiod},
+           given={Niklas},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2d047e030efd1517eb7d7e5d96f310e4}{%
+           family={Walk},
+           familyi={W\bibinitperiod},
+           given={Jannis},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c19d2eb42fa285f501ba7c7b792a1c21}{%
+           family={Gnädig},
+           familyi={G\bibinitperiod},
+           given={Mario},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c19fd2564eef30994f06a1665cc73cb6}
+      \strng{fullhash}{532db178ba0198aca369c539fab2bd6d}
+      \strng{fullhashraw}{532db178ba0198aca369c539fab2bd6d}
+      \strng{bibnamehash}{c19fd2564eef30994f06a1665cc73cb6}
+      \strng{authorbibnamehash}{c19fd2564eef30994f06a1665cc73cb6}
+      \strng{authornamehash}{c19fd2564eef30994f06a1665cc73cb6}
+      \strng{authorfullhash}{532db178ba0198aca369c539fab2bd6d}
+      \strng{authorfullhashraw}{532db178ba0198aca369c539fab2bd6d}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Business & Information Systems Engineering}
+      \field{title}{Design Knowledge for Deep-Learning-Enabled Image-Based Decision Support Systems: Evidence From Power Line Maintenance Decision-Making}
+      \field{type}{Journal Article}
+      \field{volume}{64}
+      \field{year}{2022}
+      \verb{doi}
+      \verb 10.1007/s12599-022-00745-z
+      \endverb
+    \endentry
+    \entry{dellermann2018design_principles_hybrid_intelligence}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=0e47f885c0c156abde1820554f21e2a0}{%
+           family={Dellermann},
+           familyi={D\bibinitperiod},
+           given={Dominik},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d0457d2a2623cc3481fc1b919efc8b9a}{%
+           family={Lipusch},
+           familyi={L\bibinitperiod},
+           given={Nikolaus},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=20de016de17740213a97c8befca31bf4}{%
+           family={Ebel},
+           familyi={E\bibinitperiod},
+           given={Philipp},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=de3683be35e848d38e7928cc1764e37c}{%
+           family={Leimeister},
+           familyi={L\bibinitperiod},
+           given={Jan\bibnamedelima Marco},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{914609629e6c65b829358b7f63e917f6}
+      \strng{fullhash}{fdee466fd1ab53c43878d986114fefd0}
+      \strng{fullhashraw}{fdee466fd1ab53c43878d986114fefd0}
+      \strng{bibnamehash}{914609629e6c65b829358b7f63e917f6}
+      \strng{authorbibnamehash}{914609629e6c65b829358b7f63e917f6}
+      \strng{authornamehash}{914609629e6c65b829358b7f63e917f6}
+      \strng{authorfullhash}{fdee466fd1ab53c43878d986114fefd0}
+      \strng{authorfullhashraw}{fdee466fd1ab53c43878d986114fefd0}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Electronic Markets}
+      \field{title}{Design principles for a hybrid intelligence decision support system for business model validation}
+      \field{type}{Journal Article}
+      \field{volume}{29}
+      \field{year}{2018}
+      \field{pages}{1\bibrangedash 19}
+      \range{pages}{19}
+      \verb{doi}
+      \verb 10.1007/s12525-018-0309-2
+      \endverb
+    \endentry
   \enddatalist
 \endrefsection
 \endinput

@@ -39,7 +39,8 @@
 
 
 % Additions to template
-\usepackage{parskip} % to add space between paragraphs and remove indentation. Can still set the spacing manually with setlength{\parskip}{1em} 
+\usepackage{parskip} % to add space between paragraphs and remove indentation. Can still set the spacing manually with setlength{\parskip}{1em}
+\raggedbottom % prevent vertical stretching to fill pages
 
 
 
@@ -149,14 +150,15 @@ Department of Mechanical and Industrial Engineering \\
 \cleardoublepage
 
 
-\chapter{System Development}
-\input{Chapters/05Methodology/05-2System-Development.tex}
+\chapter{System Design and Development}
+\input{Chapters/05Methodology/05-2System-Design-Development.tex}
 \cleardoublepage
 
 
 \chapter{Research Approach}
 \input{Chapters/05Methodology/05-3Research-Approach.tex}
 \cleardoublepage
+
 
 \chapter{Implementation}
 \input{Chapters/06Implementation}
@@ -167,13 +169,16 @@ Department of Mechanical and Industrial Engineering \\
 \input{Chapters/07Results}
 \cleardoublepage
 
+
 \chapter{Discussion}
 \input{Chapters/08Discussion}
 \cleardoublepage
 
+
 \chapter{Conclusions}
 \input{Chapters/09Conclusion}
 \cleardoublepage
+
 
 \addcontentsline{toc}{chapter}{\protect\numberline{}References}
 \printbibliography[title={References}] 
