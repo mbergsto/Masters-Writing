@@ -30,24 +30,42 @@ machine learning and need structured guidance in choosing a suitable method.
 A web-based interface was chosen to 
 lower the threshold for use, making it easy for other users to access and test
 the system without installation. 
+x
+\section{Incremental and Iterative Development}
 
-\section{Iterative Development}
+MLguide was developed incrementally over the course of the master's project. 
+New features and components were built and deployed one at a time, each adding 
+to the working system. This approach is consistent with incremental software 
+development, where the system grows through a series of versions rather than 
+being built all at once \parencite[33]{sommerville2011software_engineering}.
 
-The system was developed incrementally over the course of the master's project. 
-New components were added and tested continuously, and design decisions were 
-adjusted based on observations made during development. 
-This approach is consistent with the iterative nature of the DSR process, 
-in which the researcher moves between design, demonstration, and evaluation 
-to improve the artifact over time 
-\parencite{peffers2007design_science_research_methodology}. 
-Throughout development, the author continuously tested both the functionality 
-of individual features and the relevance and usefulness of the system output.
+Figure~\ref{fig:incremental-development} illustrates this process. 
+Planning, development, and self evaluation were carried out as concurrent 
+activities, producing successive versions of the system. Throughout development, 
+the author continuously tested individual features and the overall system output 
+to check that behaviour was correct and results were useful.
+
+The development also had an iterative character. Feedback from the thesis 
+supervisor informed adjustments to the system design and priorities through the development period. 
+In addition, two rounds of user testing were conducted, 
+and the findings were used to adjust the system. 
+This iterative cycle is consistent with the DSR process described by 
+\textcite{peffers2007design_science_research_methodology}, where evaluation 
+results inform a return to design and development. The user testing setup is described in the following section.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figures/04-system-design-development/incremental-development.pdf}
+    \caption{Illustration of the incremental development process, based on 
+    \textcite[33]{sommerville2011software_engineering}}
+    \label{fig:incremental-development}
+\end{figure}
 
 \section{User Testing}
 \subsection{Setup and Context}
 
 The system was evaluated through two rounds of user testing in a machine 
-learning course at NTNU, where students used MLguide as part of their 
+learning course at the Norwegian University of Science and Technology (NTNU), where students used MLguide as part of their 
 course projects. The participants were engineering students where most had limited 
 prior experience with machine learning, which made them representative 
 of the intended user group. The user testing rounds are summarised in Table~\ref{tab:user-testing}. 
@@ -108,4 +126,11 @@ before it could be tested. The feedback led to some adjustments, but larger
 changes such as new features or structural redesigns were not feasible within 
 the remaining time. These can instead be left as directions for future work.
 
+A simple overview of the development timeline, including the user testing sessions, is illustrated in Figure~\ref{fig:development-timeline}.
 
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figures/04-system-design-development/development_timeline.pdf}
+    \caption{Development timeline of MLguide}
+    \label{fig:development-timeline}
+\end{figure}
