@@ -25,3 +25,115 @@
     \caption{UML Class Diagram of the ML Ontology, including added classes and properties for MLguide}
     \label{fig:ontology-uml-with-extension}
 \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/06-implementation/ontology-article-instance.pdf}
+    \caption{Example of an Article instance in the ML Ontology}
+    \label{fig:ontology-article-instance}
+\end{figure}
+
+
+\begin{table}[H]
+\centering
+\caption{New \texttt{ML\_approach} instances added to ML Ontology, grouped by theme.}
+\label{tab:new-ml-approaches}
+\begin{tabularx}{\textwidth}{lXr}
+\toprule
+\textbf{Theme} & \textbf{New instances} & \textbf{n} \\
+\midrule
+Reinforcement
+  & deep reinforcement learning, Q-learning, REINFORCE, deep Q-network, policy gradient, proximal policy optimization, soft actor-critic, actor-critic, deep deterministic policy gradient, twin delayed DDPG, A3C & 11 \\
+\midrule
+Deep learning
+  & deep neural network, attention mechanism, graph attention network, graph neural network, graph convolutional network, GraphSAGE, U-Net, variational autoencoder, normalizing flow, diffusion model, DeepAR & 11 \\
+\midrule
+Evolutionary
+  & genetic algorithm, particle swarm optimization, simulated annealing, differential evolution, ant colony optimization, firefly algorithm, harmony search, evolutionary strategy, CMA-ES & 9 \\
+\midrule
+Anomaly detection
+  & isolation forest, local outlier factor, one-class SVM, HBOS, Hotelling T\textsuperscript{2}, squared prediction error, minimum covariance determinant, elliptic envelope & 8 \\
+\midrule
+Time series
+  & Kalman filter, temporal convolutional network, N-BEATS, seasonal ARIMA, state space model, VAR, Holt-Winters & 7 \\
+\midrule
+Explainability
+  & explainable AI, SHAP, Granger causality, DoWhy, CausalImpact, causal forest & 6 \\
+\midrule
+Probabilistic
+  & Bayesian method, Gaussian process regression, partial least squares, elastic net, robust regression & 5 \\
+\midrule
+Clustering
+  & k-medoids, Gaussian mixture model clustering, t-SNE, UMAP & 4 \\
+\midrule
+Ensemble
+  & gradient boosting, extra trees, bagging & 3 \\
+\midrule
+Other
+  & naive Bayes & 1 \\
+\midrule
+\textbf{Total} & & \textbf{65} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+
+
+\begin{table}[H]
+\centering
+\caption{ML\_task\_family instances and their assigned ML\_task instances.}
+\label{tab:ml-task-families}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{4cm}Xr}
+\toprule
+\textbf{ML\_task\_family} & \textbf{Assigned ML\_task instances} & \textbf{n} \\
+\midrule
+classification\_\allowbreak family
+  & classification, binary\_classification, multiclass\_classification,
+    tabular\_classification, text\_classification, image\_classification,
+    audio\_classification, time\_series\_classification, video\_classification,
+    vertex\_classification & 10 \\
+\midrule
+regression\_\allowbreak family
+  & regression, tabular\_regression, text\_regression, image\_regression,
+    audio\_regression, video\_regression & 6 \\
+\midrule
+clustering\_\allowbreak unsupervised\_\allowbreak discovery\_\allowbreak family
+  & clustering, tabular\_clustering, association\_rule\_learning,
+    community\_detection, topic\_modeling & 5 \\
+\midrule
+detection\_\allowbreak localization\_\allowbreak family
+  & object\_detection, anomaly\_detection, action\_recognition & 3 \\
+\midrule
+feature\_\allowbreak engineering\_\allowbreak family
+  & feature\_extraction, feature\_reduction, feature\_selection & 3 \\
+\midrule
+structured\_\allowbreak prediction\_\allowbreak family
+  & image\_segmentation, named\_entity\_recognition, translation & 3 \\
+\midrule
+graph\_tasks\_\allowbreak family
+  & graph\_matching, link\_prediction, vertex\_classification & 3 \\
+\midrule
+nlp\_analysis\_\allowbreak family
+  & sentiment\_analysis, text\_analytics & 2 \\
+\midrule
+ranking\_\allowbreak recommendation\_\allowbreak similarity\_\allowbreak family
+  & ranking, recommendation, sentence\_similarity & 3 \\
+\midrule
+time\_series\_\allowbreak family
+  & time\_series\_analysis, time\_series\_forecasting, time\_series\_classification & 3 \\
+\midrule
+tracking\_\allowbreak family
+  & video\_object\_tracking & 1 \\
+\midrule
+\textbf{Total} & \footnotesize{Note: some tasks appear in multiple families} & \textbf{42} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/06-implementation/psql-er-diagram.pdf}
+    \caption{Entity-Relationship Diagram of the PostgreSQL database used in MLguide}
+    \label{fig:psql-er-diagram}
+\end{figure}
