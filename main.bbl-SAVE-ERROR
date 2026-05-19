@@ -176,10 +176,8 @@
       \strng{authornamehash}{67bba5f14c0072862ec727d3bc4b5be8}
       \strng{authorfullhash}{9260b1990f7a8cfd71c56fad1dd9f876}
       \strng{authorfullhashraw}{9260b1990f7a8cfd71c56fad1dd9f876}
-      \field{extraname}{1}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{extradate}{1}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -288,10 +286,8 @@
       \strng{authornamehash}{0c9b23da8de6b4bfd16442700b456b2e}
       \strng{authorfullhash}{0cca6ec7b9da0816e29fb022b795bc59}
       \strng{authorfullhashraw}{0cca6ec7b9da0816e29fb022b795bc59}
-      \field{extraname}{1}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{extradate}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -345,8 +341,8 @@
       \strng{authornamehash}{45aad178e2f0c15c995788ac3eb0cf87}
       \strng{authorfullhash}{45aad178e2f0c15c995788ac3eb0cf87}
       \strng{authorfullhashraw}{45aad178e2f0c15c995788ac3eb0cf87}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -612,8 +608,8 @@
       \strng{authornamehash}{eb110975ab8f539c006376953ccad3f9}
       \strng{authorfullhash}{4301e9d81a9d934daa1651e5314cedb0}
       \strng{authorfullhashraw}{4301e9d81a9d934daa1651e5314cedb0}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -875,8 +871,8 @@
       \strng{authornamehash}{e22a4443fd23c87312de251117c5f761}
       \strng{authorfullhash}{e22a4443fd23c87312de251117c5f761}
       \strng{authorfullhashraw}{e22a4443fd23c87312de251117c5f761}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -1098,8 +1094,8 @@
       \strng{authornamehash}{f79ceb030bcf791e5521f87ac6ada03b}
       \strng{authorfullhash}{f79ceb030bcf791e5521f87ac6ada03b}
       \strng{authorfullhashraw}{f79ceb030bcf791e5521f87ac6ada03b}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -1137,8 +1133,8 @@
       \strng{authornamehash}{88eea600247d798f8b2ce0b2dc614492}
       \strng{authorfullhash}{88eea600247d798f8b2ce0b2dc614492}
       \strng{authorfullhashraw}{88eea600247d798f8b2ce0b2dc614492}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -1246,6 +1242,7 @@
       \field{labeltitlesource}{title}
       \field{issn}{1557-7341}
       \field{journaltitle}{ACM Computing Surveys}
+      \field{month}{7}
       \field{number}{6}
       \field{title}{k-Nearest Neighbour Classifiers - A Tutorial}
       \field{volume}{54}
@@ -1330,8 +1327,8 @@
       \strng{authornamehash}{9d0209e4fc9351212abb4ed6cb603a1f}
       \strng{authorfullhash}{9d0209e4fc9351212abb4ed6cb603a1f}
       \strng{authorfullhashraw}{9d0209e4fc9351212abb4ed6cb603a1f}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -1376,8 +1373,8 @@
       \strng{authornamehash}{9f4c797c4b0e3a2fd56ddb1ba1b1f686}
       \strng{authorfullhash}{9f4c797c4b0e3a2fd56ddb1ba1b1f686}
       \strng{authorfullhashraw}{9f4c797c4b0e3a2fd56ddb1ba1b1f686}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labeldatesource}{nodate}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
@@ -1817,8 +1814,8 @@
       \strng{authornamehash}{dd2ddc978fe083bcff1aa1379cd19643}
       \strng{authorfullhash}{4dd3ca3cdc8023700c28169734d6ad61}
       \strng{authorfullhashraw}{4dd3ca3cdc8023700c28169734d6ad61}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -2260,69 +2257,6 @@
       \verb https://doi.org/10.1007/s10115-023-01935-1
       \endverb
     \endentry
-    \entry{plathottam2023review_ai_applications_manufacturing_operations}{article}{}{}
-      \name{author}{4}{}{%
-        {{un=0,uniquepart=base,hash=eab77cc2a24eb0e68122dda541363c60}{%
-           family={Plathottam},
-           familyi={P\bibinitperiod},
-           given={Siby\bibnamedelima Jose},
-           giveni={S\bibinitperiod\bibinitdelim J\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=0b21e464402da6e9dd4afca8d9b22275}{%
-           family={Rzonca},
-           familyi={R\bibinitperiod},
-           given={Arin},
-           giveni={A\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=50b6e60639841ec66d883b5aa46a6666}{%
-           family={Lakhnori},
-           familyi={L\bibinitperiod},
-           given={Rishi},
-           giveni={R\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=a029a53833c64f1a3addb8a4fe232644}{%
-           family={Iloeje},
-           familyi={I\bibinitperiod},
-           given={Chukwunwike\bibnamedelima O.},
-           giveni={C\bibinitperiod\bibinitdelim O\bibinitperiod},
-           givenun=0}}%
-      }
-      \strng{namehash}{0c9b23da8de6b4bfd16442700b456b2e}
-      \strng{fullhash}{0cca6ec7b9da0816e29fb022b795bc59}
-      \strng{fullhashraw}{0cca6ec7b9da0816e29fb022b795bc59}
-      \strng{bibnamehash}{0c9b23da8de6b4bfd16442700b456b2e}
-      \strng{authorbibnamehash}{0c9b23da8de6b4bfd16442700b456b2e}
-      \strng{authornamehash}{0c9b23da8de6b4bfd16442700b456b2e}
-      \strng{authorfullhash}{0cca6ec7b9da0816e29fb022b795bc59}
-      \strng{authorfullhashraw}{0cca6ec7b9da0816e29fb022b795bc59}
-      \field{extraname}{2}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{extradate}{2}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{Abstract Artificial intelligence (AI) and machine learning (ML) can improve manufacturing efficiency, productivity, and sustainability. However, using AI in manufacturing also presents several challenges, including issues with data acquisition and management, human resources, infrastructure, as well as security risks, trust, and implementation challenges. For example, getting the data needed to train AI models can be difficult for rare events or costly for large datasets that need labeling. AI models can also pose security risks when integrated into industrial control systems. In addition, some industry players may be hesitant to use AI due to a lack of trust or understanding of how it works. Despite these challenges, AI has the potential to be extremely helpful in manufacturing, particularly in applications such as predictive maintenance, quality assurance, and process optimization. It is important to consider the specific needs and capabilities of each manufacturing scenario when deciding whether and how to use AI in manufacturing. This review identifies current developments, challenges, and future directions in AI/ML relevant to manufacturing, with the goal of improving understanding of AI/ML technologies available for solving manufacturing problems, providing decision-support for prioritizing and selecting appropriate AI/ML technologies, and identifying areas where further research can yield transformational returns for the industry. Early experience suggests that AI/ML can have significant cost and efficiency benefits in manufacturing, especially when combined with the ability to capture enormous amounts of data from manufacturing systems.}
-      \field{journaltitle}{Journal of Advanced Manufacturing and Processing}
-      \field{number}{3}
-      \field{title}{A review of artificial intelligence applications in manufacturing operations}
-      \field{type}{Journal Article}
-      \field{volume}{5}
-      \field{year}{2023}
-      \field{pages}{e10159}
-      \range{pages}{-1}
-      \verb{doi}
-      \verb https://doi.org/10.1002/amp2.10159
-      \endverb
-      \verb{urlraw}
-      \verb https://doi.org/10.1002/amp2.10159
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1002/amp2.10159
-      \endverb
-      \keyw{AI AI challenges industry automation industry operations machine learning manufacturing industry}
-    \endentry
     \entry{weichert2019review_ml_optimization_production}{article}{}{}
       \name{author}{6}{}{%
         {{un=0,uniquepart=base,hash=959eae2b5b3edb2b37027475ac03d9a0}{%
@@ -2394,69 +2328,6 @@
       \endverb
       \verb{url}
       \verb https://doi.org/10.1007/s00170-019-03988-5
-      \endverb
-    \endentry
-    \entry{nti2022applications_ai_engineering_manufacturing_systematic_review}{article}{}{}
-      \name{author}{4}{}{%
-        {{un=0,uniquepart=base,hash=04dbecc4ff0af75ef80841397399cdde}{%
-           family={Nti},
-           familyi={N\bibinitperiod},
-           given={Isaac\bibnamedelima Kofi},
-           giveni={I\bibinitperiod\bibinitdelim K\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=445c8d5a1ecbabd684f7b69f5e969239}{%
-           family={Adekoya},
-           familyi={A\bibinitperiod},
-           given={Adebayo\bibnamedelima Felix},
-           giveni={A\bibinitperiod\bibinitdelim F\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=5211f3ee37d261eb726100e99a1e6859}{%
-           family={Weyori},
-           familyi={W\bibinitperiod},
-           given={Benjamin\bibnamedelima Asubam},
-           giveni={B\bibinitperiod\bibinitdelim A\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=616503ae90c6b286eed0fd28201f0aa7}{%
-           family={Nyarko-Boateng},
-           familyi={N\bibinithyphendelim B\bibinitperiod},
-           given={Owusu},
-           giveni={O\bibinitperiod},
-           givenun=0}}%
-      }
-      \strng{namehash}{67bba5f14c0072862ec727d3bc4b5be8}
-      \strng{fullhash}{9260b1990f7a8cfd71c56fad1dd9f876}
-      \strng{fullhashraw}{9260b1990f7a8cfd71c56fad1dd9f876}
-      \strng{bibnamehash}{67bba5f14c0072862ec727d3bc4b5be8}
-      \strng{authorbibnamehash}{67bba5f14c0072862ec727d3bc4b5be8}
-      \strng{authornamehash}{67bba5f14c0072862ec727d3bc4b5be8}
-      \strng{authorfullhash}{9260b1990f7a8cfd71c56fad1dd9f876}
-      \strng{authorfullhashraw}{9260b1990f7a8cfd71c56fad1dd9f876}
-      \field{extraname}{2}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{extradate}{2}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{Engineering and manufacturing processes and systems designs involve many challenges, such as dynamism, chaotic behaviours, and complexity. Of late, the arrival of big data, high computational speed, cloud computing and artificial intelligence techniques (like machine learning and deep learning) has reformed how many engineering and manufacturing professionals approach their work. These technologies offer thrilling innovative ways for engineers and manufacturers to tackle real-life challenges. On the other hand, the field of Artificial Intelligence (AI) is extensive. Several diverse theories, algorithms, and methods are available, which presents a challenge and a barrier in choosing the right AI technique for the appropriate engineering process or manufacturing process and environments. Besides, the pertinent literature is disseminated over various journals, conference proceedings, and research communities. Hence, conducting a systematic survey to scrutinise and classify the existing literature is worthwhile. However, it is challenging, but previous review studies have not adequately addressed AI’s use and advancement in engineering and manufacturing (EM). Besides, some concentrated on single AI models, and others focused on a specific area in EM. This paper presents a comprehensive systematic review of studies on AI and its application in EM. To limit the scope of the current study, we conducted a keyword search in official publisher websites and academic databases, such as Springer, Elsevier, Scopus, Science Publication, Taylor & Francis, Directory of Open Access Journals (DOAJ), Association for Computing Machinery (ACM), Wiley online library, Inderscience and Google scholar. The search results (173 articles) were filtered according to a proposed framework, which resulted in ninety-one (91) relevant research articles. We reviewed the articles based on a proposed taxonomy (the year of publication, the AI algorithm and machine learning task adopted, the application area in EM, the train and test split of data, the error, and accuracy metrics used, the potential benefits). Our assessment using the proposed taxonomy gave a helpful insight into the literature’s anatomy on various AI applications in engineering and manufacturing. Also, we identified opportunities for future research in AI application in the field of EM.}
-      \field{issn}{1572-8145}
-      \field{journaltitle}{Journal of Intelligent Manufacturing}
-      \field{number}{6}
-      \field{title}{Applications of artificial intelligence in engineering and manufacturing: a systematic review}
-      \field{type}{Journal Article}
-      \field{volume}{33}
-      \field{year}{2022}
-      \field{pages}{1581\bibrangedash 1601}
-      \range{pages}{21}
-      \verb{doi}
-      \verb 10.1007/s10845-021-01771-6
-      \endverb
-      \verb{urlraw}
-      \verb https://doi.org/10.1007/s10845-021-01771-6
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1007/s10845-021-01771-6
       \endverb
     \endentry
     \entry{panzer2022deep_reinforcement_learning_production_systems}{article}{}{}
@@ -3507,8 +3378,8 @@
       \strng{authornamehash}{0ad67917e2ac5e4e3c30efbbf2b4198d}
       \strng{authorfullhash}{cd6acffabc43af691e55047c73b5219b}
       \strng{authorfullhashraw}{cd6acffabc43af691e55047c73b5219b}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -3565,8 +3436,8 @@
       \strng{authornamehash}{5aa99b9c7a5a5b5884ef8ab2e57fd828}
       \strng{authorfullhash}{6c4b5693997539d9f1529d8aa0e2adf8}
       \strng{authorfullhashraw}{6c4b5693997539d9f1529d8aa0e2adf8}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -3613,8 +3484,8 @@
       \strng{authornamehash}{63ef820595a2aa3f21f8f16c7a577bcf}
       \strng{authorfullhash}{63ef820595a2aa3f21f8f16c7a577bcf}
       \strng{authorfullhashraw}{63ef820595a2aa3f21f8f16c7a577bcf}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -3995,7 +3866,7 @@
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Business & Information Systems Engineering}
+      \field{journaltitle}{Business \& Information Systems Engineering}
       \field{title}{Design Knowledge for Deep-Learning-Enabled Image-Based Decision Support Systems: Evidence From Power Line Maintenance Decision-Making}
       \field{type}{Journal Article}
       \field{volume}{64}
@@ -4054,6 +3925,43 @@
       \range{pages}{19}
       \verb{doi}
       \verb 10.1007/s12525-018-0309-2
+      \endverb
+    \endentry
+    \entry{sommerville2011software_engineering}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=391822eb61c91ef5882d24cbd1592b6f}{%
+           family={Sommerville},
+           familyi={S\bibinitperiod},
+           given={I.},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Pearson}%
+      }
+      \strng{namehash}{391822eb61c91ef5882d24cbd1592b6f}
+      \strng{fullhash}{391822eb61c91ef5882d24cbd1592b6f}
+      \strng{fullhashraw}{391822eb61c91ef5882d24cbd1592b6f}
+      \strng{bibnamehash}{391822eb61c91ef5882d24cbd1592b6f}
+      \strng{authorbibnamehash}{391822eb61c91ef5882d24cbd1592b6f}
+      \strng{authornamehash}{391822eb61c91ef5882d24cbd1592b6f}
+      \strng{authorfullhash}{391822eb61c91ef5882d24cbd1592b6f}
+      \strng{authorfullhashraw}{391822eb61c91ef5882d24cbd1592b6f}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9780137053469}
+      \field{title}{Software Engineering}
+      \field{type}{Book}
+      \field{year}{2011}
+      \verb{urlraw}
+      \verb https://books.google.no/books?id=l0egcQAACAAJ
+      \endverb
+      \verb{url}
+      \verb https://books.google.no/books?id=l0egcQAACAAJ
       \endverb
     \endentry
   \enddatalist

@@ -1,14 +1,12 @@
-This chapter introduces the methodological framework used in this thesis 
-and provides an overview of the system developed to investigate the research questions. 
-The system developed, called MLguide, is a web-based decision-support tool for machine learning 
-method selection.
-Section~\ref{sec:dsr} presents Design Science Research as the overarching framework. 
-Section~\ref{sec:system-overview} gives a high-level description of MLguide 
+This chapter presents the methodological framework and describes the design 
+and development of MLguide, a web-based decision-support system for machine 
+learning method selection. 
+Section~\ref{sec:dsr} introduces Design Science Research as the overarching 
+framework. 
+Section~\ref{sec:system-overview} gives a high-level overview of MLguide 
 and its main components. 
-
-The methodology is covered in detail across two chapters. 
-Chapter~\ref{ch:system-development} describes the design and development of MLguide,
-while Chapter~\ref{ch:research-approach} describes the methods used to investigate the research questions through the use of the system.
+The following sections describe the design goals, the development process, 
+and the user testing conducted during development.
 
 \section{Design Science Research}
 \label{sec:dsr}
@@ -39,7 +37,7 @@ of this thesis.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{Figures/03-research-methodology-system-overview/dsrm-mlguide.pdf}
-    \caption{Design Science Research Methodology inspired by \textcite{peffers2007design_science_research_methodology}}
+    \caption{Design Science Research Methodology adapted from \textcite{peffers2007design_science_research_methodology}}
     \label{fig:dsr-methodology-overview}
 \end{figure}
 
@@ -72,3 +70,144 @@ The second is a database of research articles from the literature.
 With the help of these knowledge sources, the recommendation engine produces three outputs: 
 a ranked list of ML methods, a set of supporting articles, 
 and a starter notebook to support early implementation.
+
+\section{Design Goals and Motivation}
+
+Mlguide was developed as a direct continuation of the work done in the pre-master project \parencite{bergsto2026mlselection}.
+The developed roadmap outlines a process for filtering and ranking 
+research literature based on user-defined context parameters, including 
+ML paradigm, product lifecycle (PLC) phase, and application area. 
+This is illustrated with a simplified version of the roadmap in Figure~\ref{fig:ml-roadmap-pre-master}.
+In the pre-master project, the main focus was on collecting and analyzing 
+research literature. Several directions for future development were identified, 
+including better support for problem formulation, ontology-based ML knowledge 
+representation, and support for translating recommendations into an 
+ML implementation \parencite{bergsto2026mlselection}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{Figures/04-system-design-development/roadmap-pre-master.pdf}
+    \caption{Simplified ML selection roadmap from the pre-master project \parencite{bergsto2026mlselection}}
+    \label{fig:ml-roadmap-pre-master}
+\end{figure}
+
+MLguide addresses these directions by extending the original roadmap into 
+a web-based decision-support system. The main design goals were to support 
+users in formulating their problem, to recommend relevant ML methods based 
+on both structured knowledge and research literature, and to provide a 
+starting point for implementation through generated code templates. 
+The system is primarily aimed at engineers and students who are new to 
+machine learning and need structured guidance in choosing a suitable method.
+A web-based interface was chosen to 
+lower the threshold for use, making it easy for other users to access and test
+the system without installation. Supporting user feedback on method recommendations
+was also identified as a direction for future development in the pre-master project
+\parencite{bergsto2026mlselection}. The intention was that user ratings could
+contribute to the ranking of methods for recommendations. MLguide includes components for this
+functionality, but it is not part of the evaluated system and research approach in this thesis.
+
+\section{Incremental and Iterative Development}
+
+MLguide was developed incrementally over the course of the master's project. 
+New features and components were built and deployed one at a time, each adding 
+to the working system. This approach is consistent with incremental software 
+development, where the system grows through a series of versions rather than 
+being built all at once \parencite[33]{sommerville2011software_engineering}.
+
+Figure~\ref{fig:incremental-development} illustrates this process. 
+Planning, development, and self evaluation were carried out as concurrent 
+activities, producing successive versions of the system. Throughout development, 
+the author continuously tested individual features and the overall system output 
+to check that behaviour was correct and results were useful.
+
+The development also had an iterative character. Feedback from the thesis 
+supervisor informed adjustments to the system design and priorities through the development period. 
+In addition, two rounds of user testing were conducted, 
+and the findings were used to adjust the system. 
+This iterative cycle is consistent with the DSR process described by 
+\textcite{peffers2007design_science_research_methodology}, where evaluation 
+results inform a return to design and development. The user testing setup is described in the following section.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figures/04-system-design-development/incremental-development.pdf}
+    \caption{Illustration of the incremental development process, based on 
+    \textcite[33]{sommerville2011software_engineering}}
+    \label{fig:incremental-development}
+\end{figure}
+
+\section{User Testing}
+\subsection{Setup and Context}
+
+\textbf{Ikke bruk past tense}
+
+The system was evaluated through two rounds of user testing in a machine 
+learning course at the Norwegian University of Science and Technology (NTNU), where students used MLguide as part of their 
+course projects. The participants were engineering students where most had limited 
+prior experience with machine learning, which made them representative 
+of the intended user group. The user testing rounds are summarised in Table~\ref{tab:user-testing}. 
+
+\begin{table}[H]
+\centering
+\caption{User testing sessions}
+\label{tab:user-testing}
+\begin{tabular}{l p{5.5cm} p{5.5cm}}
+\toprule
+ & \textbf{Project 1} & \textbf{Project 2} \\
+\midrule
+\textbf{Topic} & Anomaly detection in time series data & Reinforcement learning in product lifecycle \\
+\addlinespace
+\textbf{ML area} & Unsupervised learning & Reinforcement learning \\
+\addlinespace
+\textbf{Task} & Detect anomalies using unsupervised learning techniques and compare performance & Analyse RL applications across lifecycle phases and implement a sustainability agent \\
+\addlinespace
+\textbf{MLguide task} & Test the system on their problem and report on relevance and usefulness of results & Assess the applicability of MLguide to their problem \\
+\addlinespace
+\textbf{Deadline} & March 2026 & April 2026 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The two projects differed in scope and focus. In the first project, students 
+worked on a well-defined problem: detecting anomalies in time series data using 
+unsupervised learning. They were asked to compare at least three techniques, 
+which made MLguide a natural fit. Students could use it to get method 
+recommendations for their problem, either as inspiration before choosing 
+methods or as a comparison after they had already made a selection.
+
+The second project was more open-ended. Students were asked to analyse 
+applications of reinforcement learning across four product lifecycle phases: 
+product design, manufacturing, product use, and recycling. In addition, 
+they were asked to implement a simulated RL environment and a sustainability 
+agent for either product design, operations, or product use. 
+This made the project less focused on method selection, 
+but MLguide could still be used in two ways: to find relevant articles by 
+submitting problem descriptions related to different lifecycle phases, 
+and to get algorithm recommendations for the implementation part of the project.
+
+\subsection{Feedback and Limitations}
+
+The feedback from both projects gave useful insight into the usability of 
+MLguide and what could be improved. However, two limitations apply.
+
+The first concerns the feedback format. Feedback was collected as part of 
+the students' project reports, which fit naturally within the course structure 
+and allowed students to reflect on MLguide in the context of their own problem 
+and data. Since each group worked on a different problem, an open format seemed 
+more suitable than a fixed set of questions. The trade-off is that responses 
+varied in detail and focus, making it more difficult to draw systematic conclusions.
+
+The second limitation is that the feedback arrived quite late in the development 
+period. This was probably unavoidable, as a working system had to be in place 
+before it could be tested. The feedback led to some adjustments, but larger 
+changes such as new features or structural redesigns were not feasible within 
+the remaining time. These can instead be left as directions for future work.
+
+A simple overview of the development timeline, including the user testing sessions, is illustrated in Figure~\ref{fig:development-timeline}.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figures/04-system-design-development/development_timeline.pdf}
+    \caption{Development timeline of MLguide}
+    \label{fig:development-timeline}
+\end{figure}

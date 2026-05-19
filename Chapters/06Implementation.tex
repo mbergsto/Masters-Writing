@@ -1,3 +1,4 @@
+\section{System Architecture}
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Figures/06-implementation/mlguide-layered-architecture.pdf}
@@ -18,6 +19,8 @@
     \caption{Package Diagram of MLguide}
     \label{fig:package-diagram-full}
 \end{figure}
+
+\section{Knowledge Graph and Database}
 
 \begin{figure}[H]
     \centering
@@ -130,10 +133,101 @@ tracking\_\allowbreak family
 \end{tabularx}
 \end{table}
 
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Figures/06-implementation/psql-er-diagram.pdf}
     \caption{Entity-Relationship Diagram of the PostgreSQL database used in MLguide}
     \label{fig:psql-er-diagram}
 \end{figure}
+
+\section{Recommendation Process}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/06-implementation/recommendation-article-sequence.png}
+    \caption{Sequence diagram of the article-based recommendation process in MLguide}
+    \label{fig:recommendation-article-sequence}
+\end{figure}
+
+\subsection{Article similarity scoring}
+
+When a problem description is provided, articles are ranked by their semantic
+similarity to the query. Each article receives a score based on the cosine
+similarity between the query embedding and the stored abstract and title
+embeddings:
+
+\begin{equation}
+    \text{score}_a = w_{\text{abs}} \cdot \text{sim}_{\text{abs}}(a)
+                   + w_{\text{title}} \cdot \text{sim}_{\text{title}}(a)
+    \label{eq:article-score}
+\end{equation}
+
+where $w_{\text{abs}} = 0.7$ and $w_{\text{title}} = 0.3$. The top $k = 50$
+articles by this score are retained for the subsequent ranking step.
+
+\subsection{Method scoring}
+
+For each candidate method, a score is accumulated from the top-$k$ articles
+that mention it. The contribution of each article is based on its rank
+position in two complementary rankings: one from the embedding-based similarity
+search, and one from a cross-encoder reranker. Each unique (article, method)
+pair contributes once, to avoid inflating scores when multiple method aliases
+in a single article map to the same approach:
+
+\begin{equation}
+    \text{score}_m = \sum_{\substack{a \,\in\, \text{top-}k \\ m \,\in\, a}}
+        \left(
+            \frac{w_e}{r_e(a) + 1} + \frac{w_c}{r_c(a) + 1}
+        \right)
+    \label{eq:method-score}
+\end{equation}
+
+where $r_e(a)$ and $r_c(a)$ are the zero-based rank positions of article $a$
+in the embedding ranking and cross-encoder ranking respectively, and $w_e$ and
+$w_c$ are normalised weights with $w_e + w_c = 1$ (default $w_e = w_c = 0.5$).
+Candidate methods are then sorted in descending order by $\text{score}_m$.
+
+\subsection{Feedback boost}
+
+After similarity-based ranking, user feedback is used to adjust the final
+ordering. Each method is assigned a smoothed feedback score using Bayesian
+smoothing towards a neutral prior:
+
+\begin{equation}
+    \hat{r}_m = \frac{s \cdot \mu_0 + n \cdot \bar{r}_m}{s + n}
+    \label{eq:smoothed-rating}
+\end{equation}
+
+where $\bar{r}_m$ is the observed mean rating, $n$ is the number of ratings,
+$s = 5$ is the prior strength, and $\mu_0 = 3$ is the prior mean on a 1--5
+scale. The smoothed rating is then normalised to $[-1, 1]$ relative to the
+neutral rating of 3. The final combined score used to sort methods is:
+
+\begin{equation}
+    \text{combined\_score}(m) = \frac{1}{\text{rank}(m) + 1}
+                              + w_f \cdot \text{feedback\_score}(m)
+    \label{eq:combined-score}
+\end{equation}
+
+where $\text{rank}(m)$ is the zero-based position after similarity ranking
+and $w_f = 0.15$.
+
+\section{Notebook Generation}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/06-implementation/notebook-generation-sequence.png}
+    \caption{Sequence diagram of the notebook generation process in MLguide}
+    \label{fig:notebook-generation-sequence}  
+\end{figure}
+
+\section{Article Retrieval and Knowledge Extraction}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/06-implementation/article-retrieval-flow.pdf}
+    \caption{Flowchart of the article retrieval and knowledge extraction process in MLguide}
+    \label{fig:article-retrieval-flow}
+\end{figure}
+
+\section{Web Interface}
