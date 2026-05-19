@@ -41,11 +41,9 @@ of this thesis.
     \label{fig:dsr-methodology-overview}
 \end{figure}
 
-The process in this thesis follows a design-centered initiation, meaning that 
-development of the system began before the research questions were fully formalised 
+The process in this thesis follows a design-centered initiation, where
+development of the system starts before the research questions are fully formalised 
 \parencite{peffers2007design_science_research_methodology}. 
-This reflects how the work evolved from the pre-master project, where an initial 
-roadmap and literature analysis provided the starting point for building MLguide \parencite{bergsto2026mlselection}. 
 
 \section{System Overview}
 \label{sec:system-overview}
@@ -73,7 +71,7 @@ and a starter notebook to support early implementation.
 
 \section{Design Goals and Motivation}
 
-Mlguide was developed as a direct continuation of the work done in the pre-master project \parencite{bergsto2026mlselection}.
+Mlguide is developed as a direct continuation of the work done in the pre-master project \parencite{bergsto2026mlselection}.
 The developed roadmap outlines a process for filtering and ranking 
 research literature based on user-defined context parameters, including 
 ML paradigm, product lifecycle (PLC) phase, and application area. 
@@ -92,7 +90,7 @@ ML implementation \parencite{bergsto2026mlselection}.
 \end{figure}
 
 MLguide addresses these directions by extending the original roadmap into 
-a web-based decision-support system. The main design goals were to support 
+a web-based decision-support system. The main design goals are to support 
 users in formulating their problem, to recommend relevant ML methods based 
 on both structured knowledge and research literature, and to provide a 
 starting point for implementation through generated code templates. 
@@ -100,30 +98,29 @@ The system is primarily aimed at engineers and students who are new to
 machine learning and need structured guidance in choosing a suitable method.
 A web-based interface was chosen to 
 lower the threshold for use, making it easy for other users to access and test
-the system without installation. Supporting user feedback on method recommendations
-was also identified as a direction for future development in the pre-master project
-\parencite{bergsto2026mlselection}. The intention was that user ratings could
-contribute to the ranking of methods for recommendations. MLguide includes components for this
-functionality, but it is not part of the evaluated system and research approach in this thesis.
+the system without installation. Supporting user feedback on method recommendations is also identified as 
+a direction for future development in the pre-master project 
+\parencite{bergsto2026mlselection}, with the intention that user ratings 
+contribute to method ranking over time.
 
 \section{Incremental and Iterative Development}
 
 MLguide was developed incrementally over the course of the master's project. 
-New features and components were built and deployed one at a time, each adding 
+New features and components are built and deployed one at a time, each adding 
 to the working system. This approach is consistent with incremental software 
 development, where the system grows through a series of versions rather than 
 being built all at once \parencite[33]{sommerville2011software_engineering}.
 
 Figure~\ref{fig:incremental-development} illustrates this process. 
-Planning, development, and self evaluation were carried out as concurrent 
+Planning, development, and self evaluation are carried out as concurrent 
 activities, producing successive versions of the system. Throughout development, 
-the author continuously tested individual features and the overall system output 
-to check that behaviour was correct and results were useful.
+the author continuously tests individual features and the overall system output 
+to check that behaviour is correct and results are useful.
 
-The development also had an iterative character. Feedback from the thesis 
-supervisor informed adjustments to the system design and priorities through the development period. 
+The development also has an iterative character. Feedback from the thesis 
+supervisor informs adjustments to the system design and priorities through the development period. 
 In addition, two rounds of user testing were conducted, 
-and the findings were used to adjust the system. 
+and the findings are used to evaluate and adjust the system. 
 This iterative cycle is consistent with the DSR process described by 
 \textcite{peffers2007design_science_research_methodology}, where evaluation 
 results inform a return to design and development. The user testing setup is described in the following section.
@@ -139,13 +136,14 @@ results inform a return to design and development. The user testing setup is des
 \section{User Testing}
 \subsection{Setup and Context}
 
-\textbf{Ikke bruk past tense}
-
-The system was evaluated through two rounds of user testing in a machine 
-learning course at the Norwegian University of Science and Technology (NTNU), where students used MLguide as part of their 
-course projects. The participants were engineering students where most had limited 
-prior experience with machine learning, which made them representative 
-of the intended user group. The user testing rounds are summarised in Table~\ref{tab:user-testing}. 
+User testing is conducted in collaboration with the course TMM4128 Machine 
+Learning for Engineers at the Norwegian University of Science and Technology 
+(NTNU). The course provided a natural opportunity to test the system with 
+its intended user group. Students use MLguide as part of their course 
+projects. The participants are engineering students with limited prior 
+experience with machine learning. Feedback can be collected through a feedback form 
+accessable in MLguide and from the students' project reports. 
+The two course projects are summarised in Table~\ref{tab:user-testing}.
 
 \begin{table}[H]
 \centering
@@ -168,40 +166,21 @@ of the intended user group. The user testing rounds are summarised in Table~\ref
 \end{tabular}
 \end{table}
 
-The two projects differed in scope and focus. In the first project, students 
-worked on a well-defined problem: detecting anomalies in time series data using 
-unsupervised learning. They were asked to compare at least three techniques, 
-which made MLguide a natural fit. Students could use it to get method 
-recommendations for their problem, either as inspiration before choosing 
-methods or as a comparison after they had already made a selection.
+The two projects differ in scope and focus. The first project has a 
+well-defined problem: detecting anomalies in time series data using 
+unsupervised learning. Students are asked to compare at least three 
+techniques, which makes MLguide a natural fit. The system can be used 
+early in the project to get method recommendations, or later as a 
+comparison against methods already selected.
 
-The second project was more open-ended. Students were asked to analyse 
-applications of reinforcement learning across four product lifecycle phases: 
-product design, manufacturing, product use, and recycling. In addition, 
-they were asked to implement a simulated RL environment and a sustainability 
-agent for either product design, operations, or product use. 
-This made the project less focused on method selection, 
-but MLguide could still be used in two ways: to find relevant articles by 
-submitting problem descriptions related to different lifecycle phases, 
-and to get algorithm recommendations for the implementation part of the project.
-
-\subsection{Feedback and Limitations}
-
-The feedback from both projects gave useful insight into the usability of 
-MLguide and what could be improved. However, two limitations apply.
-
-The first concerns the feedback format. Feedback was collected as part of 
-the students' project reports, which fit naturally within the course structure 
-and allowed students to reflect on MLguide in the context of their own problem 
-and data. Since each group worked on a different problem, an open format seemed 
-more suitable than a fixed set of questions. The trade-off is that responses 
-varied in detail and focus, making it more difficult to draw systematic conclusions.
-
-The second limitation is that the feedback arrived quite late in the development 
-period. This was probably unavoidable, as a working system had to be in place 
-before it could be tested. The feedback led to some adjustments, but larger 
-changes such as new features or structural redesigns were not feasible within 
-the remaining time. These can instead be left as directions for future work.
+The second project is more open-ended. Students are asked to analyse 
+applications of reinforcement learning across four product lifecycle 
+phases: product design, manufacturing, product use, and recycling, 
+and to implement a simulated RL environment and a sustainability agent. 
+MLguide can be used in two ways in this context: to find relevant 
+articles by submitting problem descriptions related to different 
+lifecycle phases, and to get algorithm recommendations for the 
+implementation part of the project.
 
 A simple overview of the development timeline, including the user testing sessions, is illustrated in Figure~\ref{fig:development-timeline}.
 
