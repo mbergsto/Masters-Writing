@@ -61,10 +61,10 @@ A third class, actor-critic methods, combines both approaches by maintaining
 a separate policy structure and value function simultaneously 
 \parencite[Chapter~11]{sutton2018reinforcement_learning}.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Figures/02-background/ML-Paradigms.png}
-    \caption{Overview of machine learning paradigms with common tasks.}
+    \caption[ML paradigms]{Overview of machine learning paradigms with common tasks.}
     \label{fig:ml_paradigms}
 \end{figure}
 
@@ -100,7 +100,7 @@ than a single decision tree
 \parencite[Chapter~6]{geron2019hands_on_machine_learning}. 
 Gradient boosting methods such as XGBoost build trees sequentially 
 to improve on the predictions of previous trees, and are known for 
-strong generalization performance on large datasets
+strong generalisation performance on large datasets
 \parencite{chen2016xgboost,
 sarker2021machine_learning_algorithms_real_world_applications_research_directions}.
 
@@ -193,10 +193,10 @@ a separate policy and value function simultaneously
 \parencite{zhang2020taxonomy_reinforcement_learning_algorithms}.
 
 Figure~\ref{fig:ml_paradigms_methods} (on the following page) provides a structured overview 
-of common machine learning methods organized by paradigm and task. 
+of common machine learning methods organised by paradigm and task. 
 It includes the methods described in the sections above, as well as 
 additional commonly used methods not covered in detail here. 
-The overview is based on a combination of taxonomies and categorizations described in the literature, 
+The overview is based on a combination of taxonomies and categorisations described in the literature, 
 and specifically draws on the works of
 \textcite{sarker2021machine_learning_algorithms_real_world_applications_research_directions}, 
 \textcite{geron2019hands_on_machine_learning}, and 
@@ -206,7 +206,7 @@ and specifically draws on the works of
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\linewidth, keepaspectratio]{Figures/02-background/ml-paradigms-methods-updated.png}
-    \caption{Overview of common machine learning methods categorized by
+    \caption[ML methods by paradigm and task]{Overview of common machine learning methods categorised by
 paradigms and tasks, based on
 \textcite{sarker2021machine_learning_algorithms_real_world_applications_research_directions},
 \textcite{geron2019hands_on_machine_learning}, and
@@ -310,12 +310,12 @@ where observations that are difficult to reconstruct may indicate anomalies
 \parencite{sarker2021machine_learning_algorithms_real_world_applications_research_directions, 
 shrestha2019review_deep_learning_algorithms_architectures}.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Figures/02-background/neural-networks-table.pdf}
-    \caption{Summary and comparison of common neural network architectures, based on 
-    \textcite{sarker2021machine_learning_algorithms_real_world_applications_research_directions}, 
-    \textcite{shrestha2019review_deep_learning_algorithms_architectures}, 
+    \caption[Neural network architectures]{Summary and comparison of common neural network architectures, based on
+    \textcite{sarker2021machine_learning_algorithms_real_world_applications_research_directions},
+    \textcite{shrestha2019review_deep_learning_algorithms_architectures},
     \textcite{pouyanfar2018survey_deep_learning_algorithms}, and
     \textcite{lecun2015deep_learning}.}
     \label{fig:neural_networks_table}
@@ -371,10 +371,10 @@ offers a similar cheat sheet for its machine learning platform
 \parencite{azure_algorithm_cheatsheet}. While these tools are accessible 
 and widely used, they have clear limitations. 
 The selection criteria used in both tools are mainly accuracy and prediction 
-speed, something that can in practice lead to poor results. \parencite{sala2018selecting_ml_algorithm}. 
+speed, something that can in practice lead to poor results \parencite{sala2018selecting_ml_algorithm}. 
 Factors such as interpretability, data characteristics, and domain context 
 are not considered, and neither do they offer any guidance on how the problem 
-itself should be formulated. \parencite{chen2023ml_manufacturing_industry4}.
+itself should be formulated \parencite{chen2023ml_manufacturing_industry4}.
 
 More structured frameworks have been proposed in the academic literature. 
 \textcite{sala2018selecting_ml_algorithm} present a two-layer selection 
@@ -389,16 +389,16 @@ and none provides a tool that connects algorithmic choices to the broader
 context of the application domain.
 
 A related class of approaches is automated machine learning (AutoML), 
-which seeks to automatically select, compose, and parametrize machine 
+which seeks to automatically select, compose, and parametrise machine 
 learning models to achieve optimal performance on a given task or dataset 
 \parencite{waring2020automated_machine_learning_review_state_of_the_art_opportunities_healthcare}. 
 AutoML systems automate parts of the machine learning pipeline, including 
-data preparation, feature engineering, hyperparameter optimization, and 
+data preparation, feature engineering, hyperparameter optimisation, and 
 model generation, with the goal of reducing the demand for expert knowledge 
 and making machine learning more accessible to domain experts 
 \parencite{he2021automl_survey_state_of_the_art}. 
-Within AutoML, the algorithm selection problem is typically treated as an 
-optimization task, where dataset characteristics are used to predict which 
+Within AutoML, the algorithm selection problem is typically treated as an
+optimisation task, where dataset characteristics are used to predict which 
 algorithm is likely to perform best 
 \parencite{barbudo2023eight_years_automl_categorisation_review_trends}.
 

@@ -25,8 +25,8 @@ this principle for a small set of example words.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{Figures/02-background/embedding-space-example.png}
-    \caption{A two-dimensional projection of example word embeddings. 
-    Semantically similar words cluster together in the embedding space, 
+    \caption[Embedding space example]{A two-dimensional projection of example word embeddings.
+    Semantically similar words cluster together in the embedding space,
     while unrelated words are positioned further apart.}
     \label{fig:embedding-space-example}
 \end{figure}
@@ -46,7 +46,7 @@ measures the angle between two vectors, normalized for their length:
 The result ranges from 1, indicating identical direction and 
 maximum similarity, to 0 for orthogonal vectors with no similarity 
 \parencite[Chapter~5.4]{jurafsky_martin2026speech_language_processing}. 
-Normalizing for vector length ensures that the similarity score 
+Normalising for vector length ensures that the similarity score 
 reflects semantic content rather than vector magnitude. In 
 practice, cosine distance, defined as $1 - \cos(\mathbf{u}, 
 \mathbf{v})$, is often used when a distance metric is required, 
@@ -85,11 +85,11 @@ them in milliseconds.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{Figures/02-background/SBERT-architecture.pdf}
-    \caption{SBERT architecture at inference time. Each sentence 
-    is encoded independently through a shared BERT network, 
-    producing vectors \textbf{u} and \textbf{v} that are compared 
-    using cosine similarity. Reproduced from 
-    \textcite{reimers2019sentence_bert_sentence_embeddings_using_siamese_bert_networks} 
+    \caption[SBERT architecture]{SBERT architecture at inference time. Each sentence
+    is encoded independently through a shared BERT network,
+    producing vectors \textbf{u} and \textbf{v} that are compared
+    using cosine similarity. Reproduced from
+    \textcite{reimers2019sentence_bert_sentence_embeddings_using_siamese_bert_networks}
     under CC BY-SA 4.0.}
     \label{fig:sbert-architecture}
 \end{figure}
@@ -131,7 +131,7 @@ including Documents~B and~C despite the absence of exact term overlap in these d
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{Figures/02-background/keyword-vs-dense.png}
-    \caption{Keyword-based versus dense retrieval for the same query.}
+    \caption[Keyword vs.\ dense retrieval]{Keyword-based versus dense retrieval for the same query.}
     \label{fig:keyword-vs-dense}
 \end{figure}
 
@@ -165,11 +165,11 @@ difference between the two approaches.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth]{Figures/02-background/bi-vs-cross-encoder.png}
-    \caption{Bi-encoder and cross-encoder architectures. The 
-    bi-encoder encodes query and document independently, producing 
-    vectors that are compared using cosine similarity. The 
-    cross-encoder concatenates both inputs and processes them 
-    jointly, enabling full attention between query and document 
+    \caption[Bi-encoder vs.\ cross-encoder]{Bi-encoder and cross-encoder architectures. The
+    bi-encoder encodes query and document independently, producing
+    vectors that are compared using cosine similarity. The
+    cross-encoder concatenates both inputs and processes them
+    jointly, enabling full attention between query and document
     inputs and producing a direct relevance score.}
     \label{fig:bi-vs-cross-encoder}
 \end{figure}
@@ -208,7 +208,7 @@ enabling systematic matching between a problem description and relevant articles
 Article abstracts are a practical textual basis for this purpose. 
 Text mining of scientific literature has mostly been carried out 
 on abstracts due to their availability, and the fact that abstracts 
-consists of shorter sentences presenting only the most 
+consist of shorter sentences presenting only the most 
 important findings of a study 
 \parencite{westergaard2018comprehensive_quantitative_comparison_text_mining_15_million_full_text_articles_versus_corresponding_abstracts}. 
 While full-text articles contain richer information, they also 

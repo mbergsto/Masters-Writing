@@ -2,21 +2,21 @@
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Figures/06-implementation/mlguide-layered-architecture.pdf}
-    \caption{Layered Architecture of MLguide}
+    \caption[MLguide layered architecture]{Layered Architecture of MLguide.}
     \label{fig:mlguide-layered-architecture}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Figures/06-implementation/system-diagram-components.pdf}
-    \caption{System Overview of MLguide}
+    \caption[MLguide component diagram]{System Overview of MLguide.}
     \label{fig:system-diagram-components}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Figures/06-implementation/package-diagram-full.pdf}
-    \caption{Package Diagram of MLguide}
+    \caption[MLguide package diagram]{Package Diagram of MLguide.}
     \label{fig:package-diagram-full}
 \end{figure}
 
@@ -25,21 +25,21 @@
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Figures/06-implementation/ontology-uml-with-extension.pdf}
-    \caption{UML Class Diagram of the ML Ontology, including added classes and properties for MLguide}
+    \caption[ML Ontology UML diagram]{UML Class Diagram of the ML Ontology, including added classes and properties for MLguide.}
     \label{fig:ontology-uml-with-extension}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Figures/06-implementation/ontology-article-instance.pdf}
-    \caption{Example of an Article instance in the ML Ontology}
+    \caption[Article instance example]{Example of an Article instance in the ML Ontology.}
     \label{fig:ontology-article-instance}
 \end{figure}
 
 
 \begin{table}[H]
 \centering
-\caption{New \texttt{ML\_approach} instances added to ML Ontology, grouped by theme.}
+\caption[New \texttt{ML\_approach} instances]{New \texttt{ML\_approach} instances added to ML Ontology, grouped by theme.}
 \label{tab:new-ml-approaches}
 \begin{tabularx}{\textwidth}{lXr}
 \toprule
@@ -84,7 +84,7 @@ Other
 
 \begin{table}[H]
 \centering
-\caption{ML\_task\_family instances and their assigned ML\_task instances.}
+\caption[ML\_task\_family instances]{ML\_task\_family instances and their assigned ML\_task instances.}
 \label{tab:ml-task-families}
 \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{4cm}Xr}
 \toprule
@@ -136,7 +136,7 @@ tracking\_\allowbreak family
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Figures/06-implementation/psql-er-diagram.pdf}
-    \caption{Entity-Relationship Diagram of the PostgreSQL database used in MLguide}
+    \caption[PostgreSQL ER diagram]{Entity-Relationship Diagram of the PostgreSQL database used in MLguide.}
     \label{fig:psql-er-diagram}
 \end{figure}
 
@@ -145,11 +145,11 @@ tracking\_\allowbreak family
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Figures/06-implementation/recommendation-sequence.png}
-    \caption{Sequence diagram of the recommendation process in MLguide}
+    \caption[Recommendation sequence]{Sequence diagram of the recommendation process in MLguide.}
     \label{fig:recommendation-sequence}
 \end{figure}
 
-\subsection{Article similarity scoring}
+\subsection{Article Similarity Scoring}
 
 When a problem description is provided, articles are ranked by their semantic
 similarity to the query. Each article receives a score based on the cosine
@@ -165,7 +165,7 @@ embeddings:
 where $w_{\text{abs}} = 0.7$ and $w_{\text{title}} = 0.3$. The top $k = 50$
 articles by this score are retained for the subsequent ranking step.
 
-\subsection{Method scoring}
+\subsection{Method Scoring}
 
 For each candidate method, a score is accumulated from the top-$k$ articles
 that mention it. The contribution of each article is based on its rank
@@ -187,7 +187,7 @@ in the embedding ranking and cross-encoder ranking respectively, and $w_e$ and
 $w_c$ are normalised weights with $w_e + w_c = 1$ (default $w_e = w_c = 0.5$).
 Candidate methods are then sorted in descending order by $\text{score}_m$.
 
-\subsection{Feedback boost}
+\subsection{Feedback Boost}
 
 After similarity-based ranking, user feedback is used to adjust the final
 ordering. Each method is assigned a smoothed feedback score using Bayesian
@@ -212,10 +212,10 @@ neutral rating of 3. The final combined score used to sort methods is:
 where $\text{rank}(m)$ is the zero-based position after similarity ranking
 and $w_f = 0.15$.
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Figures/06-implementation/ranking-flow.pdf}
-    \caption{Flowchart of the ranking process in MLguide, including similarity scoring and feedback boost}
+    \caption[Ranking flow]{Flowchart of the ranking process in MLguide, including similarity scoring and feedback boost.}
     \label{fig:ranking-flow}
 \end{figure}
 
@@ -224,7 +224,7 @@ and $w_f = 0.15$.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Figures/06-implementation/notebook-generation-sequence.png}
-    \caption{Sequence diagram of the notebook generation process in MLguide}
+    \caption[Notebook generation sequence]{Sequence diagram of the notebook generation process in MLguide.}
     \label{fig:notebook-generation-sequence}  
 \end{figure}
 
@@ -233,7 +233,7 @@ and $w_f = 0.15$.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{Figures/06-implementation/article-retrieval-flow.pdf}
-    \caption{Flowchart of the article retrieval and knowledge extraction process in MLguide}
+    \caption[Article retrieval flow]{Flowchart of the article retrieval and knowledge extraction process in MLguide.}
     \label{fig:article-retrieval-flow}
 \end{figure}
 
