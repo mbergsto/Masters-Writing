@@ -144,9 +144,9 @@ tracking\_\allowbreak family
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{Figures/06-implementation/recommendation-article-sequence.png}
-    \caption{Sequence diagram of the article-based recommendation process in MLguide}
-    \label{fig:recommendation-article-sequence}
+    \includegraphics[width=\textwidth]{Figures/06-implementation/recommendation-sequence.png}
+    \caption{Sequence diagram of the recommendation process in MLguide}
+    \label{fig:recommendation-sequence}
 \end{figure}
 
 \subsection{Article similarity scoring}
@@ -211,6 +211,13 @@ neutral rating of 3. The final combined score used to sort methods is:
 
 where $\text{rank}(m)$ is the zero-based position after similarity ranking
 and $w_f = 0.15$.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/06-implementation/ranking-flow.pdf}
+    \caption{Flowchart of the ranking process in MLguide, including similarity scoring and feedback boost}
+    \label{fig:ranking-flow}
+\end{figure}
 
 \section{Notebook Generation}
 
