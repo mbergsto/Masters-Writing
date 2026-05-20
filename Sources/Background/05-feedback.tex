@@ -1,0 +1,56 @@
+From \parencite[Chapter~3.3]{murphy2012machine_learning_probabilistic_perspective}:
+
+"the posterior is a compromise between what we previously believed and what the data is telling us"
+"the weaker the prior, the smaller is λ, and hence the closer the posterior mean is to the MLE"
+"the hyper-parameters are known as pseudo counts. The strength of the prior, also known as the effective sample size of the prior, is the sum of the pseudo counts"
+"since the data has overwhelmed the prior"
+"the posterior is essentially identical to the likelihood: since the data has overwhelmed the prior"
+"this can perform quite poorly when the sample size is small"
+"the zero count problem or the sparse data problem, and frequently occurs when estimating counts from small amounts of data"
+"Bayesian methods are still useful, even in the big data regime"
+
+From \parencite{cormack2009reciprocal_rank_fusion}:
+
+Om selve formelen og valg av k:
+"RRF simply sorts the documents according to a naive scoring formula."
+"The constant k mitigates the impact of high rankings by outlier systems."
+
+Om hvorfor reciprocal rank og ikke eksponentiell:
+"while highly-ranked documents are more important, the importance of lower-ranked documents does not vanish as it would were, say, an exponential function used."
+
+Om å kombinere rangeringer uten å ta hensyn til de underliggende scorene:
+"RRF is simpler and more effective than Condorcet Fuse, while sharing the valuable property that it combines ranks without regard to the arbitrary scores returned by particular ranking methods."
+
+From \parencite{bobadilla2013recommender_systems_survey}:
+
+Definisjon av eksplisitt feedback
+
+"The information can be acquired explicitly (typically by collecting users' ratings) or implicitly [...] (typically by monitoring users' behavior)"
+
+Dette er en ren og sitérbar definisjon av eksplisitt vs. implisitt feedback, nyttig for å introdusere hva slags feedback MLguide samler inn.
+
+Cold start – "new community"-varianten
+
+"The cold-start problem [...] occurs when it is not possible to make reliable recommendations due to an initial lack of ratings."
+
+"The new community problem [...] refers to the difficulty, when starting up a RS, in obtaining, a sufficient amount of data (ratings) for making reliable recommendations."
+
+From \parencite{ricci2010recommender_systems_handbook} :
+
+Definisjon av eksplisitt feedback:
+
+"RSs collect from users their preferences, which are either explicitly expressed, e.g., as ratings for products, or are inferred by interpreting user actions."
+
+Dette er den primære sitérbare setningen for å introdusere eksplisitt feedback.
+
+At feedback lagres og brukes til å forbedre fremtidige anbefalinger:
+
+"She may accept them or not and may provide, immediately or at a next stage, an implicit or explicit feedback. All these user actions and feedbacks can be stored in the recommender database and may be used for generating new recommendations in the next user-system interactions."
+
+Dette er nyttig fordi det beskriver nøyaktig den rollen feedback-boosten i MLguide er ment å spille – ratings lagres og brukes til å justere fremtidige rangeringer.
+
+At anbefalinger forbedres over tid med mer brukerdata:
+
+"the longer the user interacts with the site, the more refined her user model becomes [...] and the more the recommender output can be effectively customized to match the user's preferences."
+
+Dette støtter indirekte poenget om at feedback-boosten krever aktive brukere over tid for å ha effekt.
