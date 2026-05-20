@@ -195,8 +195,6 @@ annotation but for integrating different ML tools and frameworks
 through a shared vocabulary.
 It supports forward-chaining inference via SPARQL and includes
 built-in quality assurance checks.
-Reinforcement learning is listed as a class but contains no
-instances, and coverage of generative AI methods is limited.
 
 \begin{landscape}
 \begin{figure}[H]
@@ -221,15 +219,15 @@ that can be queried and reasoned over.
 \subsection{ML Ontology Structure and Content}
 \label{subsection:ml-ontology}
 
-Among the ontologies reviewed, ML Ontology is examined in
+Among the ontologies reviewed, ML Ontology by \textcite{humm2026industry_ready_machine_learning_ontology}
+is examined in
 more detail here because it provides the broadest coverage
 of ML concepts and methods, making it the most promising
 foundation for the system developed in this thesis.
 
 ML Ontology is organised into five modules: classes,
 instances, inference rules, quality assurance checks, and
-predefined queries
-\parencite{humm2026industry_ready_machine_learning_ontology}.
+predefined queries.
 Figure~\ref{fig:ml-ontology-schema} shows this overall
 structure.
 
@@ -245,7 +243,7 @@ structure.
 The classes are divided into two groups: ML concepts, which
 cover the domain vocabulary, and ML implementations, which
 cover libraries, AutoML solutions, and their configuration
-options \parencite{humm2026industry_ready_machine_learning_ontology}.
+options.
 Figure~\ref{fig:ml-ontology-classes} shows the main classes
 and the relations between them.
 
@@ -262,8 +260,7 @@ The key relations are \texttt{used\_for}, which links
 approaches and metrics to the tasks they apply to,
 \texttt{belongs\_to}, which links tasks to learning areas,
 and \texttt{can\_perform}, which links libraries and AutoML
-solutions to tasks
-\parencite{humm2026industry_ready_machine_learning_ontology}.
+solutions to tasks.
 
 ML tasks are organised in hierarchies using
 \texttt{skos:broader}, a SKOS relation that links a concept
@@ -271,17 +268,12 @@ to a more general one, for example \texttt{tabular\_regression}
 to \texttt{regression}. A key feature of the ontology is
 that properties such as \texttt{used\_for} and
 \texttt{belongs\_to} are inherited along these hierarchies
-through a forward-chaining inference rule
-\parencite{humm2026industry_ready_machine_learning_ontology}.
+through a forward-chaining inference rule.
 This means that if a general method is applicable to a task,
 all its specialisations inherit that applicability without
 needing it to be stated explicitly.
 Figure~\ref{fig:ml-ontology-task-hierarchy} illustrates
 the task hierarchy for supervised and unsupervised learning.
-Reinforcement learning is defined as an ML area in the
-ontology but does not appear in the hierarchy since no tasks and no methods
-have been assigned to it
-\parencite{humm2026industry_ready_machine_learning_ontology}.
 
 \begin{figure}[H]
     \centering
@@ -291,3 +283,12 @@ have been assigned to it
     licensed under CC BY 4.0.}
     \label{fig:ml-ontology-task-hierarchy}
 \end{figure}
+
+Reinforcement learning is defined as an ML area in the
+ontology but does not appear in the hierarchy since no tasks
+and no methods have been assigned to it.
+Coverage of \texttt{ML\_approach} instances is also
+incomplete. \textcite{humm2026industry_ready_machine_learning_ontology}
+report a recall of 0.84 for this class, with graph neural
+networks, variational autoencoders, and genetic algorithms
+identified as examples of missing concepts.

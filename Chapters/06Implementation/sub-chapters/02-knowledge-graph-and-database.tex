@@ -1,0 +1,266 @@
+
+\section{Knowledge Graph and Database}
+\label{sec:knowledge-graph-and-database}
+
+This section describes the two data stores used in MLguide. The first 
+is the ML knowledge graph stored in GraphDB, which is based on ML 
+Ontology and extended for use in MLguide. The second is the PostgreSQL 
+database, which stores article abstracts and vector embeddings used 
+for semantic retrieval.
+
+\subsection{ML Ontology Extension}
+
+ML Ontology was selected as the knowledge base for MLguide because it 
+provides the broadest coverage of ML concepts among the ontologies 
+reviewed in Section~\ref{subsection:ml-ontology}, and because its 
+structure directly supports the kind of structured method retrieval 
+that MLguide requires. It is open source and published under an MIT 
+licence \parencite{humm2026industry_ready_machine_learning_ontology}, 
+which allows for use and modification as needed.
+The limitations identified in 
+Section~\ref{subsection:ml-ontology}, including the absence of 
+reinforcement learning instances and incomplete coverage of 
+\texttt{ML\_approach}, required extension before the ontology could 
+be used in MLguide. Some extensions were also made to support better
+knowledge structure and specific MLguide functionality. 
+They are described in more detail in this section.
+
+Three new classes were added under a separate namespace 
+(\texttt{mla:}), short for \textit{machine learning articles}, 
+to make clear that they are not part of the original ML Ontology. 
+Table~\ref{tab:mla-classes} describes these classes.
+
+\begin{table}[H]
+\centering
+\caption[New ontology classes]{New classes added under the \texttt{mla:} 
+namespace.}
+\label{tab:mla-classes}
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+\textbf{Class} & \textbf{Description} \\
+\midrule
+\texttt{mla:Article} & Represents a research article from the 
+literature dataset. Linked to one or more \texttt{mla:Method} 
+instances that are mentioned in the article. \\
+\midrule
+\texttt{mla:Method} & Represents an ML method as extracted from 
+article abstracts. Linked to a corresponding 
+\texttt{ML\_approach} instance via \texttt{skos:exactMatch}. \\
+\midrule
+\texttt{mla:ML\_task\_family} & Groups related \texttt{ML\_task} 
+instances under a common family label, helps selecting notebook 
+templates during notebook generation. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\texttt{mla:Method} and \texttt{ML\_approach} represent the same 
+concept but serve different roles. The reason for keeping them 
+separate is practical: \texttt{ML\_approach} instances carry 
+relations to other ML concepts in the ontology, such as which 
+tasks a method can be used for and which learning area it belongs 
+to. Adding article relations directly to these instances would mix 
+two different kinds of knowledge on the same node, making the 
+ontology harder to navigate during development. Instead, article 
+relations are kept on \texttt{mla:Method}, and the two classes 
+are connected via \texttt{skos:exactMatch}. If needed, this 
+separation could be removed by transferring the article relations 
+directly to the corresponding \texttt{ML\_approach} instances.
+
+Figure~\ref{fig:ontology-uml-with-extension} shows the class structure 
+of the extended ontology. The upper part shows the classes from the 
+original ML Ontology that are directly connected to the three new 
+\texttt{mla:} classes: \texttt{ML\_approach}, \texttt{ML\_task}, and 
+\texttt{ML\_area}. The lower part shows the new \texttt{mla:} classes 
+and how they connect to these. \texttt{mla:Method} is linked to 
+\texttt{ML\_approach} via \texttt{skos:exactMatch}, and to 
+\texttt{mla:Article} via \texttt{mentionsMethod}. 
+\texttt{mla:ML\_task\_family} is linked to \texttt{ML\_task} via 
+\texttt{has\_family}, and \texttt{mla:Article} is linked to 
+\texttt{ML\_area} via \texttt{has\_ml\_area}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/06-implementation/ontology-uml-with-extension.pdf}
+    \caption[ML Ontology UML diagram]{UML Class Diagram of the ML Ontology, including added classes and properties for MLguide.}
+    \label{fig:ontology-uml-with-extension}
+\end{figure}
+
+Figure~\ref{fig:ontology-article-instance} shows a concrete example 
+of how the extended ontology represents an article and its relations. 
+The \texttt{mla:Article} instance represents a research article 
+identified by its DOI and title. It is linked to 
+\texttt{supervised\_learning} via \texttt{has\_ml\_area}, and to 
+\texttt{method\_linear\_regression}, an \texttt{mla:Method} instance, 
+via \texttt{mentionsMethod}. The method instance is in turn linked to 
+the \texttt{ML\_approach} instance \texttt{linear\_regression} via 
+\texttt{skos:exactMatch}, which carries the ontology relations: 
+\texttt{used\_for} links it to the \texttt{ML\_task} 
+\texttt{regression}, which belongs to \texttt{supervised\_learning} 
+via \texttt{belongs\_to}, and \texttt{has\_family} links it to the 
+\texttt{mla:ML\_task\_family} instance \texttt{regression\_family}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/06-implementation/ontology-article-instance.pdf}
+    \caption[Article instance example]{Example of an Article instance in the ML Ontology.}
+    \label{fig:ontology-article-instance}
+\end{figure}
+
+New \texttt{ML\_approach} instances were added to address the 
+coverage gaps identified in Section~\ref{subsection:ml-ontology}. 
+A first set was derived from the method extraction results of the 
+pre-master project \parencite{bergsto2026mlselection}, where ML 
+methods were identified from article abstracts in the literature 
+dataset. Methods that appeared in the dataset but had no 
+corresponding \texttt{ML\_approach} instance in ML Ontology were 
+added. Reinforcement learning methods and tasks were added based 
+on established taxonomies of RL algorithms 
+\parencite{zhang2020taxonomy_reinforcement_learning_algorithms, 
+geron2019hands_on_machine_learning}, following the same 
+classification used in Section~\ref{sec:machine-learning-methods}. 
+In total, 65 new instances were added, grouped by theme in 
+Table~\ref{tab:new-ml-approaches}.
+
+\begin{table}[H]
+\centering
+\caption[New ML\_approach instances]{New \texttt{ML\_approach} instances added to ML Ontology, grouped by theme.}
+\label{tab:new-ml-approaches}
+\begin{tabularx}{\textwidth}{lXr}
+\toprule
+\textbf{Theme} & \textbf{New instances} & \textbf{n} \\
+\midrule
+Reinforcement
+  & deep reinforcement learning, Q-learning, REINFORCE, deep Q-network, policy gradient, proximal policy optimization, soft actor-critic, actor-critic, deep deterministic policy gradient, twin delayed DDPG, A3C & 11 \\
+\midrule
+Deep learning
+  & deep neural network, attention mechanism, graph attention network, graph neural network, graph convolutional network, GraphSAGE, U-Net, variational autoencoder, normalizing flow, diffusion model, DeepAR & 11 \\
+\midrule
+Evolutionary
+  & genetic algorithm, particle swarm optimization, simulated annealing, differential evolution, ant colony optimization, firefly algorithm, harmony search, evolutionary strategy, CMA-ES & 9 \\
+\midrule
+Anomaly detection
+  & isolation forest, local outlier factor, one-class SVM, HBOS, Hotelling T\textsuperscript{2}, squared prediction error, minimum covariance determinant, elliptic envelope & 8 \\
+\midrule
+Time series
+  & Kalman filter, temporal convolutional network, N-BEATS, seasonal ARIMA, state space model, VAR, Holt-Winters & 7 \\
+\midrule
+Explainability
+  & explainable AI, SHAP, Granger causality, DoWhy, CausalImpact, causal forest & 6 \\
+\midrule
+Probabilistic
+  & Bayesian method, Gaussian process regression, partial least squares, elastic net, robust regression & 5 \\
+\midrule
+Clustering
+  & k-medoids, Gaussian mixture model clustering, t-SNE, UMAP & 4 \\
+\midrule
+Ensemble
+  & gradient boosting, extra trees, bagging & 3 \\
+\midrule
+Other
+  & naive Bayes & 1 \\
+\midrule
+\textbf{Total} & & \textbf{65} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+For methods that form hierarchical families, \texttt{skos:broader} 
+relations were added to preserve the inheritance structure of the 
+ontology. For example, \texttt{deep\_q\_network} was linked as 
+broader to \texttt{q\_learning}, and 
+\texttt{proximal\_policy\_optimization} to \texttt{policy\_gradient}. 
+After adding new instances, the inheritance rule described in 
+Section~\ref{subsection:ml-ontology} was re-applied to propagate 
+\texttt{used\_for} and \texttt{belongs\_to} relations to the new 
+instances through their \texttt{skos:broader} hierarchies.
+
+\texttt{mla:ML\_task\_family} instances were added to group related 
+\texttt{ML\_task} instances under a common label. This was motivated by
+the large amount of similar tasks, especially for classification and regression. 
+Grouping them into families provides 
+a clearer structure. Task families also support notebook 
+generation by providing a better structure for selecting the correct 
+template for a given method and task combination, since many methods 
+can be applied to more than one type of task. This is described in 
+more detail in Section~\ref{sec:notebook-generation}.
+
+Families were defined by inspecting the \texttt{skos:broader} 
+hierarchy to identify which tasks were already grouped under common 
+parent tasks, and also by grouping tasks of similar character where no 
+such hierarchy existed. Each family was given a name that reflects 
+the shared nature of its tasks.
+Table~\ref{tab:ml-task-families} lists the task families and their 
+assigned tasks.
+
+\begin{table}[H]
+\centering
+\caption[ML\_task\_family instances]{ML\_task\_family instances and their assigned ML\_task instances.}
+\label{tab:ml-task-families}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{4cm}Xr}
+\toprule
+\textbf{ML\_task\_family} & \textbf{Assigned ML\_task instances} & \textbf{n} \\
+\midrule
+classification\_\allowbreak family
+  & classification, binary\_classification, multiclass\_classification,
+    tabular\_classification, text\_classification, image\_classification,
+    audio\_classification, time\_series\_classification, video\_classification,
+    vertex\_classification & 10 \\
+\midrule
+regression\_\allowbreak family
+  & regression, tabular\_regression, text\_regression, image\_regression,
+    audio\_regression, video\_regression & 6 \\
+\midrule
+clustering\_\allowbreak unsupervised\_\allowbreak discovery\_\allowbreak family
+  & clustering, tabular\_clustering, association\_rule\_learning,
+    community\_detection, topic\_modeling & 5 \\
+\midrule
+detection\_\allowbreak localization\_\allowbreak family
+  & object\_detection, anomaly\_detection, action\_recognition & 3 \\
+\midrule
+feature\_\allowbreak engineering\_\allowbreak family
+  & feature\_extraction, feature\_reduction, feature\_selection & 3 \\
+\midrule
+structured\_\allowbreak prediction\_\allowbreak family
+  & image\_segmentation, named\_entity\_recognition, translation & 3 \\
+\midrule
+graph\_tasks\_\allowbreak family
+  & graph\_matching, link\_prediction, vertex\_classification & 3 \\
+\midrule
+nlp\_analysis\_\allowbreak family
+  & sentiment\_analysis, text\_analytics & 2 \\
+\midrule
+ranking\_\allowbreak recommendation\_\allowbreak similarity\_\allowbreak family
+  & ranking, recommendation, sentence\_similarity & 3 \\
+\midrule
+time\_series\_\allowbreak family
+  & time\_series\_analysis, time\_series\_forecasting, time\_series\_classification & 3 \\
+\midrule
+tracking\_\allowbreak family
+  & video\_object\_tracking & 1 \\
+\midrule
+\textbf{Total} & \footnotesize{Note: some tasks appear in multiple families} & \textbf{42} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Database Structure}
+
+Article data is stored across several tables in PostgreSQL, shown in 
+Figure~\ref{fig:psql-er-diagram}. The \texttt{article\_abstracts} 
+table stores the raw abstract text for each article, used during 
+reranking. The \texttt{abstract\_embeddings} and 
+\texttt{title\_embeddings} tables store 768-dimensional vector 
+embeddings of the abstract and title respectively, used for semantic 
+similarity search via pgvector \parencite{pgvector}. The 
+\texttt{users} table stores a minimal user record created on first 
+login. The \texttt{saved\_searches} table stores previously saved searches 
+with problem descriptions, allowing users to reload them without 
+re-entering their inputs.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/06-implementation/psql-er-diagram.pdf}
+    \caption[PostgreSQL ER diagram]{Entity-Relationship Diagram of the PostgreSQL database used in MLguide.}
+    \label{fig:psql-er-diagram}
+\end{figure}

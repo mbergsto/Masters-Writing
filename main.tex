@@ -22,6 +22,7 @@
 \counterwithin{table}{section} %change counter for tables within sections
 \usepackage{color, xcolor} %edit e.g. text colors
 \usepackage{pdflscape} %to be able to make landscape pages, for example for wide tables
+\usepackage{setspace} %to set line spacing, for example with \onehalfspacing or \setstretch{1.2}
 \usepackage[backend = biber,
             style = authoryear,
             date = long,     % Long: 24th Mar. 1997 | Short: 24/03/1997
@@ -54,6 +55,7 @@
 %the title page should be an odd page (right hand side)
 
 \begin{titlepage}
+
 \newgeometry{left=1.6in, right=2in}
 \vspace*{1.5cm}
 
@@ -69,12 +71,12 @@
 \noindent {\large Ontology-Based Filtering and Implementation Support} \\
 
 
-\vspace{7cm}
+\vspace{5cm}
 \noindent Master's thesis in Engineering and ICT \\
 Supervisor: Andrei Lobov\\
 June 2026 \\
 
-\vspace{0.2cm}
+\vspace{0.1cm}
 \noindent Norwegian University of Science and Technology \\
 Faculty of Engineering \\
 Department of Mechanical and Industrial Engineering \\
@@ -87,6 +89,8 @@ Department of Mechanical and Industrial Engineering \\
 \myemptypage %empty page such that the abstract starts at the first right hand side after the title page
 %\end{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\onehalfspacing % set line spacing to one and a half
 
 % The pre-chapters
 \chapter*{Abstract} %pre-chapters should not be numbered, hence the "*"
@@ -152,7 +156,7 @@ Department of Mechanical and Industrial Engineering \\
 
 
 \chapter{Implementation}
-\input{Chapters/06Implementation}
+\input{Chapters/06Implementation/06Implementation.tex}
 \cleardoublepage
 
 

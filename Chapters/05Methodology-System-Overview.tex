@@ -79,8 +79,9 @@ This is illustrated with a simplified version of the roadmap in Figure~\ref{fig:
 In the pre-master project, the main focus was on collecting and analysing 
 research literature. Several directions for future development were identified, 
 including better support for problem formulation, ontology-based ML knowledge 
-representation, and support for translating recommendations into an 
-ML implementation \parencite{bergsto2026mlselection}.
+representation, support for translating recommendations into an 
+ML implementation, and incorporating user feedback to improve method 
+recommendations over time \parencite{bergsto2026mlselection}.
 
 \begin{figure}[H]
     \centering
@@ -92,18 +93,17 @@ ML implementation \parencite{bergsto2026mlselection}.
 MLguide addresses these directions by extending the original roadmap into
 a web-based decision-support system. The main design goals are to support 
 users in formulating their problem, to recommend relevant ML methods based 
-on both structured knowledge and research literature, and to provide a 
-starting point for implementation through generated notebooks. 
+on both structured knowledge and research literature, to provide a 
+starting point for implementation through generated notebooks, and to 
+incorporate user feedback on recommendations. 
 The system is primarily aimed at engineers and students who are new to 
 machine learning and need structured guidance in choosing a suitable method.
 A web-based interface was chosen to 
 lower the threshold for use, making it easy for other users to access and test
-the system without installation. Supporting user feedback on method recommendations was also identified as
-a direction for future development in the pre-master project 
-\parencite{bergsto2026mlselection}, with the intention that user ratings 
-contribute to method ranking over time.
+the system without installation.
 
 \section{Incremental and Iterative Development}
+\label{sec:incremental-and-iterative-development}
 
 MLguide was developed incrementally over the course of the master's project. 
 New features and components were built and deployed one at a time, each adding 

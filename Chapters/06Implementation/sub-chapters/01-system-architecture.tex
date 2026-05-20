@@ -1,0 +1,86 @@
+
+\section{System Architecture}
+\label{sec:system-architecture}
+
+MLguide is structured as a three-tier web application consisting of a 
+frontend, a backend, and a database layer, deployed as Docker containers 
+\parencite{docker}. Docker was chosen because containerisation makes the 
+system easy to run across different environments without managing 
+dependencies manually, which is important for a research artefact that 
+needs to be shared and tested by others.
+
+Figure~\ref{fig:system-diagram-components} shows the main components and 
+how they communicate. The frontend is implemented in Streamlit 
+\parencite{streamlit}, which was chosen because it allows interactive 
+web applications to be built directly in Python, without writing HTML or 
+JavaScript. This made it well suited for rapid development of a 
+data-driven prototype. The frontend communicates with the backend through 
+an HTTP API. The backend is implemented in FastAPI \parencite{fastapi}, 
+which provides automatic API documentation and built-in data validation,
+and contains the core application logic.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/06-implementation/system-diagram-components.pdf}
+    \caption[MLguide component diagram]{System Overview of MLguide.}
+    \label{fig:system-diagram-components}
+\end{figure}
+
+The backend reads from two data stores. GraphDB \parencite{graphdb} stores 
+the ML ontology and article links, and is queried using SPARQL. 
+It was chosen because it is designed specifically for RDF data and 
+supports SPARQL, making it a natural fit for an RDF-based knowledge graph. 
+PostgreSQL \parencite{postgresql} stores article abstracts 
+and vector embeddings using the pgvector extension \parencite{pgvector}. 
+This allows embeddings and relational data to be stored and queried in the 
+same database, avoiding the need for a separate vector database. The 
+frontend also integrates with two external services: the GitHub API and 
+Google Colab, which are used to upload and open generated notebooks.
+
+MLguide follows a layered architecture, in which each layer only depends 
+on the layer immediately beneath it 
+\parencite[158]{sommerville2011software_engineering}. This keeps concerns 
+separated across the system, so that individual layers can be modified or 
+replaced without affecting the rest of the application. The layered 
+approach also supports incremental development 
+\parencite[158]{sommerville2011software_engineering}, which is consistent 
+with the development process described in 
+Section~\ref{sec:incremental-and-iterative-development}.
+
+Figure~\ref{fig:mlguide-layered-architecture} shows the internal layer 
+structure of the frontend and backend. Both are organised into distinct 
+layers with clear responsibilities. In the backend, the router layer 
+handles incoming API requests and passes them to the service layer, which 
+contains the application logic. The persistence layer is responsible for 
+all database access and isolates data retrieval from the rest of the 
+application. In the frontend, the presentation layer handles rendering 
+and user interaction. An integrations layer wraps calls to the backend 
+API and external services, keeping these concerns separate from the 
+application logic.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/06-implementation/mlguide-layered-architecture.pdf}
+    \caption[MLguide layered architecture]{Layered Architecture of MLguide.}
+    \label{fig:mlguide-layered-architecture}
+\end{figure}
+
+Figure~\ref{fig:package-diagram-full} shows the full package structure 
+of both the frontend and backend, including the main modules within each 
+layer. In addition to the recommendation logic, the system handles two 
+other concerns that run through most layers. User services covers 
+authentication and saved searches, allowing users to store and reload 
+previous searches with problem descriptions. Feedback handling allows users to rate recommended 
+methods, with ratings stored in PostgreSQL and used to adjust method 
+ranking over time. Both concerns follow the same layered structure as 
+the recommendation logic, with separate modules in the router, service, 
+and persistence layers of the backend, and corresponding wrappers in 
+the frontend integrations layer.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/06-implementation/package-diagram-full.pdf}
+    \caption[MLguide package diagram]{Package Diagram of MLguide.}
+    \label{fig:package-diagram-full}
+\end{figure}
