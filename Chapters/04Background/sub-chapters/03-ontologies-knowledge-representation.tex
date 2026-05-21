@@ -256,24 +256,109 @@ and the relations between them.
     \label{fig:ml-ontology-classes}
 \end{figure}
 
-The key relations are \texttt{used\_for}, which links
+Some key relations are presented in Figure~\ref{fig:ml-ontology-classes}, 
+among them are \texttt{used\_for}, which links
 approaches and metrics to the tasks they apply to,
 \texttt{belongs\_to}, which links tasks to learning areas,
 and \texttt{can\_perform}, which links libraries and AutoML
-solutions to tasks.
+solutions to tasks. Instances are also linked to corresponding 
+entries in Wikidata \parencite{wikidata} via \texttt{rdfs:seeAlso}.
 
-ML tasks are organised in hierarchies using
-\texttt{skos:broader}, a SKOS relation that links a concept
-to a more general one, for example \texttt{tabular\_regression}
-to \texttt{regression}. A key feature of the ontology is
-that properties such as \texttt{used\_for} and
-\texttt{belongs\_to} are inherited along these hierarchies
-through a forward-chaining inference rule.
-This means that if a general method is applicable to a task,
-all its specialisations inherit that applicability without
-needing it to be stated explicitly.
-Figure~\ref{fig:ml-ontology-task-hierarchy} illustrates
-the task hierarchy for supervised and unsupervised learning.
+Since ML methods are central to the method selection task in this 
+thesis, the properties of \texttt{ML\_approach} instances are 
+examined in more detail. Table~\ref{tab:ml-approach-properties} 
+lists all properties associated with \texttt{ML\_approach} instances 
+in ML Ontology, as found in the published Turtle file 
+\parencite[Section~6.7]{humm2026industry_ready_machine_learning_ontology}.
+Table~\ref{tab:ml-approach-properties} lists the properties 
+associated with \texttt{ML\_approach} instances in ML Ontology.
+
+\begin{table}[H]
+\centering
+\caption[ML\_approach properties]{Properties of \texttt{ML\_approach} 
+instances in ML Ontology.}
+\label{tab:ml-approach-properties}
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+\textbf{Property} & \textbf{Description} \\
+\midrule
+\texttt{skos:prefLabel} & The preferred display name of the approach. \\
+\midrule
+\texttt{skos:altLabel} & Alternative names or abbreviations, 
+for example \textit{ANN} for artificial neural network. \\
+\midrule
+\texttt{skos:broader} & Links the approach to a more general 
+parent approach in the hierarchy. \\
+\midrule
+\texttt{rdfs:comment} & A short human-readable description 
+of the approach. \\
+\midrule
+\texttt{rdfs:seeAlso} & A link to an external resource, 
+typically a Wikidata entry. \\
+\midrule
+\texttt{:used\_for} & The ML tasks this approach can be 
+applied to. \\
+\midrule
+\texttt{:performance} & Performance characteristics, 
+for example \textit{fast\_training} or \textit{accurate}. \\
+\midrule
+\texttt{:possible\_if} & Conditions under which the approach 
+is applicable, for example \textit{numerical\_features}. \\
+\midrule
+\texttt{:not\_recommended\_if} & Conditions under which the 
+approach should be avoided, for example \textit{many\_features}. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Coverage varies considerably across properties. 
+Table~\ref{tab:ml-approach-coverage} shows how many of the 
+122 \texttt{ML\_approach} instances have each property populated.
+
+\begin{table}[H]
+\centering
+\caption[ML\_approach property coverage]{Coverage of 
+\texttt{ML\_approach} properties across 122 instances in 
+ML Ontology.}
+\label{tab:ml-approach-coverage}
+\begin{tabular}{lr}
+\toprule
+\textbf{Property} & \textbf{Coverage} \\
+\midrule
+\texttt{skos:prefLabel}       & 122/122 (100\%) \\
+\texttt{:used\_for}           & 103/122 (84\%)  \\
+\texttt{rdfs:comment}         & 97/122 (79\%)   \\
+\texttt{skos:altLabel}        & 64/122 (52\%)   \\
+\texttt{skos:broader}         & 56/122 (45\%)   \\
+\texttt{rdfs:seeAlso}         & 56/122 (45\%)   \\
+\texttt{:performance}         & 23/122 (18\%)   \\
+\texttt{:possible\_if}        & 9/122 (7\%)     \\
+\texttt{:not\_recommended\_if}& 3/122 (2\%)     \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The low coverage of some properties reflects that they must 
+be populated explicitly for each instance. However, ML Ontology 
+includes a forward-chaining inference rule that propagates 
+selected properties along \texttt{skos:broader} hierarchies. 
+Properties marked as \textit{broader inherited} are 
+automatically assigned to more specific concepts based on 
+what is defined for their parent. For the properties in 
+Table~\ref{tab:ml-approach-coverage}, this applies to 
+\texttt{:used\_for}, \texttt{:belongs\_to}, 
+\texttt{:performance}, \texttt{:possible\_if}, and 
+\texttt{:not\_recommended\_if}. The rule must be executed 
+after loading the ontology, and is not applied automatically.
+
+ML tasks are also organised in hierarchies using 
+\texttt{skos:broader}. For tasks, the inference rule means 
+that if \texttt{classification} belongs to 
+\texttt{supervised\_learning}, then \texttt{text\_classification} 
+inherits that relation without it needing to be stated 
+explicitly. Figure~\ref{fig:ml-ontology-task-hierarchy} 
+illustrates the task hierarchy for supervised and 
+unsupervised learning.
 
 \begin{figure}[H]
     \centering

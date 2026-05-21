@@ -1,19 +1,106 @@
-
 \section{Recommendation Process}
 \label{sec:recommendation-process}
+
+The recommendation process takes the user's input and produces a 
+ranked list of ML methods. The process has two main stages. In 
+the first stage, candidate methods are retrieved from the ontology 
+based on the parameters the user has selected. In the second stage, 
+if a problem description is provided, the candidates are reranked 
+using semantic similarity to relevant research articles. A feedback 
+boost is applied as a final adjustment to the ranking.
+
+Figure~\ref{fig:recommendation-sequence} shows the sequence of 
+steps in the recommendation process, covering ontology-based 
+candidate retrieval and semantic similarity ranking. Feedback is 
+not included in the diagram, as it is described separately in 
+Section~\ref{subsec:feedback-boost}.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Figures/06-implementation/recommendation-sequence.png}
-    \caption[Recommendation sequence]{Sequence diagram of the recommendation process in MLguide.}
+    \caption[Recommendation process sequence diagram]{Sequence 
+    diagram of the recommendation process in MLguide, showing 
+    ontology-based candidate retrieval and semantic similarity 
+    ranking.}
     \label{fig:recommendation-sequence}
 \end{figure}
 
-\subsection{Article Similarity Scoring}
+\subsection{Ontology-Based Candidate Retrieval}
+\label{subsec:ontology-candidate-retrieval}
 
-When a problem description is provided, articles are ranked by their semantic
-similarity to the query. Each article receives a score based on the cosine
-similarity between the query embedding and the stored abstract and title
-embeddings:
+The first step is to retrieve candidate methods from the knowledge 
+graph using a SPARQL query against GraphDB. The query traverses 
+the graph from articles to methods to approaches: it finds articles 
+tagged with the selected ML area, follows the 
+\texttt{mentionsMethod} relation to \texttt{mla:Method} instances, 
+and then follows \texttt{skos:exactMatch} to the corresponding 
+\texttt{ML\_approach} instances. A candidate approach is only 
+included if at least one article in the knowledge graph mentions 
+a method that maps to it, which grounds the candidate set in the 
+research literature.
+
+If the user selects an ML area, only articles tagged with that 
+area via \texttt{has\_ml\_area} are included. Task and other 
+filters are applied as optional matches, generating match counts 
+that are used for sorting. The query counts how many of the 
+user's selected filters each method satisfies across the 
+\texttt{ML\_approach} properties described in 
+Section~\ref{subsection:ml-ontology}: task type 
+(\texttt{:used\_for}), performance preferences 
+(\texttt{:performance}), and dataset type. Because 
+\texttt{:used\_for} is inherited along \texttt{skos:broader} 
+hierarchies through the inference rule described in 
+Section~\ref{subsection:ml-ontology}, a method applicable to a 
+general task is also returned when a more specific variant of 
+that task is queried.
+
+The properties \texttt{:possible\_if} and 
+\texttt{:not\_recommended\_if} are retrieved and returned 
+alongside each method as informational notes, but are not used 
+for filtering or ranking. This decision reflects the sparse 
+coverage of these properties shown in 
+Table~\ref{tab:ml-approach-coverage-extended}, where fewer than 
+4\% of instances have \texttt{:not\_recommended\_if} populated. 
+Using them for filtering at this coverage level would risk 
+excluding valid candidates.
+
+A filter suppresses overly general methods: if a specific neural 
+network variant is already present in the candidate set from the 
+same article, the generic \texttt{neural\_network} entry is 
+removed to reduce noise. Candidates are sorted by how well they 
+match the user's filters, with the number of supporting articles 
+as a tiebreaker. If no problem description is provided, this 
+ordered list is returned directly, adjusted for any feedback as 
+described in Section~\ref{subsec:feedback-boost}.
+
+\subsection{Article Similarity Scoring}
+\label{subsec:article-similarity-scoring}
+
+When a problem description is provided, articles in the database 
+are ranked by their semantic similarity to the query, using the 
+two-stage retrieval pipeline described in 
+Section~\ref{subsec:cross-encoder-reranking}. Similarity is 
+measured using cosine similarity as described in 
+Section~\ref{text-embeddings-semantic-similarity}, which compares 
+the angle between two vectors regardless of their magnitude 
+\parencite[Chapter~5.4]{jurafsky_martin2026speech_language_processing}.
+
+In the first stage, the problem description is encoded using 
+\texttt{all-mpnet-base-v2} \parencite{sbert_mpnet}, a 
+sentence-transformer model based on MPNet 
+\parencite{song2020mpnet}. This model was used in the pre-master 
+project \parencite{bergsto2026mlselection} to compute the article 
+embeddings stored in the database, so the same model must be used 
+at query time to ensure the problem description is encoded in the 
+same embedding space. The model was also selected for its quality: 
+it produces 768-dimensional embeddings and has been shown to 
+perform well on abstract-level semantic similarity tasks in 
+scientific literature 
+\parencite{galli2024performance_pre_trained_sentence_transformer_models, 
+colangelo2025comparative_analysis_sentence_transformer_models}. 
+Article scores are computed as a weighted sum of cosine 
+similarities between the query embedding and the precomputed 
+abstract and title embeddings:
 
 \begin{equation}
     \text{score}_a = w_{\text{abs}} \cdot \text{sim}_{\text{abs}}(a)
@@ -21,46 +108,96 @@ embeddings:
     \label{eq:article-score}
 \end{equation}
 
-where $w_{\text{abs}} = 0.7$ and $w_{\text{title}} = 0.3$. The top $k = 50$
-articles by this score are retained for the subsequent ranking step.
+where $w_{\text{abs}} = 0.7$ and $w_{\text{title}} = 0.3$. The 
+higher weight on abstracts reflects that abstracts contain more 
+information about the method and application context than titles 
+\parencite{westergaard2018comprehensive_quantitative_comparison_text_mining_15_million_full_text_articles_versus_corresponding_abstracts}. 
+These weights are set as defaults based on iterative testing 
+and can be adjusted. The top $k = 50$ articles are retained 
+for the reranking step.
+
+In the second stage, the top-$k$ articles are reranked using 
+\texttt{ms-marco-MiniLM-L6-v2} \parencite{sbert_ce_msmarco}, a 
+cross-encoder fine-tuned on the MS MARCO passage ranking dataset. 
+MS MARCO is a large-scale information retrieval corpus based on 
+real user search queries, containing over 500,000 training 
+examples and 8.8 million passages \parencite{sbert_ce_msmarco}. 
+The model was chosen because it achieves strong ranking 
+performance at high throughput — 1800 documents per second — 
+making it well suited for query-time inference over a small 
+candidate set \parencite{sbert_ce_msmarco}. As described in 
+Section~\ref{subsec:cross-encoder-reranking}, a cross-encoder 
+processes the query and each article jointly, producing more 
+accurate relevance scores than independent embeddings.
 
 \subsection{Method Scoring}
+\label{subsec:method-scoring}
 
-For each candidate method, a score is accumulated from the top-$k$ articles
-that mention it. The contribution of each article is based on its rank
-position in two complementary rankings: one from the embedding-based similarity
-search, and one from a cross-encoder reranker. Each unique (article, method)
-pair contributes once, to avoid inflating scores when multiple method aliases
-in a single article map to the same approach:
+After article reranking, each candidate method is scored based 
+on the articles that mention it. The bi-encoder and cross-encoder 
+capture different aspects of relevance, as described in 
+Section~\ref{subsec:cross-encoder-reranking}: the bi-encoder 
+retrieves broadly relevant candidates efficiently, while the 
+cross-encoder produces more precise relevance scores by 
+processing query and article jointly. Combining rank positions 
+from both stages gives a more robust ranking than either signal 
+alone. Using rank positions rather than raw scores also avoids 
+differences in scale between the two sources, consistent with 
+the principle behind Reciprocal Rank Fusion described in 
+Section~\ref{subsec:user-feedback-ranking}:
 
 \begin{equation}
-    \text{score}_m = \sum_{\substack{a \,\in\, \text{top-}k \\ m \,\in\, a}}
+    \text{score}_m = \sum_{\substack{a \,\in\, \text{top-}k \\ 
+    m \,\in\, a}}
         \left(
             \frac{w_e}{r_e(a) + 1} + \frac{w_c}{r_c(a) + 1}
         \right)
     \label{eq:method-score}
 \end{equation}
 
-where $r_e(a)$ and $r_c(a)$ are the zero-based rank positions of article $a$
-in the embedding ranking and cross-encoder ranking respectively, and $w_e$ and
-$w_c$ are normalised weights with $w_e + w_c = 1$ (default $w_e = w_c = 0.5$).
-Candidate methods are then sorted in descending order by $\text{score}_m$.
+where $r_e(a)$ and $r_c(a)$ are the zero-based rank positions 
+of article $a$ in the embedding ranking and cross-encoder 
+ranking respectively. The weights $w_e$ and $w_c$ are 
+normalised with $w_e + w_c = 1$, and both default to $0.5$. 
+These weights are set as defaults based on iterative testing 
+and can be adjusted. Articles ranked higher contribute more 
+to the method score, with the contribution decreasing 
+gradually for lower-ranked articles. Each unique 
+(article, method) pair contributes once, to avoid inflating 
+scores when multiple aliases for the same method appear in 
+a single article.
 
 \subsection{Feedback Boost}
+\label{subsec:feedback-boost}
 
-After similarity-based ranking, user feedback is used to adjust the final
-ordering. Each method is assigned a smoothed feedback score using Bayesian
-smoothing towards a neutral prior:
+After similarity-based ranking, user feedback can adjust the 
+final ordering. When a user rates a method on a 1--5 scale, 
+the rating is stored and used in subsequent recommendations. 
+As discussed in Section~\ref{subsec:user-feedback-ranking}, 
+rating estimates based on few observations are unreliable. 
+A smoothed score is therefore computed using Bayesian smoothing 
+towards a neutral prior 
+\parencite[Chapter~3.3]{murphy2012machine_learning_probabilistic_perspective}:
 
 \begin{equation}
     \hat{r}_m = \frac{s \cdot \mu_0 + n \cdot \bar{r}_m}{s + n}
     \label{eq:smoothed-rating}
 \end{equation}
 
-where $\bar{r}_m$ is the observed mean rating, $n$ is the number of ratings,
-$s = 5$ is the prior strength, and $\mu_0 = 3$ is the prior mean on a 1--5
-scale. The smoothed rating is then normalised to $[-1, 1]$ relative to the
-neutral rating of 3. The final combined score used to sort methods is:
+where $\bar{r}_m$ is the observed mean rating, $n$ is the 
+number of ratings, $s = 5$ is the prior strength, and 
+$\mu_0 = 3$ is the prior mean on a 1--5 scale. When $n$ is 
+small, the estimate is pulled towards $\mu_0$; as $n$ grows, 
+the observed mean dominates. The smoothed rating is normalised 
+to $[-1, 1]$ relative to the neutral rating of 3. The prior 
+strength of 5 means that approximately five ratings are needed 
+before feedback has a meaningful effect on the score. This 
+value is set as a default based on iterative testing and 
+can be adjusted.
+
+The feedback score is combined with the similarity-based 
+ranking using a rank-based score, so that the two signals are 
+on a comparable scale:
 
 \begin{equation}
     \text{combined\_score}(m) = \frac{1}{\text{rank}(m) + 1}
@@ -68,12 +205,21 @@ neutral rating of 3. The final combined score used to sort methods is:
     \label{eq:combined-score}
 \end{equation}
 
-where $\text{rank}(m)$ is the zero-based position after similarity ranking
-and $w_f = 0.15$.
+where $\text{rank}(m)$ is the zero-based position after 
+similarity ranking and $w_f = 0.15$ by default. The low weight 
+means that feedback can adjust a method's position by a few 
+places, but cannot override the similarity-based ranking 
+entirely. This weight is set as a default based on iterative 
+testing and can be adjusted.
+
+Figure~\ref{fig:ranking-flow} illustrates the full ranking 
+process from article similarity scoring through method scoring 
+and feedback boost.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Figures/06-implementation/ranking-flow.pdf}
-    \caption[Ranking flow]{Flowchart of the ranking process in MLguide, including similarity scoring and feedback boost.}
+    \caption[Ranking flow]{Flowchart of the ranking process in 
+    MLguide, including similarity scoring and feedback boost.}
     \label{fig:ranking-flow}
 \end{figure}

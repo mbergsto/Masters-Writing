@@ -171,11 +171,56 @@ ontology. For example, \texttt{deep\_q\_network} was linked as
 broader to \texttt{q\_learning}, and 
 \texttt{proximal\_policy\_optimization} to \texttt{policy\_gradient}. 
 After adding new instances, the inheritance rule described in 
-Section~\ref{subsection:ml-ontology} was re-applied to propagate 
+Section~\ref{subsection:ml-ontology} was applied to propagate 
 \texttt{used\_for} and \texttt{belongs\_to} relations to the new 
 instances through their \texttt{skos:broader} hierarchies.
 
-\texttt{mla:ML\_task\_family} instances were added to group related 
+Where available, links to corresponding Wikidata entities were added 
+to new instances via \texttt{rdfs:seeAlso}, following the same 
+approach used in the original ontology 
+\parencite{humm2026industry_ready_machine_learning_ontology}. 
+Candidates were retrieved using the Wikidata search API and scored 
+by string similarity between labels and whether the Wikidata 
+description contained predefined ML-related terms. Results were 
+reviewed manually before being added.
+
+Table~\ref{tab:ml-approach-coverage-extended} shows the resulting 
+coverage across all 187 \texttt{ML\_approach} instances after the 
+extension and applying the inference rule. For reference, 
+the original coverage across 122 instances is shown in 
+Table~\ref{tab:ml-approach-coverage}. 
+Coverage remains incomplete for several properties. Populating 
+properties requires a lot of manual work for each 
+instance, both for existing instances that lacked them and for 
+all newly added ones. Effort on this was therefore prioritised towards 
+reinforcement learning, which had no instances at all in the 
+original ontology, and less towards filling gaps in the 
+remaining properties. 
+
+\begin{table}[H]
+\centering
+\caption[ML\_approach property coverage after extension]{Coverage 
+of \texttt{ML\_approach} properties across 187 instances after 
+ontology extension and inference rule application.}
+\label{tab:ml-approach-coverage-extended}
+\begin{tabular}{lr}
+\toprule
+\textbf{Property} & \textbf{Coverage} \\
+\midrule
+\texttt{skos:prefLabel}        & 187/187 (100\%) \\
+\texttt{:used\_for}            & 131/187 (70\%)  \\
+\texttt{rdfs:comment}          & 130/187 (70\%)  \\
+\texttt{rdfs:seeAlso}          & 90/187 (48\%)   \\
+\texttt{skos:altLabel}         & 66/187 (35\%)   \\
+\texttt{skos:broader}          & 57/187 (30\%)   \\
+\texttt{:performance}          & 50/187 (27\%)   \\
+\texttt{:possible\_if}         & 28/187 (15\%)   \\
+\texttt{:not\_recommended\_if} & 5/187 (3\%)     \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\texttt{mla:ML\_task\_family} instances were also added to group related 
 \texttt{ML\_task} instances under a common label. This was motivated by
 the large amount of similar tasks, especially for classification and regression. 
 Grouping them into families provides 
@@ -256,7 +301,9 @@ similarity search via pgvector \parencite{pgvector}. The
 \texttt{users} table stores a minimal user record created on first 
 login. The \texttt{saved\_searches} table stores previously saved searches 
 with problem descriptions, allowing users to reload them without 
-re-entering their inputs.
+re-entering their inputs. The \texttt{method\_feedback} table stores
+user feedback on recommended methods, capturing all context related to 
+the user's problem description and the specific method.
 
 \begin{figure}[H]
     \centering

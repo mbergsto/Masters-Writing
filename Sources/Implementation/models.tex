@@ -1,0 +1,29 @@
+From \parencite{galli2024performance_pre_trained_sentence_transformer_models} :
+oppgave og datasett:
+
+"The purpose of the current work is to retrospectively compare the performance of four freely available pre-trained models to identify a group of target papers in a dataset that was used for a previously published systematic review in implant dentistry."
+"we retrospectively used data from a previously published systematic review, where clinical studies were identified that could help answer two focused questions [...] The investigators who performed the systematic review had to manually scan a corpus of more than 6000 articles and extract 24 reports"
+"To assess the similarity between the two documents, cosine similarity was employed as a metric. Abstracts were chosen among other features, e.g., instead of titles, because they contained the highest amount of information"
+
+modellvalg og resultater:
+
+"We then decided to use four models, choosing them from those freely available in the Huggingface repository. Two models (all-MiniLM-L6-v2 and all-MiniLM-L12-v2) were smaller and encoded 384-long embeddings [...] The other two models, by contrast (all-mpnet-base-v2 and all-distilroberta-v1) encoded longer, 768-dimensional embeddings. Longer embeddings have the potential to contain richer and more nuanced semantic representations and could therefore perform better"
+"the all-mpnet-base-v2 and all-distilroberta-v1 models performed the best because their mean similarity was 0.77 for FQ1, 0.8 for FQ2, and 0.76 for FQ1 and 0.78 for FQ2, respectively, higher than with any other model we tested"
+"Unsurprisingly, the all-mpnet-base-v2 model emerges as the best-performing pre-trained model among those tested, and if faster computer set-ups are available, our data indicate that this model is preferable over the alternatives we have compared. However, its performance is only marginally better than that of faster models, such as all-MiniLM-L12-v2"
+"sorting the dataset by semantic similarities using the best-performing model (all-mpnet-base-v2), the target articles could be found in the top 700 papers out of the 6110 dataset"
+
+From \parencite{colangelo2025comparative_analysis_sentence_transformer_models} :
+oppgave og datasett:
+
+"We present an automated journal recommendation pipeline designed to evaluate the performance of five Sentence Transformer models [...] in identifying journals that align with a manuscript's thematic scope"
+"Evaluations on 50 test articles revealed distinct strengths and trade-offs among the models"
+
+resultater:
+"Mpnet consistently demonstrated the highest performance, with mean similarity scores of 0.71 ± 0.04 and strong alignment with relevant journals"
+
+From \parencite{sbert_ce_msmarco}:
+"MS MARCO is a large scale information retrieval corpus that was created based on real user search queries using Bing search engine."
+"The provided models can be used for semantic search, i.e., given keywords / a search phrase / a question, the model will find passages that are relevant for the search query."
+"The training data consists of over 500k examples, while the complete corpus consists of over 8.8 million passages."
+Fra ytelsestabellen: cross-encoder/ms-marco-MiniLM-L6-v2 oppnår NDCG@10 på 74.30 og MRR@10 på 39.01 ved 1800 docs/sec, mot MiniLM-L12-v2 sine 74.31 og 39.02 ved 960 docs/sec.
+

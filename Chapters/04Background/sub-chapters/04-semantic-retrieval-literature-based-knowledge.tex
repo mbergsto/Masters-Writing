@@ -11,6 +11,7 @@ how similarity between texts can be measured in that representation,
 and how these techniques support ranking and matching against a corpus of scientific literature.
 
 \subsection{Text Embeddings and Semantic Similarity}
+\label{text-embeddings-semantic-similarity}
 
 In vector semantics, text is represented as a numerical vector, 
 a point in a high-dimensional space referred to as the embedding 
@@ -53,6 +54,7 @@ practice, cosine distance, defined as $1 - \cos(\mathbf{u},
 where lower values indicate greater similarity.
 
 \subsection{Transformer-Based Sentence Embedding Models}
+\label{sec:transformer-based-sentence-embedding-models}
 
 Transformer-based language models represent text by processing 
 input tokens through multiple layers of self-attention, producing 
@@ -138,7 +140,7 @@ including Documents~B and~C despite the absence of exact term overlap in these d
 \subsection{Cross-Encoder Reranking}
 
 The sentence embedding approach described in 
-Section~\ref{subsec:sentence-embeddings} is an example of a 
+Section~\ref{sec:transformer-based-sentence-embedding-models} is an example of a 
 bi-encoder, where query and document are encoded independently 
 into fixed-size vectors and similarity is measured using cosine 
 similarity \parencite{reimers2019sentence_bert_sentence_embeddings_using_siamese_bert_networks}. 
@@ -170,7 +172,7 @@ difference between the two approaches.
     vectors that are compared using cosine similarity. The
     cross-encoder concatenates both inputs and processes them
     jointly, enabling full attention between query and document
-    inputs and producing a direct relevance score.}
+    inputs and producing a direct relevance score. Inspired by \textcite{kumar2024crossencoders}.}
     \label{fig:bi-vs-cross-encoder}
 \end{figure}
 
