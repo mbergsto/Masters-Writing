@@ -23,6 +23,7 @@ Om å kombinere rangeringer uten å ta hensyn til de underliggende scorene:
 
 From \parencite{bobadilla2013recommender_systems_survey}:
 
+
 Definisjon av eksplisitt feedback
 
 "The information can be acquired explicitly (typically by collecting users' ratings) or implicitly [...] (typically by monitoring users' behavior)"
@@ -35,7 +36,9 @@ Cold start – "new community"-varianten
 
 "The new community problem [...] refers to the difficulty, when starting up a RS, in obtaining, a sufficient amount of data (ratings) for making reliable recommendations."
 
-From \parencite{ricci2010recommender_systems_handbook} :
+From \parencite[Chapter~1]{ricci2010recommender_systems_handbook} :
+Kapittel 1:
+
 
 Definisjon av eksplisitt feedback:
 
@@ -54,3 +57,26 @@ At anbefalinger forbedres over tid med mer brukerdata:
 "the longer the user interacts with the site, the more refined her user model becomes [...] and the more the recommender output can be effectively customized to match the user's preferences."
 
 Dette støtter indirekte poenget om at feedback-boosten krever aktive brukere over tid for å ha effekt.
+
+From \parencite[Chapter~3]{ricci2010recommender_systems_handbook} :
+Kapittel 3:
+
+"Recommender systems have the effect of guiding users in a personal-
+ized way to interesting objects in a large space of possible options. Content-based
+recommendation systems try to recommend items similar to those a given user has
+liked in the past. Indeed, the basic process performed by a content-based recom-
+mender consists in matching up the attributes of a user profile in which preferences
+and interests are stored, with the attributes of a content object (item), in order to
+recommend to the user new interesting items."
+
+"relevance feedback is a technique adopted in Information Retrieval that helps users to incrementally refine queries based on previous search results. It consists of the users feeding back into the system decisions on the relevance of retrieved documents with respect to their information needs."
+
+Om behovet for domeneontologier i content-based filtering:
+
+"Domain knowledge is often needed [...] and sometimes, domain ontologies are also needed."
+
+Dette er en direkte støtte for valget om å bruke Humm-ontologien i MLguide.
+
+Om new user / cold start:
+
+"Enough ratings have to be collected before a content-based recommender system can really understand user preferences and provide accurate recommendations. Therefore, when few ratings are available, as for a new user, the system will not be able to provide reliable recommendations."
